@@ -1,0 +1,41 @@
+====================================================================================================
+Checkpoint: v2_model_ckpt_test_cu1_du2.pt  trained on ['cu3_du6du7du8du9', 'cu0_7du', 'cu0_10du']
+Scoring on SMALL topologies it has never seen: ['cu0_du0du1', 'cu2_du3du4du5']
+====================================================================================================
+  per-topology thr: cu3_du6du7du8du9     N_DU= 4  thr(p99.0)=57.7123
+  per-topology thr: cu0_7du              N_DU= 7  thr(p99.0)=49.3976
+  per-topology thr: cu0_10du             N_DU=10  thr(p99.0)=49.2310
+  fitted line: thr = 42.1592 + 60.5922 * (1/N_DU)
+  baseline pooled threshold (current method): 49.0719
+
+  -- target=cu0_du0du1 (N_DU=2) -- extrapolated threshold: 72.4553
+  cu0_du0du1 CPU: normal[median=6.2 p90=11.3]  stress[median=20777.3 p10=20123.2]
+    baseline(thr=49.07) P=0.967 R=0.987 F1=0.977   |   extrap(thr=72.46) P=0.983 R=0.987 F1=0.985
+  cu0_du0du1 MEM: normal[median=5.1 p90=12.6]  stress[median=2825.9 p10=2031.8]
+    baseline(thr=49.07) P=0.975 R=0.987 F1=0.981   |   extrap(thr=72.46) P=0.983 R=0.987 F1=0.985
+  cu0_du0du1 NET: normal[median=4.0 p90=26.0]  stress[median=378.3 p10=102.6]
+    baseline(thr=49.07) P=0.915 R=0.950 F1=0.932   |   extrap(thr=72.46) P=0.949 R=0.929 F1=0.939
+
+  -- target=cu2_du3du4du5 (N_DU=3) -- extrapolated threshold: 62.3566
+  cu2_du3du4du5 CPU: normal[median=2.1 p90=6.9]  stress[median=24586.6 p10=24162.7]
+    baseline(thr=49.07) P=0.988 R=0.988 F1=0.988   |   extrap(thr=62.36) P=0.988 R=0.988 F1=0.988
+  cu2_du3du4du5 MEM: normal[median=1.9 p90=12.4]  stress[median=2748.6 p10=2039.2]
+    baseline(thr=49.07) P=0.957 R=0.992 F1=0.974   |   extrap(thr=62.36) P=0.968 R=0.992 F1=0.980
+  cu2_du3du4du5 NET: normal[median=2.0 p90=61.2]  stress[median=486.3 p10=46.5]
+    baseline(thr=49.07) P=0.831 R=0.884 F1=0.857   |   extrap(thr=62.36) P=0.834 R=0.864 F1=0.849
+
+
+====================================================================================================
+SUMMARY: existing checkpoint (trained on 4/7/10-DU) scored on 2/3-DU targets
+====================================================================================================
+target           N_DU stress  P(base)  P(new)  R(base)  R(new)  F1(base)  F1(new)
+cu0_du0du1          2    CPU    0.967   0.983    0.987   0.987     0.977    0.985
+cu0_du0du1          2    MEM    0.975   0.983    0.987   0.987     0.981    0.985
+cu0_du0du1          2    NET    0.915   0.949    0.950   0.929     0.932    0.939
+cu2_du3du4du5       3    CPU    0.988   0.988    0.988   0.988     0.988    0.988
+cu2_du3du4du5       3    MEM    0.957   0.968    0.992   0.992     0.974    0.980
+cu2_du3du4du5       3    NET    0.831   0.834    0.884   0.864     0.857    0.849
+
+Done. 6 rows.
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_bigsmall_cu0_du0du1.js
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_bigsmall_cu2_du3du4du5.js

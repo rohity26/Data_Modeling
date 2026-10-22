@@ -1,0 +1,25 @@
+
+======================================================================
+  Cross-topology NET stress detection (multi-train + RobustScaler v0)
+  Train : ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu0_du0du1    (unseen topology)
+  Preprocessing : RobustScaler v0  (raw thresholds, no cold-start probe)
+  CU features   : 5   DU features: 28
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu1_du2             cu_s (69824, 7)  du_s (69824, 1, 30)  (μ=-0.419, σ=1.778 after v0)
+  topo[1] cu2_du3du4du5       cu_s (69824, 7)  du_s (69824, 3, 30)  (μ=-0.087, σ=1.816 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (69824, 7)  du_s (69824, 4, 30)  (μ=-0.046, σ=1.902 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu1_du2            total=69824  fit=55859  cal=13965
+  topo[1] cu2_du3du4du5      total=69824  fit=55859  cal=13965
+  topo[2] cu3_du6du7du8du9   total=69824  fit=55859  cal=13965
+
+[3] Training CalibratedTopoAR on 3 topologies (cu_dim=7, du_dim=30, embed=32) ...
+  topo[0] cu1_du2            N_DU=1  windows=55796  (train=50216, val=5580)
+  topo[1] cu2_du3du4du5      N_DU=3  windows=55796  (train=50216, val=5580)
+  topo[2] cu3_du6du7du8du9   N_DU=4  windows=55796  (train=50216, val=5580)
+  epoch   1  tr=23489632.39932  val=23004205.39394

@@ -1,0 +1,83 @@
+====================================================================================================
+SMALL -> BIG (4 original checkpoints -> cu0_7du / cu0_10du)
+====================================================================================================
+
+### checkpoint=cu0_du0du1
+  [old] cu0_7du CPU: thr=172.60 P=0.997 R=0.993 F1=0.995
+  [old] cu0_7du MEM: thr=172.60 P=0.997 R=0.990 F1=0.993
+  [old] cu0_7du NET: thr=172.60 P=1.000 R=0.889 F1=0.941
+  [old] cu0_10du CPU: thr=172.60 P=0.983 R=0.987 F1=0.985
+  [old] cu0_10du MEM: thr=172.60 P=0.992 R=0.988 F1=0.990
+  [old] cu0_10du NET: thr=172.60 P=0.986 R=0.885 F1=0.933
+  [new] cu0_7du CPU: thr=175.47 P=1.000 R=0.993 F1=0.997
+  [new] cu0_7du MEM: thr=175.47 P=1.000 R=0.990 F1=0.995
+  [new] cu0_7du NET: thr=175.47 P=1.000 R=0.201 F1=0.335
+  [new] cu0_10du CPU: thr=175.47 P=1.000 R=0.987 F1=0.994
+  [new] cu0_10du MEM: thr=175.47 P=1.000 R=0.988 F1=0.994
+  [new] cu0_10du NET: thr=175.47 P=1.000 R=0.864 F1=0.927
+
+### checkpoint=cu1_du2
+  [old] cu0_7du CPU: thr=198.11 P=1.000 R=0.993 F1=0.997
+  [old] cu0_7du MEM: thr=198.11 P=1.000 R=0.990 F1=0.995
+  [old] cu0_7du NET: thr=198.11 P=1.000 R=0.977 F1=0.988
+  [old] cu0_10du CPU: thr=198.11 P=0.983 R=0.987 F1=0.985
+  [old] cu0_10du MEM: thr=198.11 P=0.996 R=0.988 F1=0.992
+  [old] cu0_10du NET: thr=198.11 P=0.987 R=0.991 F1=0.989
+  [new] cu0_7du CPU: thr=92.35 P=0.854 R=0.993 F1=0.918
+  [new] cu0_7du MEM: thr=92.35 P=0.858 R=0.990 F1=0.920
+  [new] cu0_7du NET: thr=92.35 P=0.851 R=0.997 F1=0.918
+  [new] cu0_10du CPU: thr=92.35 P=0.975 R=0.987 F1=0.981
+  [new] cu0_10du MEM: thr=92.35 P=0.949 R=0.988 F1=0.968
+  [new] cu0_10du NET: thr=92.35 P=0.991 R=0.966 F1=0.978
+
+### checkpoint=cu2_du3du4du5
+  [old] cu0_7du CPU: thr=177.36 P=1.000 R=0.993 F1=0.997
+  [old] cu0_7du MEM: thr=177.36 P=1.000 R=0.990 F1=0.995
+  [old] cu0_7du NET: thr=177.36 P=1.000 R=0.685 F1=0.813
+  [old] cu0_10du CPU: thr=177.36 P=0.987 R=0.987 F1=0.987
+  [old] cu0_10du MEM: thr=177.36 P=0.996 R=0.988 F1=0.992
+  [old] cu0_10du NET: thr=177.36 P=0.984 R=0.809 F1=0.888
+  [new] cu0_7du CPU: thr=77.68 P=0.360 R=1.000 F1=0.529
+  [new] cu0_7du MEM: thr=77.68 P=0.359 R=1.000 F1=0.529
+  [new] cu0_7du NET: thr=77.68 P=0.356 R=0.997 F1=0.525
+  [new] cu0_10du CPU: thr=77.68 P=0.996 R=0.987 F1=0.992
+  [new] cu0_10du MEM: thr=77.68 P=0.825 R=0.988 F1=0.899
+  [new] cu0_10du NET: thr=77.68 P=1.000 R=0.813 F1=0.897
+
+### checkpoint=cu3_du6du7du8du9
+  [old] cu0_7du CPU: thr=173.58 P=0.997 R=0.993 F1=0.995
+  [old] cu0_7du MEM: thr=173.58 P=0.993 R=0.990 F1=0.992
+  [old] cu0_7du NET: thr=173.58 P=1.000 R=0.980 F1=0.990
+  [old] cu0_10du CPU: thr=173.58 P=0.883 R=0.987 F1=0.932
+  [old] cu0_10du MEM: thr=173.58 P=0.863 R=0.988 F1=0.921
+  [old] cu0_10du NET: thr=173.58 P=0.928 R=0.991 F1=0.959
+  [new] cu0_7du CPU: thr=114.83 P=1.000 R=0.993 F1=0.997
+  [new] cu0_7du MEM: thr=114.83 P=1.000 R=0.990 F1=0.995
+  [new] cu0_7du NET: thr=114.83 P=1.000 R=0.990 F1=0.995
+  [new] cu0_10du CPU: thr=114.83 P=0.375 R=1.000 F1=0.545
+  [new] cu0_10du MEM: thr=114.83 P=0.365 R=1.000 F1=0.535
+  [new] cu0_10du NET: thr=114.83 P=0.369 R=1.000 F1=0.539
+
+====================================================================================================
+BIG -> SMALL ({4,7,10}-DU checkpoint -> cu1_du2 / cu0_du0du1 / cu2_du3du4du5)
+====================================================================================================
+  [old] cu1_du2 CPU: thr=222.91 P=0.984 R=0.992 F1=0.988
+  [old] cu1_du2 MEM: thr=222.91 P=0.955 R=0.992 F1=0.973
+  [old] cu1_du2 NET: thr=222.91 P=0.779 R=0.626 F1=0.694
+  [old] cu0_du0du1 CPU: thr=222.91 P=1.000 R=0.987 F1=0.994
+  [old] cu0_du0du1 MEM: thr=222.91 P=0.996 R=0.987 F1=0.991
+  [old] cu0_du0du1 NET: thr=222.91 P=0.994 R=0.703 F1=0.824
+  [old] cu2_du3du4du5 CPU: thr=222.91 P=1.000 R=0.988 F1=0.994
+  [old] cu2_du3du4du5 MEM: thr=222.91 P=1.000 R=0.988 F1=0.994
+  [old] cu2_du3du4du5 NET: thr=222.91 P=0.882 R=0.716 F1=0.790
+  [new] cu1_du2 CPU: thr=125.36 P=0.808 R=0.992 F1=0.890
+  [new] cu1_du2 MEM: thr=125.36 P=0.839 R=0.992 F1=0.909
+  [new] cu1_du2 NET: thr=125.36 P=0.920 R=0.428 F1=0.584
+  [new] cu0_du0du1 CPU: thr=125.36 P=0.936 R=0.987 F1=0.961
+  [new] cu0_du0du1 MEM: thr=125.36 P=0.979 R=0.987 F1=0.983
+  [new] cu0_du0du1 NET: thr=125.36 P=1.000 R=0.494 F1=0.661
+  [new] cu2_du3du4du5 CPU: thr=125.36 P=1.000 R=0.988 F1=0.994
+  [new] cu2_du3du4du5 MEM: thr=125.36 P=0.968 R=0.992 F1=0.980
+  [new] cu2_du3du4du5 NET: thr=125.36 P=1.000 R=0.204 F1=0.339
+
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_bothfixes_p999.js

@@ -1,0 +1,386 @@
+
+======================================================================
+  Cross-topology NET stress detection (multi-train + RobustScaler v0)
+  Train : ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu0_du0du1    (unseen topology)
+  Preprocessing : RobustScaler v0  (raw thresholds, no cold-start probe)
+  CU features   : 5   DU features: 28
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu1_du2             cu_s (69824, 7)  du_s (69824, 1, 30)  (μ=-0.419, σ=1.778 after v0)
+  topo[1] cu2_du3du4du5       cu_s (69824, 7)  du_s (69824, 3, 30)  (μ=-0.087, σ=1.816 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (69824, 7)  du_s (69824, 4, 30)  (μ=-0.046, σ=1.902 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu1_du2            total=69824  fit=55859  cal=13965
+  topo[1] cu2_du3du4du5      total=69824  fit=55859  cal=13965
+  topo[2] cu3_du6du7du8du9   total=69824  fit=55859  cal=13965
+
+[3] Training CalibratedTopoAR on 3 topologies (cu_dim=7, du_dim=30, embed=32) ...
+  topo[0] cu1_du2            N_DU=1  windows=55796  (train=50216, val=5580)
+  topo[1] cu2_du3du4du5      N_DU=3  windows=55796  (train=50216, val=5580)
+  topo[2] cu3_du6du7du8du9   N_DU=4  windows=55796  (train=50216, val=5580)
+  epoch   1  tr=14931325.48562  val=14697365.19697
+  epoch  10  tr=13321070.03892  val=13263948.22727
+  Early stop at epoch 16  (best_val=13242538.01515)
+  Model saved → random_model_ckpt_test_cu0_du0du1.pt
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu1_du2            cu_sqerr (13964, 7)  du_sqerr (13964, 1, 30)
+  topo[1] cu2_du3du4du5      cu_sqerr (13964, 7)  du_sqerr (13964, 3, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (13964, 7)  du_sqerr (13964, 4, 30)
+  Pooled cal rows: cu=41700  du(flat)=111200
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  CU threshold (p99.9): 193.1923
+  DU threshold (p99.9): 716.6810
+
+[6] Transforming TEST topology (cu0_du0du1) with train-fitted scaler ...
+  cu_s_te (37172, 7)  du_s_te (37172, 2, 30)  (μ=-10.265, σ=16.243)
+  CU NET-stress rows : 358
+  DU_0 NET-stress rows: 358
+  DU_1 NET-stress rows: 357
+  NOTE: test N_DU=2 not in train N_DU set [1, 3, 4] — type-shared weights generalise by design
+
+[7] Running inference on test stream ...
+  cu_sqerr (37171, 7)  du_sqerr (37171, 2, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/CU_TCP_random_my_model/recon_errors_cu0_du0du1_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   358  TP=   358  FP= 36749  FN=     0  P=0.010  R=1.000  F1=0.019
+  DU_0          anom=   358  TP=   358  FP= 30882  FN=     0  P=0.011  R=1.000  F1=0.023
+  DU_1          anom=   357  TP=   357  FP= 29453  FN=     0  P=0.012  R=1.000  F1=0.024
+  ------------------------------------------------------------------------
+  ANY           anom=  1073  TP=  1073  FP= 36034  FN=     0  P=0.029  R=1.000  F1=0.056
+
+[8a] Root cause KPI accuracy (stress=NET, expected_CU=net_tx|net_rx|net_diff|net_ratio) ...
+  Entity           TPs            RC_correct    dominant_pred_RC
+  ----------------------------------------------------------------
+  CU            TPs=   358  RC_correct=     0/358     (  0.0%)  dominant_pred_RC=mem_bytes
+  DU_0          TPs=   358  RC_correct=     0/358     (  0.0%)  dominant_pred_RC=mem_bytes
+  DU_1          TPs=   357  RC_correct=     0/357     (  0.0%)  dominant_pred_RC=mem_bytes
+
+[8b] Score distribution: CAL vs TEST
+          p50.0  p90.0  p99.0  p99.9
+  CU cal   1.187   4.785  26.589  193.192
+  CU te   49562.774  50457.185  50838.890  50868.702
+  DU cal   3.505   7.736  163.114  716.681
+  DU te   7542.150  7956.387  8099.049  8148.622
+  CU thr (cal=193.1923)  →  fraction test above thr: 1.000
+  DU thr (cal=716.6810)  →  fraction test above thr: 0.821
+
+[8c] Per-channel CU mean sq-error: CAL vs TEST (normal rows only)
+     channel    cal_mean  te_normal_mean   ratio
+         cpu      0.2438          1.0208    4.19x
+     mem_pct      8.5317       1211.5303  142.00x
+   mem_bytes      0.0079       1191.3010  149999.70x
+      net_tx      0.0624          0.3347    5.37x
+      net_rx      0.0617          0.3293    5.34x
+    net_diff     11.4315          6.5781    0.58x
+   net_ratio      0.8598         17.6614   20.54x
+
+[9] Generating plot ...
+
+  Plot saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/cross_anomaly_plot_random_cu0_du0du1.png
+
+Done.
+
+======================================================================
+  Cross-topology NET stress detection (multi-train + RobustScaler v0)
+  Train : ['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu1_du2    (unseen topology)
+  Preprocessing : RobustScaler v0  (raw thresholds, no cold-start probe)
+  CU features   : 5   DU features: 28
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (69824, 7)  du_s (69824, 2, 30)  (μ=-0.420, σ=2.199 after v0)
+  topo[1] cu2_du3du4du5       cu_s (69824, 7)  du_s (69824, 3, 30)  (μ=-0.085, σ=2.254 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (69824, 7)  du_s (69824, 4, 30)  (μ=-0.003, σ=2.345 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=69824  fit=55859  cal=13965
+  topo[1] cu2_du3du4du5      total=69824  fit=55859  cal=13965
+  topo[2] cu3_du6du7du8du9   total=69824  fit=55859  cal=13965
+
+[3] Training CalibratedTopoAR on 3 topologies (cu_dim=7, du_dim=30, embed=32) ...
+  topo[0] cu0_du0du1         N_DU=2  windows=55796  (train=50216, val=5580)
+  topo[1] cu2_du3du4du5      N_DU=3  windows=55796  (train=50216, val=5580)
+  topo[2] cu3_du6du7du8du9   N_DU=4  windows=55796  (train=50216, val=5580)
+  epoch   1  tr=14507105.24535  val=14371914.27273
+  epoch  10  tr=13025121.87479  val=13046705.87879
+  epoch  20  tr=13051409.71574  val=13062970.31818
+  Early stop at epoch 22  (best_val=12971327.95455)
+  Model saved → random_model_ckpt_test_cu1_du2.pt
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (13964, 7)  du_sqerr (13964, 2, 30)
+  topo[1] cu2_du3du4du5      cu_sqerr (13964, 7)  du_sqerr (13964, 3, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (13964, 7)  du_sqerr (13964, 4, 30)
+  Pooled cal rows: cu=41700  du(flat)=125100
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  CU threshold (p99.9): 191.0673
+  DU threshold (p99.9): 689.6168
+
+[6] Transforming TEST topology (cu1_du2) with train-fitted scaler ...
+  cu_s_te (36815, 7)  du_s_te (36815, 1, 30)  (μ=-15.703, σ=25.464)
+  CU NET-stress rows : 358
+  DU_0 NET-stress rows: 358
+  NOTE: test N_DU=1 not in train N_DU set [2, 3, 4] — type-shared weights generalise by design
+
+[7] Running inference on test stream ...
+  cu_sqerr (36814, 7)  du_sqerr (36814, 1, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/CU_TCP_random_my_model/recon_errors_cu1_du2_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   358  TP=   358  FP= 36392  FN=     0  P=0.010  R=1.000  F1=0.019
+  DU_0          anom=   358  TP=   358  FP= 28017  FN=     0  P=0.013  R=1.000  F1=0.025
+  ------------------------------------------------------------------------
+  ANY           anom=   716  TP=   716  FP= 36034  FN=     0  P=0.019  R=1.000  F1=0.038
+
+[8a] Root cause KPI accuracy (stress=NET, expected_CU=net_tx|net_rx|net_diff|net_ratio) ...
+  Entity           TPs            RC_correct    dominant_pred_RC
+  ----------------------------------------------------------------
+  CU            TPs=   358  RC_correct=     0/358     (  0.0%)  dominant_pred_RC=mem_bytes
+  DU_0          TPs=   358  RC_correct=     0/358     (  0.0%)  dominant_pred_RC=mem_bytes
+
+[8b] Score distribution: CAL vs TEST
+          p50.0  p90.0  p99.0  p99.9
+  CU cal   1.171   4.764  36.047  191.067
+  CU te   90179.724  91600.822  91902.531  91921.761
+  DU cal   3.590   7.684  162.182  689.617
+  DU te   3159.281  3213.582  3265.092  3286.587
+  CU thr (cal=191.0673)  →  fraction test above thr: 1.000
+  DU thr (cal=689.6168)  →  fraction test above thr: 0.771
+
+[8c] Per-channel CU mean sq-error: CAL vs TEST (normal rows only)
+     channel    cal_mean  te_normal_mean   ratio
+         cpu      0.3394         11.0195   32.47x
+     mem_pct     19.6307       2938.3877  149.68x
+   mem_bytes      0.0070       3018.8042  429849.55x
+      net_tx      0.0594          0.2947    4.96x
+      net_rx      0.0592          0.2872    4.85x
+    net_diff      9.7537          9.5169    0.98x
+   net_ratio      0.7199          3.8608    5.36x
+
+[9] Generating plot ...
+
+  Plot saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/cross_anomaly_plot_random_cu1_du2.png
+
+Done.
+
+======================================================================
+  Cross-topology NET stress detection (multi-train + RobustScaler v0)
+  Train : ['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu2_du3du4du5    (unseen topology)
+  Preprocessing : RobustScaler v0  (raw thresholds, no cold-start probe)
+  CU features   : 5   DU features: 28
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (69824, 7)  du_s (69824, 2, 30)  (μ=-0.197, σ=1.727 after v0)
+  topo[1] cu1_du2             cu_s (69824, 7)  du_s (69824, 1, 30)  (μ=-0.272, σ=1.739 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (69824, 7)  du_s (69824, 4, 30)  (μ=+0.123, σ=1.895 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=69824  fit=55859  cal=13965
+  topo[1] cu1_du2            total=69824  fit=55859  cal=13965
+  topo[2] cu3_du6du7du8du9   total=69824  fit=55859  cal=13965
+
+[3] Training CalibratedTopoAR on 3 topologies (cu_dim=7, du_dim=30, embed=32) ...
+  topo[0] cu0_du0du1         N_DU=2  windows=55796  (train=50216, val=5580)
+  topo[1] cu1_du2            N_DU=1  windows=55796  (train=50216, val=5580)
+  topo[2] cu3_du6du7du8du9   N_DU=4  windows=55796  (train=50216, val=5580)
+  epoch   1  tr=14352278.69543  val=14142567.53030
+  epoch  10  tr=12804786.06430  val=12753008.36364
+  epoch  20  tr=12867685.54992  val=12803703.25758
+  Early stop at epoch 23  (best_val=12618610.98485)
+  Model saved → random_model_ckpt_test_cu2_du3du4du5.pt
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (13964, 7)  du_sqerr (13964, 2, 30)
+  topo[1] cu1_du2            cu_sqerr (13964, 7)  du_sqerr (13964, 1, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (13964, 7)  du_sqerr (13964, 4, 30)
+  Pooled cal rows: cu=41700  du(flat)=97300
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  CU threshold (p99.9): 195.8799
+  DU threshold (p99.9): 643.4445
+
+[6] Transforming TEST topology (cu2_du3du4du5) with train-fitted scaler ...
+  cu_s_te (37531, 7)  du_s_te (37531, 3, 30)  (μ=-9.659, σ=16.205)
+  CU NET-stress rows : 358
+  DU_0 NET-stress rows: 358
+  DU_1 NET-stress rows: 358
+  DU_2 NET-stress rows: 358
+  NOTE: test N_DU=3 not in train N_DU set [1, 2, 4] — type-shared weights generalise by design
+
+[7] Running inference on test stream ...
+  cu_sqerr (37530, 7)  du_sqerr (37530, 3, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/CU_TCP_random_my_model/recon_errors_cu2_du3du4du5_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   358  TP=   358  FP= 37108  FN=     0  P=0.010  R=1.000  F1=0.019
+  DU_0          anom=   358  TP=   200  FP= 10855  FN=   158  P=0.018  R=0.559  F1=0.035
+  DU_1          anom=   358  TP=   358  FP= 26373  FN=     0  P=0.013  R=1.000  F1=0.026
+  DU_2          anom=   358  TP=   358  FP= 25273  FN=     0  P=0.014  R=1.000  F1=0.028
+  ------------------------------------------------------------------------
+  ANY           anom=  1432  TP=  1432  FP= 36034  FN=     0  P=0.038  R=1.000  F1=0.074
+
+[8a] Root cause KPI accuracy (stress=NET, expected_CU=net_tx|net_rx|net_diff|net_ratio) ...
+  Entity           TPs            RC_correct    dominant_pred_RC
+  ----------------------------------------------------------------
+  CU            TPs=   358  RC_correct=     0/358     (  0.0%)  dominant_pred_RC=mem_bytes
+  DU_0          TPs=   200  RC_correct=     0/200     (  0.0%)  dominant_pred_RC=mem_bytes
+  DU_1          TPs=   358  RC_correct=     0/358     (  0.0%)  dominant_pred_RC=mem_bytes
+  DU_2          TPs=   358  RC_correct=     0/358     (  0.0%)  dominant_pred_RC=mem_bytes
+
+[8b] Score distribution: CAL vs TEST
+          p50.0  p90.0  p99.0  p99.9
+  CU cal   1.147   4.863  32.579  195.880
+  CU te   32677.765  33091.657  33564.780  33767.927
+  DU cal   3.470   7.994  154.798  643.444
+  DU te   4564.952  4860.624  4955.647  5001.012
+  CU thr (cal=195.8799)  →  fraction test above thr: 1.000
+  DU thr (cal=643.4445)  →  fraction test above thr: 0.563
+
+[8c] Per-channel CU mean sq-error: CAL vs TEST (normal rows only)
+     channel    cal_mean  te_normal_mean   ratio
+         cpu      0.3513         15.7264   44.76x
+     mem_pct      8.4470       1708.4330  202.25x
+   mem_bytes      0.0041       1131.5607  274925.92x
+      net_tx      0.0660          0.3729    5.65x
+      net_rx      0.0657          0.3532    5.38x
+    net_diff      8.0521          5.7282    0.71x
+   net_ratio      0.7112          3.8536    5.42x
+
+[9] Generating plot ...
+
+  Plot saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/cross_anomaly_plot_random_cu2_du3du4du5.png
+
+Done.
+
+======================================================================
+  Cross-topology NET stress detection (multi-train + RobustScaler v0)
+  Train : ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']  (normal only, pooled)
+  Test  : cu3_du6du7du8du9    (unseen topology)
+  Preprocessing : RobustScaler v0  (raw thresholds, no cold-start probe)
+  CU features   : 5   DU features: 28
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (69824, 7)  du_s (69824, 2, 30)  (μ=-0.233, σ=2.157 after v0)
+  topo[1] cu1_du2             cu_s (69824, 7)  du_s (69824, 1, 30)  (μ=-0.349, σ=2.171 after v0)
+  topo[2] cu2_du3du4du5       cu_s (69824, 7)  du_s (69824, 3, 30)  (μ=+0.086, σ=2.224 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=69824  fit=55859  cal=13965
+  topo[1] cu1_du2            total=69824  fit=55859  cal=13965
+  topo[2] cu2_du3du4du5      total=69824  fit=55859  cal=13965
+
+[3] Training CalibratedTopoAR on 3 topologies (cu_dim=7, du_dim=30, embed=32) ...
+  topo[0] cu0_du0du1         N_DU=2  windows=55796  (train=50216, val=5580)
+  topo[1] cu1_du2            N_DU=1  windows=55796  (train=50216, val=5580)
+  topo[2] cu2_du3du4du5      N_DU=3  windows=55796  (train=50216, val=5580)
+  epoch   1  tr=14429233.64805  val=14178669.19697
+  epoch  10  tr=12841012.32149  val=12760856.13636
+  Early stop at epoch 15  (best_val=12760856.13636)
+  Model saved → random_model_ckpt_test_cu3_du6du7du8du9.pt
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (13964, 7)  du_sqerr (13964, 2, 30)
+  topo[1] cu1_du2            cu_sqerr (13964, 7)  du_sqerr (13964, 1, 30)
+  topo[2] cu2_du3du4du5      cu_sqerr (13964, 7)  du_sqerr (13964, 3, 30)
+  Pooled cal rows: cu=41700  du(flat)=83400
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  CU threshold (p99.9): 190.9871
+  DU threshold (p99.9): 684.1348
+
+[6] Transforming TEST topology (cu3_du6du7du8du9) with train-fitted scaler ...
+  cu_s_te (37889, 7)  du_s_te (37889, 4, 30)  (μ=-14.707, σ=24.265)
+  CU NET-stress rows : 358
+  DU_0 NET-stress rows: 357
+  DU_1 NET-stress rows: 359
+  DU_2 NET-stress rows: 358
+  DU_3 NET-stress rows: 358
+  NOTE: test N_DU=4 not in train N_DU set [1, 2, 3] — type-shared weights generalise by design
+
+[7] Running inference on test stream ...
+  cu_sqerr (37888, 7)  du_sqerr (37888, 4, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/CU_TCP_random_my_model/recon_errors_cu3_du6du7du8du9_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   358  TP=   358  FP= 37466  FN=     0  P=0.009  R=1.000  F1=0.019
+  DU_0          anom=   357  TP=   357  FP= 25628  FN=     0  P=0.014  R=1.000  F1=0.027
+  DU_1          anom=   359  TP=   359  FP= 24107  FN=     0  P=0.015  R=1.000  F1=0.029
+  DU_2          anom=   358  TP=   180  FP= 16236  FN=   178  P=0.011  R=0.503  F1=0.021
+  DU_3          anom=   358  TP=   179  FP= 11243  FN=   179  P=0.016  R=0.500  F1=0.030
+  ------------------------------------------------------------------------
+  ANY           anom=  1790  TP=  1790  FP= 36034  FN=     0  P=0.047  R=1.000  F1=0.090
+
+[8a] Root cause KPI accuracy (stress=NET, expected_CU=net_tx|net_rx|net_diff|net_ratio) ...
+  Entity           TPs            RC_correct    dominant_pred_RC
+  ----------------------------------------------------------------
+  CU            TPs=   358  RC_correct=     0/358     (  0.0%)  dominant_pred_RC=mem_bytes
+  DU_0          TPs=   357  RC_correct=     0/357     (  0.0%)  dominant_pred_RC=mem_bytes
+  DU_1          TPs=   359  RC_correct=     0/359     (  0.0%)  dominant_pred_RC=mem_bytes
+  DU_2          TPs=   180  RC_correct=     0/180     (  0.0%)  dominant_pred_RC=mem_bytes
+  DU_3          TPs=   179  RC_correct=     0/179     (  0.0%)  dominant_pred_RC=mem_bytes
+
+[8b] Score distribution: CAL vs TEST
+          p50.0  p90.0  p99.0  p99.9
+  CU cal   1.217   4.931  29.908  190.987
+  CU te   105621.978  107524.492  107657.908  107680.196
+  DU cal   3.664   7.885  163.048  684.135
+  DU te   685.413  4304.549  4362.863  4392.120
+  CU thr (cal=190.9871)  →  fraction test above thr: 1.000
+  DU thr (cal=684.1348)  →  fraction test above thr: 0.517
+
+[8c] Per-channel CU mean sq-error: CAL vs TEST (normal rows only)
+     channel    cal_mean  te_normal_mean   ratio
+         cpu      0.2591         12.5524   48.44x
+     mem_pct     19.2312       2657.9988  138.21x
+   mem_bytes      0.0085       2701.5437  318817.05x
+      net_tx      0.0697          0.3618    5.19x
+      net_rx      0.0692          0.3352    4.84x
+    net_diff     10.4119          4.9947    0.48x
+   net_ratio      0.7900          4.3077    5.45x
+
+[9] Generating plot ...
+
+  Plot saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/cross_anomaly_plot_random_cu3_du6du7du8du9.png
+
+Done.
+
+
+======================================================================
+  LEAVE-ONE-OUT SUMMARY  (4 configurations)
+======================================================================
+  Test topology                CU F1     DU_0 F1     DU_1 F1      ANY F1     DU_2 F1     DU_3 F1
+  --------------------------------------------------------------------
+  cu0_du0du1                   0.019       0.023       0.024       0.056         N/A         N/A
+  cu1_du2                      0.019       0.025         N/A       0.038         N/A         N/A
+  cu2_du3du4du5                0.019       0.035       0.026       0.074       0.028         N/A
+  cu3_du6du7du8du9             0.019       0.027       0.029       0.090       0.021       0.030
+  --------------------------------------------------------------------
+
+  Results appended → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/loo_results_random.csv

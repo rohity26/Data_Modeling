@@ -1,0 +1,68 @@
+Ready topologies (checkpoint exists): ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+
+======================================================================
+  STRESS = CPU
+======================================================================
+cu0_du0du1: cu_thr=36.583 du_thr=170.752
+  CU0    (srscu0  ) n= 714 anom= 238 tp= 235 fp=   2 fn=   3 thr=36.58
+  DU0    (srsdu0  ) n= 807 anom= 270 tp= 267 fp=   1 fn=   3 thr=170.75
+  DU1    (srsdu1  ) n= 723 anom= 241 tp= 237 fp=   8 fn=   4 thr=170.75
+cu1_du2: cu_thr=33.519 du_thr=148.760
+  CU1    (srscu1  ) n= 736 anom= 250 tp= 248 fp=  33 fn=   2 thr=33.52
+  DU2    (srsdu2  ) n= 712 anom= 247 tp= 245 fp=  14 fn=   2 thr=148.76
+cu2_du3du4du5: cu_thr=36.549 du_thr=171.223
+  CU2    (srscu2  ) n= 723 anom= 245 tp= 242 fp=   4 fn=   3 thr=36.55
+  DU3    (srsdu3  ) n= 789 anom= 267 tp= 258 fp=   5 fn=   9 thr=171.22
+  DU4    (srsdu4  ) n= 743 anom= 248 tp= 245 fp=   0 fn=   3 thr=171.22
+  DU5    (srsdu5  ) n= 739 anom= 250 tp= 247 fp=   3 fn=   3 thr=171.22
+cu3_du6du7du8du9: cu_thr=34.426 du_thr=173.189
+  CU3    (srscu3  ) n= 781 anom= 266 tp= 263 fp=   3 fn=   3 thr=34.43
+  DU6    (srsdu6  ) n= 696 anom= 239 tp= 237 fp=   3 fn=   2 thr=173.19
+  DU7    (srsdu7  ) n= 752 anom= 252 tp= 250 fp=   0 fn=   2 thr=173.19
+  DU8    (srsdu8  ) n= 752 anom= 254 tp= 252 fp=   2 fn=   2 thr=173.19
+  DU9    (srsdu9  ) n= 733 anom= 242 tp= 239 fp=   2 fn=   3 thr=173.19
+
+======================================================================
+  STRESS = MEM
+======================================================================
+cu0_du0du1: cu_thr=36.583 du_thr=170.752
+  CU0    (srscu0  ) n= 700 anom= 234 tp= 231 fp=   5 fn=   3 thr=36.58
+  DU0    (srsdu0  ) n= 687 anom= 230 tp= 228 fp=   3 fn=   2 thr=170.75
+  DU1    (srsdu1  ) n= 724 anom= 253 tp= 250 fp=   1 fn=   3 thr=170.75
+cu1_du2: cu_thr=33.519 du_thr=148.760
+  CU1    (srscu1  ) n= 702 anom= 237 tp= 235 fp=  43 fn=   2 thr=33.52
+  DU2    (srsdu2  ) n= 739 anom= 249 tp= 246 fp=   1 fn=   3 thr=148.76
+cu2_du3du4du5: cu_thr=36.549 du_thr=171.223
+  CU2    (srscu2  ) n= 728 anom= 247 tp= 245 fp=   2 fn=   2 thr=36.55
+  DU3    (srsdu3  ) n= 716 anom= 240 tp= 238 fp=   2 fn=   2 thr=171.22
+  DU4    (srsdu4  ) n= 688 anom= 231 tp= 227 fp=   0 fn=   4 thr=171.22
+  DU5    (srsdu5  ) n= 689 anom= 230 tp= 227 fp=   2 fn=   3 thr=171.22
+cu3_du6du7du8du9: cu_thr=34.426 du_thr=173.189
+  CU3    (srscu3  ) n= 860 anom= 283 tp= 280 fp=   6 fn=   3 thr=34.43
+  DU6    (srsdu6  ) n= 737 anom= 254 tp= 251 fp=   2 fn=   3 thr=173.19
+  DU7    (srsdu7  ) n= 756 anom= 254 tp= 251 fp=   0 fn=   3 thr=173.19
+  DU8    (srsdu8  ) n= 746 anom= 253 tp= 248 fp=   2 fn=   5 thr=173.19
+  DU9    (srsdu9  ) n= 712 anom= 238 tp= 235 fp=   0 fn=   3 thr=173.19
+
+======================================================================
+  STRESS = NET
+======================================================================
+cu0_du0du1: cu_thr=36.583 du_thr=170.752
+  CU0    (srscu0  ) n= 710 anom= 239 tp= 191 fp=   3 fn=  48 thr=36.58
+  DU0    (srsdu0  ) n= 693 anom= 234 tp= 230 fp=   1 fn=   4 thr=170.75
+  DU1    (srsdu1  ) n= 738 anom= 248 tp= 240 fp=   1 fn=   8 thr=170.75
+cu1_du2: cu_thr=33.519 du_thr=148.760
+  CU1    (srscu1  ) n= 734 anom= 243 tp= 203 fp=  89 fn=  40 thr=33.52
+  DU2    (srsdu2  ) n= 766 anom= 261 tp= 260 fp=   0 fn=   1 thr=148.76
+cu2_du3du4du5: cu_thr=36.549 du_thr=171.223
+  CU2    (srscu2  ) n= 740 anom= 250 tp= 179 fp=  28 fn=  71 thr=36.55
+  DU3    (srsdu3  ) n= 752 anom= 251 tp= 246 fp=   1 fn=   5 thr=171.22
+  DU4    (srsdu4  ) n= 751 anom= 261 tp= 256 fp=   1 fn=   5 thr=171.22
+  DU5    (srsdu5  ) n= 752 anom= 250 tp= 249 fp=   1 fn=   1 thr=171.22
+cu3_du6du7du8du9: cu_thr=34.426 du_thr=173.189
+  CU3    (srscu3  ) n= 739 anom= 245 tp= 210 fp=   5 fn=  35 thr=34.43
+  DU6    (srsdu6  ) n= 716 anom= 242 tp= 236 fp=   0 fn=   6 thr=173.19
+  DU7    (srsdu7  ) n= 728 anom= 247 tp= 244 fp=   0 fn=   3 thr=173.19
+  DU8    (srsdu8  ) n= 742 anom= 246 tp= 244 fp=   2 fn=   2 thr=173.19
+  DU9    (srsdu9  ) n= 706 anom= 227 tp= 222 fp=   1 fn=   5 thr=173.19
+saved

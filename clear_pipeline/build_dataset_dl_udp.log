@@ -1,0 +1,65 @@
+
+Loading train_normal_dl_udp_50h.csv ...
+  shape: (143836, 874)
+
+TEST_CSV not found at data_input/test_anomaly_dl_udp_net.csv — building train.npz only for every topology.
+
+============================================================
+Topology   : cu0_du0du1  (srscu0 + ['srsdu0', 'srsdu1'])
+Stress type: 3 = NET
+Output dir : CU_DL_UDP_STRESS/cu0_du0du1_stress3
+============================================================
+
+Detecting KPI columns ...
+  CU dim: 7  |  DU dim: 37  |  N_DU: 2
+
+Building train arrays (normal only, no filtering needed) ...
+  train_cu: (143836, 7)  train_du: (143836, 2, 37)
+
+Saved CU_DL_UDP_STRESS/cu0_du0du1_stress3/train.npz — cu(143836, 7) du(143836, 2, 37)
+No TEST_CSV found — skipping test.npz/blocks.csv (train-only build).
+
+============================================================
+Topology   : cu1_du2  (srscu1 + ['srsdu2'])
+Stress type: 3 = NET
+Output dir : CU_DL_UDP_STRESS/cu1_du2_stress3
+============================================================
+
+Detecting KPI columns ...
+  CU dim: 7  |  DU dim: 37  |  N_DU: 1
+
+Building train arrays (normal only, no filtering needed) ...
+  train_cu: (143836, 7)  train_du: (143836, 1, 37)
+
+Saved CU_DL_UDP_STRESS/cu1_du2_stress3/train.npz — cu(143836, 7) du(143836, 1, 37)
+No TEST_CSV found — skipping test.npz/blocks.csv (train-only build).
+
+============================================================
+Topology   : cu2_du3du4du5  (srscu2 + ['srsdu3', 'srsdu4', 'srsdu5'])
+Stress type: 3 = NET
+Output dir : CU_DL_UDP_STRESS/cu2_du3du4du5_stress3
+============================================================
+
+Detecting KPI columns ...
+  CU dim: 7  |  DU dim: 37  |  N_DU: 3
+
+Building train arrays (normal only, no filtering needed) ...
+  train_cu: (143836, 7)  train_du: (143836, 3, 37)
+
+Saved CU_DL_UDP_STRESS/cu2_du3du4du5_stress3/train.npz — cu(143836, 7) du(143836, 3, 37)
+No TEST_CSV found — skipping test.npz/blocks.csv (train-only build).
+
+============================================================
+Topology   : cu3_du6du7du8du9  (srscu3 + ['srsdu6', 'srsdu7', 'srsdu8', 'srsdu9'])
+Stress type: 3 = NET
+Output dir : CU_DL_UDP_STRESS/cu3_du6du7du8du9_stress3
+============================================================
+
+Detecting KPI columns ...
+  CU dim: 7  |  DU dim: 37  |  N_DU: 4
+
+Building train arrays (normal only, no filtering needed) ...
+  train_cu: (143836, 7)  train_du: (143836, 4, 37)
+
+Saved CU_DL_UDP_STRESS/cu3_du6du7du8du9_stress3/train.npz — cu(143836, 7) du(143836, 4, 37)
+No TEST_CSV found — skipping test.npz/blocks.csv (train-only build).

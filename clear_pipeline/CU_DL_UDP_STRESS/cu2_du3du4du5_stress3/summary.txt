@@ -1,0 +1,7 @@
+Topology   : cu2_du3du4du5
+Stress type: 3 = NET
+Train CSV  : data_input/train_normal_dl_udp_50h.csv
+Test CSV   : (none yet — train-only build)
+
+TRAIN ROW COUNT: 143,836
+No test.npz written — no matching stress test CSV was found at data_input/test_anomaly_dl_udp_net.csv.

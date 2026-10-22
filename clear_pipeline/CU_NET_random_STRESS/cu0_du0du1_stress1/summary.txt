@@ -1,0 +1,11 @@
+Topology   : cu0_du0du1
+Stress type: 1 = CPU
+Train CSV  : data_input/train_normal_th3.csv
+Test CSV   : data_input/test_anomaly_th3.csv
+
+TEST ROW BREAKDOWN
+  Total rows         :  37,160
+  Truly normal       :  36,099  (all stress=0)
+  CU CPU stress     :     354
+  DU CPU stress     :     707
+  Total anomaly rows :   1,061

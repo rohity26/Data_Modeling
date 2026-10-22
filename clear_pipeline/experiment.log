@@ -1,0 +1,462 @@
+/home/rohit/.local/lib/python3.10/site-packages/torch/utils/data/dataloader.py:1095: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+======================================================================
+  Cross-topology NET stress detection (multi-train + RobustScaler v0)
+  Train : ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu0_du0du1    (unseen topology)
+  Preprocessing : RobustScaler v0  (raw thresholds, no cold-start probe)
+  CU features   : 5   DU features: 25
+  Device        : cpu
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu1_du2             cu_s (256130, 7)  du_s (256130, 1, 27)  (μ=-202349.656, σ=1133660.500 after v0)
+  topo[1] cu2_du3du4du5       cu_s (256130, 7)  du_s (256130, 3, 27)  (μ=-183089.172, σ=1129409.375 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (256130, 7)  du_s (256130, 4, 27)  (μ=-179228.391, σ=1138501.000 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu1_du2            total=256130  fit=204904  cal=51226
+  topo[1] cu2_du3du4du5      total=256130  fit=204904  cal=51226
+  topo[2] cu3_du6du7du8du9   total=256130  fit=204904  cal=51226
+
+[3] Training CalibratedTopoAR on 3 topologies (cu_dim=7, du_dim=27, embed=32) ...
+  topo[0] cu1_du2            N_DU=1  windows=204841  (train=184357, val=20484)
+  topo[1] cu2_du3du4du5      N_DU=3  windows=204841  (train=184357, val=20484)
+  topo[2] cu3_du6du7du8du9   N_DU=4  windows=204841  (train=184357, val=20484)
+    Batch 0/2163 completed... loss: 1331044941824.0000
+    Batch 500/2163 completed... loss: 1360721215488.0000
+    Batch 1000/2163 completed... loss: 1182477975552.0000
+    Batch 1500/2163 completed... loss: 1380184883200.0000
+    Batch 2000/2163 completed... loss: 1437322706944.0000
+  epoch   1  tr=1334173518904.33667  val=1323021551658.13989
+    Batch 0/2163 completed... loss: 1361612636160.0000
+    Batch 500/2163 completed... loss: 1286586105856.0000
+    Batch 1000/2163 completed... loss: 1308091088896.0000
+    Batch 1500/2163 completed... loss: 1133560463360.0000
+    Batch 2000/2163 completed... loss: 1215305089024.0000
+  epoch   2  tr=1313735752205.49243  val=1288864447635.48975
+    Batch 0/2163 completed... loss: 1231345418240.0000
+    Batch 500/2163 completed... loss: 1235724009472.0000
+    Batch 1000/2163 completed... loss: 1404100018176.0000
+    Batch 1500/2163 completed... loss: 1265978179584.0000
+    Batch 2000/2163 completed... loss: 1101614022656.0000
+  epoch   3  tr=1266270776311.95190  val=1229689125293.82715
+    Batch 0/2163 completed... loss: 1262416035840.0000
+    Batch 500/2163 completed... loss: 1118992465920.0000
+    Batch 1000/2163 completed... loss: 1115461255168.0000
+    Batch 1500/2163 completed... loss: 1073634082816.0000
+    Batch 2000/2163 completed... loss: 1025418657792.0000
+  epoch   4  tr=1197052173764.11279  val=1149021962172.57617
+    Batch 0/2163 completed... loss: 1027939696640.0000
+    Batch 500/2163 completed... loss: 1531311423488.0000
+    Batch 1000/2163 completed... loss: 1078904422400.0000
+    Batch 1500/2163 completed... loss: 996996677632.0000
+    Batch 2000/2163 completed... loss: 994635153408.0000
+  epoch   5  tr=1101507979317.96948  val=1036973245494.78186
+    Batch 0/2163 completed... loss: 970770939904.0000
+    Batch 500/2163 completed... loss: 973679689728.0000
+    Batch 1000/2163 completed... loss: 941827227648.0000
+    Batch 1500/2163 completed... loss: 1747636846592.0000
+    Batch 2000/2163 completed... loss: 916749746176.0000
+  epoch   6  tr=974602870999.87793  val=904228900543.73657
+    Batch 0/2163 completed... loss: 838069256192.0000
+    Batch 500/2163 completed... loss: 1578755817472.0000
+    Batch 1000/2163 completed... loss: 1012840660992.0000
+    Batch 1500/2163 completed... loss: 1952412073984.0000
+    Batch 2000/2163 completed... loss: 721174396928.0000
+  epoch   7  tr=842609949614.09888  val=774225768700.83948
+    Batch 0/2163 completed... loss: 1512096530432.0000
+    Batch 500/2163 completed... loss: 623098986496.0000
+    Batch 1000/2163 completed... loss: 666701266944.0000
+    Batch 1500/2163 completed... loss: 652009406464.0000
+    Batch 2000/2163 completed... loss: 559327281152.0000
+  epoch   8  tr=719225707828.19421  val=658323957431.30859
+    Batch 0/2163 completed... loss: 539756920832.0000
+    Batch 500/2163 completed... loss: 555496439808.0000
+    Batch 1000/2163 completed... loss: 519816347648.0000
+    Batch 1500/2163 completed... loss: 500257619968.0000
+    Batch 2000/2163 completed... loss: 1119301009408.0000
+  epoch   9  tr=620796204676.31995  val=580516303673.94238
+    Batch 0/2163 completed... loss: 533574123520.0000
+    Batch 500/2163 completed... loss: 531645169664.0000
+    Batch 1000/2163 completed... loss: 458506010624.0000
+    Batch 1500/2163 completed... loss: 610830385152.0000
+    Batch 2000/2163 completed... loss: 438761619456.0000
+  epoch  10  tr=565100901766.56860  val=546025923065.67902
+    Batch 0/2163 completed... loss: 1041767399424.0000
+    Batch 500/2163 completed... loss: 460921470976.0000
+    Batch 1000/2163 completed... loss: 465601626112.0000
+    Batch 1500/2163 completed... loss: 466430558208.0000
+    Batch 2000/2163 completed... loss: 438473359360.0000
+  epoch  11  tr=545426360203.53955  val=533878007614.15637
+    Batch 0/2163 completed... loss: 433209901056.0000
+    Batch 500/2163 completed... loss: 467071467520.0000
+    Batch 1000/2163 completed... loss: 434951651328.0000
+    Batch 1500/2163 completed... loss: 397028261888.0000
+    Batch 2000/2163 completed... loss: 427902468096.0000
+  epoch  12  tr=528347895299.55060  val=519444360862.02472
+    Batch 0/2163 completed... loss: 421099995136.0000
+    Batch 500/2163 completed... loss: 473501040640.0000
+    Batch 1000/2163 completed... loss: 408205426688.0000
+    Batch 1500/2163 completed... loss: 447572869120.0000
+    Batch 2000/2163 completed... loss: 411831795712.0000
+  epoch  13  tr=520425100689.93066  val=513396555843.42389
+    Batch 0/2163 completed... loss: 574985666560.0000
+    Batch 500/2163 completed... loss: 406485401600.0000
+    Batch 1000/2163 completed... loss: 496869376000.0000
+    Batch 1500/2163 completed... loss: 431556100096.0000
+    Batch 2000/2163 completed... loss: 683775492096.0000
+  epoch  14  tr=517038483078.21356  val=509702415448.49384
+    Batch 0/2163 completed... loss: 495968845824.0000
+    Batch 500/2163 completed... loss: 423025934336.0000
+    Batch 1000/2163 completed... loss: 382672699392.0000
+    Batch 1500/2163 completed... loss: 433864474624.0000
+    Batch 2000/2163 completed... loss: 460243369984.0000
+  epoch  15  tr=513597036679.39716  val=508256866320.85596
+    Batch 0/2163 completed... loss: 408758616064.0000
+    Batch 500/2163 completed... loss: 415094472704.0000
+    Batch 1000/2163 completed... loss: 436155580416.0000
+    Batch 1500/2163 completed... loss: 489341517824.0000
+    Batch 2000/2163 completed... loss: 445900652544.0000
+  epoch  16  tr=512494807707.51733  val=505690165804.24689
+    Batch 0/2163 completed... loss: 418430943232.0000
+    Batch 500/2163 completed... loss: 409151209472.0000
+    Batch 1000/2163 completed... loss: 428506021888.0000
+    Batch 1500/2163 completed... loss: 407757488128.0000
+    Batch 2000/2163 completed... loss: 420895621120.0000
+  epoch  17  tr=509649980540.50854  val=503804838899.35803
+    Batch 0/2163 completed... loss: 403150536704.0000
+    Batch 500/2163 completed... loss: 408344264704.0000
+    Batch 1000/2163 completed... loss: 460270927872.0000
+    Batch 1500/2163 completed... loss: 466305613824.0000
+    Batch 2000/2163 completed... loss: 452614225920.0000
+  epoch  18  tr=507584707077.91772  val=501920705127.24280
+    Batch 0/2163 completed... loss: 480326320128.0000
+    Batch 500/2163 completed... loss: 518609993728.0000
+    Batch 1000/2163 completed... loss: 422903250944.0000
+    Batch 1500/2163 completed... loss: 470456041472.0000
+    Batch 2000/2163 completed... loss: 463113027584.0000
+  epoch  19  tr=506044701973.89551  val=499558586629.26752
+    Batch 0/2163 completed... loss: 401322147840.0000
+    Batch 500/2163 completed... loss: 410169868288.0000
+    Batch 1000/2163 completed... loss: 431398617088.0000
+    Batch 1500/2163 completed... loss: 1016113397760.0000
+    Batch 2000/2163 completed... loss: 408778997760.0000
+  epoch  20  tr=504760609783.95190  val=498534357253.26752
+    Batch 0/2163 completed... loss: 1297788043264.0000
+    Batch 500/2163 completed... loss: 419121627136.0000
+    Batch 1000/2163 completed... loss: 1092464410624.0000
+    Batch 1500/2163 completed... loss: 410947551232.0000
+    Batch 2000/2163 completed... loss: 409362989056.0000
+  epoch  21  tr=503689329771.46558  val=497410146843.39093
+    Batch 0/2163 completed... loss: 465477566464.0000
+    Batch 500/2163 completed... loss: 439956897792.0000
+    Batch 1000/2163 completed... loss: 405848948736.0000
+    Batch 1500/2163 completed... loss: 446228758528.0000
+    Batch 2000/2163 completed... loss: 425074360320.0000
+  epoch  22  tr=501866507695.28247  val=496974693565.62964
+    Batch 0/2163 completed... loss: 598684205056.0000
+    Batch 500/2163 completed... loss: 1032797421568.0000
+    Batch 1000/2163 completed... loss: 448594083840.0000
+    Batch 1500/2163 completed... loss: 402996199424.0000
+    Batch 2000/2163 completed... loss: 393049800704.0000
+  epoch  23  tr=500697493555.12897  val=494817043409.64612
+    Batch 0/2163 completed... loss: 399256879104.0000
+    Batch 500/2163 completed... loss: 400625827840.0000
+    Batch 1000/2163 completed... loss: 433676386304.0000
+    Batch 1500/2163 completed... loss: 418831368192.0000
+    Batch 2000/2163 completed... loss: 438023061504.0000
+  epoch  24  tr=499213431622.89410  val=493647889530.20575
+    Batch 0/2163 completed... loss: 375231184896.0000
+    Batch 500/2163 completed... loss: 1263200894976.0000
+    Batch 1000/2163 completed... loss: 409105006592.0000
+    Batch 1500/2163 completed... loss: 416398049280.0000
+    Batch 2000/2163 completed... loss: 995849142272.0000
+  epoch  25  tr=498222111968.87286  val=491236363698.04114
+    Batch 0/2163 completed... loss: 393201876992.0000
+    Batch 500/2163 completed... loss: 430151696384.0000
+    Batch 1000/2163 completed... loss: 387452043264.0000
+    Batch 1500/2163 completed... loss: 441508462592.0000
+    Batch 2000/2163 completed... loss: 377680101376.0000
+  epoch  26  tr=496708191116.95978  val=491111276442.86420
+    Batch 0/2163 completed... loss: 396378439680.0000
+    Batch 500/2163 completed... loss: 391147814912.0000
+    Batch 1000/2163 completed... loss: 373836775424.0000
+    Batch 1500/2163 completed... loss: 408763662336.0000
+    Batch 2000/2163 completed... loss: 1017922912256.0000
+  epoch  27  tr=494934292316.19788  val=488690374782.41974
+    Batch 0/2163 completed... loss: 408812650496.0000
+    Batch 500/2163 completed... loss: 432134356992.0000
+    Batch 1000/2163 completed... loss: 378534625280.0000
+    Batch 1500/2163 completed... loss: 409738739712.0000
+    Batch 2000/2163 completed... loss: 506642235392.0000
+  epoch  28  tr=493486561582.03973  val=486819201293.69550
+    Batch 0/2163 completed... loss: 403876446208.0000
+    Batch 500/2163 completed... loss: 404671660032.0000
+    Batch 1000/2163 completed... loss: 435557990400.0000
+    Batch 1500/2163 completed... loss: 404020264960.0000
+    Batch 2000/2163 completed... loss: 408045518848.0000
+  epoch  29  tr=491847913678.40961  val=489745390773.20166
+    Batch 0/2163 completed... loss: 380470362112.0000
+    Batch 500/2163 completed... loss: 413605560320.0000
+    Batch 1000/2163 completed... loss: 438691266560.0000
+    Batch 1500/2163 completed... loss: 530561302528.0000
+    Batch 2000/2163 completed... loss: 674019606528.0000
+  epoch  30  tr=491239739689.30560  val=484202282940.57611
+    Batch 0/2163 completed... loss: 394353475584.0000
+    Batch 500/2163 completed... loss: 434374017024.0000
+    Batch 1000/2163 completed... loss: 388358963200.0000
+    Batch 1500/2163 completed... loss: 379571077120.0000
+    Batch 2000/2163 completed... loss: 416788545536.0000
+  epoch  31  tr=489582366956.70825  val=483070987832.88892
+    Batch 0/2163 completed... loss: 492746702848.0000
+    Batch 500/2163 completed... loss: 362215079936.0000
+    Batch 1000/2163 completed... loss: 376237948928.0000
+    Batch 1500/2163 completed... loss: 483811917824.0000
+    Batch 2000/2163 completed... loss: 398156660736.0000
+  epoch  32  tr=488039687541.52563  val=482240655747.68726
+    Batch 0/2163 completed... loss: 419659415552.0000
+    Batch 500/2163 completed... loss: 402642501632.0000
+    Batch 1000/2163 completed... loss: 456145567744.0000
+    Batch 1500/2163 completed... loss: 388043079680.0000
+    Batch 2000/2163 completed... loss: 453240193024.0000
+  epoch  33  tr=486500625528.72119  val=479848256651.06171
+    Batch 0/2163 completed... loss: 649770303488.0000
+    Batch 500/2163 completed... loss: 901692129280.0000
+    Batch 1000/2163 completed... loss: 411065516032.0000
+    Batch 1500/2163 completed... loss: 365806682112.0000
+    Batch 2000/2163 completed... loss: 426948886528.0000
+  epoch  34  tr=485293669074.43365  val=479102800091.12756
+    Batch 0/2163 completed... loss: 404164935680.0000
+    Batch 500/2163 completed... loss: 402417516544.0000
+    Batch 1000/2163 completed... loss: 375313891328.0000
+    Batch 1500/2163 completed... loss: 368929701888.0000
+    Batch 2000/2163 completed... loss: 560387784704.0000
+  epoch  35  tr=483857634107.53210  val=478591076798.68311
+    Batch 0/2163 completed... loss: 1632765607936.0000
+    Batch 500/2163 completed... loss: 373952872448.0000
+    Batch 1000/2163 completed... loss: 400579952640.0000
+    Batch 1500/2163 completed... loss: 403575209984.0000
+    Batch 2000/2163 completed... loss: 416218447872.0000
+  epoch  36  tr=482382079387.39899  val=476435394273.44855
+    Batch 0/2163 completed... loss: 436698218496.0000
+    Batch 500/2163 completed... loss: 402028134400.0000
+    Batch 1000/2163 completed... loss: 446230790144.0000
+    Batch 1500/2163 completed... loss: 369032658944.0000
+    Batch 2000/2163 completed... loss: 398723678208.0000
+  epoch  37  tr=481680835128.09985  val=474415356772.08228
+    Batch 0/2163 completed... loss: 412125691904.0000
+    Batch 500/2163 completed... loss: 522927079424.0000
+    Batch 1000/2163 completed... loss: 466895798272.0000
+    Batch 1500/2163 completed... loss: 366048215040.0000
+    Batch 2000/2163 completed... loss: 371391299584.0000
+  epoch  38  tr=479860996682.08966  val=474197297733.53088
+    Batch 0/2163 completed... loss: 378214285312.0000
+    Batch 500/2163 completed... loss: 370889523200.0000
+    Batch 1000/2163 completed... loss: 990617272320.0000
+    Batch 1500/2163 completed... loss: 408498077696.0000
+    Batch 2000/2163 completed... loss: 380317564928.0000
+  epoch  39  tr=478577170105.34259  val=471459842224.98767
+    Batch 0/2163 completed... loss: 394547691520.0000
+    Batch 500/2163 completed... loss: 443409989632.0000
+    Batch 1000/2163 completed... loss: 483120480256.0000
+    Batch 1500/2163 completed... loss: 1229770588160.0000
+    Batch 2000/2163 completed... loss: 381695459328.0000
+  epoch  40  tr=477677156036.70459  val=471602072942.61731
+    Batch 0/2163 completed... loss: 351823036416.0000
+    Batch 500/2163 completed... loss: 370326372352.0000
+    Batch 1000/2163 completed... loss: 359384711168.0000
+    Batch 1500/2163 completed... loss: 395315249152.0000
+    Batch 2000/2163 completed... loss: 412091842560.0000
+  epoch  41  tr=478992802477.50714  val=471395025502.81482
+    Batch 0/2163 completed... loss: 384778928128.0000
+    Batch 500/2163 completed... loss: 414835081216.0000
+    Batch 1000/2163 completed... loss: 378398900224.0000
+    Batch 1500/2163 completed... loss: 364155109376.0000
+    Batch 2000/2163 completed... loss: 415137431552.0000
+  epoch  42  tr=475026136622.15814  val=467944088934.18927
+    Batch 0/2163 completed... loss: 435061391360.0000
+    Batch 500/2163 completed... loss: 641235615744.0000
+    Batch 1000/2163 completed... loss: 387028221952.0000
+    Batch 1500/2163 completed... loss: 385075150848.0000
+    Batch 2000/2163 completed... loss: 368956735488.0000
+  epoch  43  tr=473806789576.61029  val=467607262212.21399
+    Batch 0/2163 completed... loss: 627746275328.0000
+    Batch 500/2163 completed... loss: 397744308224.0000
+    Batch 1000/2163 completed... loss: 372030308352.0000
+    Batch 1500/2163 completed... loss: 418934161408.0000
+    Batch 2000/2163 completed... loss: 374499344384.0000
+  epoch  44  tr=472234375920.73230  val=467981395706.73248
+    Batch 0/2163 completed... loss: 415981731840.0000
+    Batch 500/2163 completed... loss: 374741401600.0000
+    Batch 1000/2163 completed... loss: 373991833600.0000
+    Batch 1500/2163 completed... loss: 411636170752.0000
+    Batch 2000/2163 completed... loss: 427846238208.0000
+  epoch  45  tr=471335014621.55896  val=465397901927.24280
+    Batch 0/2163 completed... loss: 399479046144.0000
+    Batch 500/2163 completed... loss: 371689226240.0000
+    Batch 1000/2163 completed... loss: 569472516096.0000
+    Batch 1500/2163 completed... loss: 421280186368.0000
+    Batch 2000/2163 completed... loss: 416687128576.0000
+  epoch  46  tr=471559862002.15259  val=466919702258.30450
+    Batch 0/2163 completed... loss: 358502400000.0000
+    Batch 500/2163 completed... loss: 1203729465344.0000
+    Batch 1000/2163 completed... loss: 425593077760.0000
+    Batch 1500/2163 completed... loss: 396842270720.0000
+    Batch 2000/2163 completed... loss: 381748936704.0000
+  epoch  47  tr=469981815386.18585  val=462609886878.02472
+    Batch 0/2163 completed... loss: 363766841344.0000
+    Batch 500/2163 completed... loss: 395086888960.0000
+    Batch 1000/2163 completed... loss: 366993309696.0000
+    Batch 1500/2163 completed... loss: 404603305984.0000
+    Batch 2000/2163 completed... loss: 1854309924864.0000
+  epoch  48  tr=466933028719.13452  val=465419766678.65021
+    Batch 0/2163 completed... loss: 368042246144.0000
+    Batch 500/2163 completed... loss: 392033337344.0000
+    Batch 1000/2163 completed... loss: 390246989824.0000
+    Batch 1500/2163 completed... loss: 374162620416.0000
+    Batch 2000/2163 completed... loss: 388448878592.0000
+  epoch  49  tr=466647678324.57880  val=471178415470.61731
+    Batch 0/2163 completed... loss: 380089204736.0000
+    Batch 500/2163 completed... loss: 615966900224.0000
+    Batch 1000/2163 completed... loss: 402166120448.0000
+    Batch 1500/2163 completed... loss: 406620438528.0000
+    Batch 2000/2163 completed... loss: 454261342208.0000
+  epoch  50  tr=465162728308.34210  val=460784854171.91772
+    Batch 0/2163 completed... loss: 467900497920.0000
+    Batch 500/2163 completed... loss: 379557117952.0000
+    Batch 1000/2163 completed... loss: 890647085056.0000
+    Batch 1500/2163 completed... loss: 365310738432.0000
+    Batch 2000/2163 completed... loss: 360262500352.0000
+  epoch  51  tr=462992459311.10492  val=457245869515.32507
+    Batch 0/2163 completed... loss: 929165869056.0000
+    Batch 500/2163 completed... loss: 388931813376.0000
+    Batch 1000/2163 completed... loss: 346877198336.0000
+    Batch 1500/2163 completed... loss: 367794126848.0000
+    Batch 2000/2163 completed... loss: 391069564928.0000
+  epoch  52  tr=462146040798.38745  val=455959001315.55554
+    Batch 0/2163 completed... loss: 420539662336.0000
+    Batch 500/2163 completed... loss: 437356232704.0000
+    Batch 1000/2163 completed... loss: 360806776832.0000
+    Batch 1500/2163 completed... loss: 366130069504.0000
+    Batch 2000/2163 completed... loss: 390809092096.0000
+  epoch  53  tr=460739977325.83264  val=453888490778.33746
+    Batch 0/2163 completed... loss: 387375300608.0000
+    Batch 500/2163 completed... loss: 403823820800.0000
+    Batch 1000/2163 completed... loss: 539083145216.0000
+    Batch 1500/2163 completed... loss: 491542839296.0000
+    Batch 2000/2163 completed... loss: 710254264320.0000
+  epoch  54  tr=582721208607.83728  val=586014028096.26343
+    Batch 0/2163 completed... loss: 530558615552.0000
+    Batch 500/2163 completed... loss: 476774498304.0000
+    Batch 1000/2163 completed... loss: 726504636416.0000
+    Batch 1500/2163 completed... loss: 685897416704.0000
+    Batch 2000/2163 completed... loss: 540778823680.0000
+  epoch  55  tr=579246616808.92090  val=563542615465.61316
+    Batch 0/2163 completed... loss: 474325876736.0000
+    Batch 500/2163 completed... loss: 602786889728.0000
+    Batch 1000/2163 completed... loss: 513638957056.0000
+    Batch 1500/2163 completed... loss: 745991766016.0000
+    Batch 2000/2163 completed... loss: 441431982080.0000
+  epoch  56  tr=559882779210.08972  val=549157563927.17694
+    Batch 0/2163 completed... loss: 439769595904.0000
+    Batch 500/2163 completed... loss: 569526059008.0000
+    Batch 1000/2163 completed... loss: 421528207360.0000
+    Batch 1500/2163 completed... loss: 1219071180800.0000
+    Batch 2000/2163 completed... loss: 523310825472.0000
+  epoch  57  tr=540798295234.57422  val=525853891832.62549
+    Batch 0/2163 completed... loss: 430106869760.0000
+    Batch 500/2163 completed... loss: 503507812352.0000
+    Batch 1000/2163 completed... loss: 501542060032.0000
+    Batch 1500/2163 completed... loss: 442715340800.0000
+    Batch 2000/2163 completed... loss: 431273508864.0000
+  epoch  58  tr=526573895892.09064  val=523112427503.14404
+  Early stop at epoch 58  (best_val=453888490778.33746)
+  Model saved → random_model_ckpt_test_cu0_du0du1.pt
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu1_du2            cu_sqerr (51225, 7)  du_sqerr (51225, 1, 27)
+  topo[1] cu2_du3du4du5      cu_sqerr (51225, 7)  du_sqerr (51225, 3, 27)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (51225, 7)  du_sqerr (51225, 4, 27)
+  Pooled cal rows: cu=153483  du(flat)=409288
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  CU threshold (p99.9): 112.4098
+  DU threshold (p99.9): 338.5984
+
+[6] Transforming TEST topology (cu0_du0du1) with train-fitted scaler ...
+  cu_s_te (26595, 7)  du_s_te (26595, 2, 27)  (μ=-201157.109, σ=1134618.750)
+  CU NET-stress rows : 358
+  DU_0 NET-stress rows: 358
+  DU_1 NET-stress rows: 358
+  NOTE: test N_DU=2 not in train N_DU set [1, 3, 4] — type-shared weights generalise by design
+
+[7] Running inference on test stream ...
+  cu_sqerr (26594, 7)  du_sqerr (26594, 2, 27)
+  Errors saved → /home/rohit/topology/data-modeling/clear_pipeline/exp_runs/CU_NET_random_my_model/recon_errors_cu0_du0du1_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   358  TP=     2  FP=    31  FN=   356  P=0.061  R=0.006  F1=0.010
+  DU_0          anom=   358  TP=   354  FP=    34  FN=     4  P=0.912  R=0.989  F1=0.949
+  DU_1          anom=   358  TP=   355  FP=    28  FN=     3  P=0.927  R=0.992  F1=0.958
+  ------------------------------------------------------------------------
+  ANY           anom=  1074  TP=   711  FP=    90  FN=   363  P=0.888  R=0.662  F1=0.758
+
+[8a] Root cause KPI accuracy (stress=NET, expected_CU=net_tx|net_rx|net_diff|net_ratio) ...
+  Entity           TPs            RC_correct    dominant_pred_RC
+  ----------------------------------------------------------------
+  CU            TPs=     2  RC_correct=     1/2       ( 50.0%)  dominant_pred_RC=mem_pct
+  DU_0          TPs=   354  RC_correct=    34/354     (  9.6%)  dominant_pred_RC=pci_0
+  DU_1          TPs=   355  RC_correct=    34/355     (  9.6%)  dominant_pred_RC=pci_14
+
+[8b] Score distribution: CAL vs TEST
+          p50.0  p90.0  p99.0  p99.9
+  CU cal   1.446   5.153  32.164  112.410
+  CU te    1.716   7.024  29.106  115.365
+  DU cal   2.985   9.137  48.723  338.598
+  DU te    3.553  11.904  2708.098  12860.270
+  CU thr (cal=112.4098)  →  fraction test above thr: 0.001
+  DU thr (cal=338.5984)  →  fraction test above thr: 0.014
+
+[8c] Per-channel CU mean sq-error: CAL vs TEST (normal rows only)
+     channel    cal_mean  te_normal_mean   ratio
+         cpu     13.4153         39.4504    2.94x
+     mem_pct     35.2438         29.8629    0.85x
+   mem_bytes     71.6649         75.4194    1.05x
+      net_tx     65.1182         66.8026    1.03x
+      net_rx     81.9753         91.1761    1.11x
+    net_diff   4503.1260       2890.9475    0.64x
+   net_ratio  2783809372160.0000  3104805224448.0000    1.12x
+
+[9] Generating plot ...
+
+  Plot saved → /home/rohit/topology/data-modeling/clear_pipeline/cross_anomaly_plot_random_cu0_du0du1.png
+
+Done.
+
+======================================================================
+  Cross-topology NET stress detection (multi-train + RobustScaler v0)
+  Train : ['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu1_du2    (unseen topology)
+  Preprocessing : RobustScaler v0  (raw thresholds, no cold-start probe)
+  CU features   : 5   DU features: 25
+  Device        : cpu
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+Traceback (most recent call last):
+  File "/home/rohit/topology/data-modeling/clear_pipeline/run_experiment.py", line 936, in <module>
+    main()
+  File "/home/rohit/topology/data-modeling/clear_pipeline/run_experiment.py", line 884, in main
+    result = run_one(train_ts, test_t)
+  File "/home/rohit/topology/data-modeling/clear_pipeline/run_experiment.py", line 704, in run_one
+    train_zs = [load_npz(t, "train") for t in train_topos]
+  File "/home/rohit/topology/data-modeling/clear_pipeline/run_experiment.py", line 704, in <listcomp>
+    train_zs = [load_npz(t, "train") for t in train_topos]
+  File "/home/rohit/topology/data-modeling/clear_pipeline/run_experiment.py", line 166, in load_npz
+    assert p.exists(), f"File not found: {p}"
+AssertionError: File not found: CU_NET_random_STRESS/cu3_du6du7du8du9_stress3/train.npz

@@ -1,0 +1,406 @@
+====================================================================================================
+OWN-REGISTRY DU LOO at p99.5
+====================================================================================================
+
+### original|cu0_du0du1  baseline=170.75  extrap=164.38
+    CPU srsdu0: baseline F1=0.993  new F1=0.991
+    CPU srsdu1: baseline F1=0.975  new F1=0.975
+    MEM srsdu0: baseline F1=0.989  new F1=0.989
+    MEM srsdu1: baseline F1=0.992  new F1=0.992
+    NET srsdu0: baseline F1=0.989  new F1=0.989
+    NET srsdu1: baseline F1=0.982  new F1=0.980
+
+### original|cu1_du2  baseline=148.76  extrap=134.38
+    CPU srsdu2: baseline F1=0.968  new F1=0.963
+    MEM srsdu2: baseline F1=0.992  new F1=0.990
+    NET srsdu2: baseline F1=0.998  new F1=0.994
+
+### original|cu2_du3du4du5  baseline=171.22  extrap=171.82
+    CPU srsdu3: baseline F1=0.974  new F1=0.975
+    CPU srsdu4: baseline F1=0.994  new F1=0.994
+    CPU srsdu5: baseline F1=0.988  new F1=0.988
+    MEM srsdu3: baseline F1=0.992  new F1=0.996
+    MEM srsdu4: baseline F1=0.991  new F1=0.991
+    MEM srsdu5: baseline F1=0.989  new F1=0.991
+    NET srsdu3: baseline F1=0.988  new F1=0.990
+    NET srsdu4: baseline F1=0.988  new F1=0.988
+    NET srsdu5: baseline F1=0.996  new F1=0.998
+
+### original|cu3_du6du7du8du9  baseline=173.19  extrap=177.80
+    CPU srsdu6: baseline F1=0.990  new F1=0.994
+    CPU srsdu7: baseline F1=0.996  new F1=0.996
+    CPU srsdu8: baseline F1=0.992  new F1=0.992
+    CPU srsdu9: baseline F1=0.990  new F1=0.992
+    MEM srsdu6: baseline F1=0.990  new F1=0.994
+    MEM srsdu7: baseline F1=0.994  new F1=0.994
+    MEM srsdu8: baseline F1=0.986  new F1=0.990
+    MEM srsdu9: baseline F1=0.994  new F1=0.994
+    NET srsdu6: baseline F1=0.987  new F1=0.987
+    NET srsdu7: baseline F1=0.994  new F1=0.994
+    NET srsdu8: baseline F1=0.992  new F1=0.996
+    NET srsdu9: baseline F1=0.987  new F1=0.989
+
+### new|cu1_du2  baseline=172.07  extrap=256.76
+    CPU srsdu2: baseline F1=0.988  new F1=0.992
+    MEM srsdu2: baseline F1=0.988  new F1=0.990
+    NET srsdu2: baseline F1=0.994  new F1=0.998
+
+### new|cu3_du6du7du8du9  baseline=135.43  extrap=143.11
+    CPU srsdu6: baseline F1=0.990  new F1=0.990
+    CPU srsdu7: baseline F1=0.994  new F1=0.994
+    CPU srsdu8: baseline F1=0.988  new F1=0.988
+    CPU srsdu9: baseline F1=0.983  new F1=0.983
+    MEM srsdu6: baseline F1=0.990  new F1=0.990
+    MEM srsdu7: baseline F1=0.992  new F1=0.992
+    MEM srsdu8: baseline F1=0.992  new F1=0.992
+    MEM srsdu9: baseline F1=0.989  new F1=0.989
+    NET srsdu6: baseline F1=0.985  new F1=0.985
+    NET srsdu7: baseline F1=0.990  new F1=0.990
+    NET srsdu8: baseline F1=0.992  new F1=0.992
+    NET srsdu9: baseline F1=0.984  new F1=0.984
+
+### new|cu0_7du  baseline=153.50  extrap=164.80
+    CPU srsdu0: baseline F1=0.903  new F1=0.941
+    CPU srsdu1: baseline F1=0.969  new F1=0.988
+    CPU srsdu2: baseline F1=0.908  new F1=0.937
+    CPU srsdu3: baseline F1=0.868  new F1=0.914
+    CPU srsdu4: baseline F1=0.870  new F1=0.934
+    CPU srsdu5: baseline F1=0.930  new F1=0.950
+    CPU srsdu6: baseline F1=0.843  new F1=0.909
+    MEM srsdu0: baseline F1=0.894  new F1=0.935
+    MEM srsdu1: baseline F1=0.889  new F1=0.938
+    MEM srsdu2: baseline F1=0.827  new F1=0.899
+    MEM srsdu3: baseline F1=0.949  new F1=0.966
+    MEM srsdu4: baseline F1=0.824  new F1=0.906
+    MEM srsdu5: baseline F1=0.924  new F1=0.952
+    MEM srsdu6: baseline F1=0.952  new F1=0.972
+    NET srsdu0: baseline F1=0.844  new F1=0.889
+    NET srsdu1: baseline F1=0.794  new F1=0.874
+    NET srsdu2: baseline F1=0.949  new F1=0.970
+    NET srsdu3: baseline F1=0.935  new F1=0.969
+    NET srsdu4: baseline F1=0.801  new F1=0.869
+    NET srsdu5: baseline F1=0.925  new F1=0.962
+    NET srsdu6: baseline F1=0.901  new F1=0.934
+
+### new|cu0_10du  baseline=150.36  extrap=162.60
+    CPU srsdu0: baseline F1=0.989  new F1=0.989
+    CPU srsdu1: baseline F1=0.988  new F1=0.988
+    CPU srsdu2: baseline F1=0.989  new F1=0.989
+    CPU srsdu3: baseline F1=0.992  new F1=0.992
+    CPU srsdu4: baseline F1=0.987  new F1=0.987
+    CPU srsdu5: baseline F1=0.989  new F1=0.989
+    CPU srsdu6: baseline F1=0.988  new F1=0.988
+    CPU srsdu7: baseline F1=0.989  new F1=0.989
+    CPU srsdu8: baseline F1=0.994  new F1=0.994
+    CPU srsdu9: baseline F1=0.989  new F1=0.989
+    MEM srsdu0: baseline F1=0.989  new F1=0.989
+    MEM srsdu1: baseline F1=0.989  new F1=0.989
+    MEM srsdu2: baseline F1=0.992  new F1=0.992
+    MEM srsdu3: baseline F1=0.973  new F1=0.973
+    MEM srsdu4: baseline F1=0.987  new F1=0.987
+    MEM srsdu5: baseline F1=0.987  new F1=0.987
+    MEM srsdu6: baseline F1=0.989  new F1=0.989
+    MEM srsdu7: baseline F1=0.991  new F1=0.991
+    MEM srsdu8: baseline F1=0.990  new F1=0.988
+    MEM srsdu9: baseline F1=0.992  new F1=0.992
+    NET srsdu0: baseline F1=0.981  new F1=0.981
+    NET srsdu1: baseline F1=0.994  new F1=0.994
+    NET srsdu2: baseline F1=0.992  new F1=0.992
+    NET srsdu3: baseline F1=0.980  new F1=0.980
+    NET srsdu4: baseline F1=0.989  new F1=0.989
+    NET srsdu5: baseline F1=0.991  new F1=0.991
+    NET srsdu6: baseline F1=0.988  new F1=0.988
+    NET srsdu7: baseline F1=0.990  new F1=0.990
+    NET srsdu8: baseline F1=0.992  new F1=0.992
+    NET srsdu9: baseline F1=0.980  new F1=0.980
+
+====================================================================================================
+SMALL->BIG DU at p99.5
+====================================================================================================
+
+### smallbig|cu0_du0du1  baseline=170.75
+    -> cu0_7du CPU srsdu0: baseline F1=0.952  new F1=0.957
+    -> cu0_7du CPU srsdu1: baseline F1=0.987  new F1=0.992
+    -> cu0_7du CPU srsdu2: baseline F1=0.927  new F1=0.940
+    -> cu0_7du CPU srsdu3: baseline F1=0.919  new F1=0.923
+    -> cu0_7du CPU srsdu4: baseline F1=0.951  new F1=0.954
+    -> cu0_7du CPU srsdu5: baseline F1=0.957  new F1=0.963
+    -> cu0_7du CPU srsdu6: baseline F1=0.925  new F1=0.938
+    -> cu0_7du MEM srsdu0: baseline F1=0.943  new F1=0.956
+    -> cu0_7du MEM srsdu1: baseline F1=0.935  new F1=0.941
+    -> cu0_7du MEM srsdu2: baseline F1=0.893  new F1=0.902
+    -> cu0_7du MEM srsdu3: baseline F1=0.964  new F1=0.968
+    -> cu0_7du MEM srsdu4: baseline F1=0.916  new F1=0.927
+    -> cu0_7du MEM srsdu5: baseline F1=0.945  new F1=0.957
+    -> cu0_7du MEM srsdu6: baseline F1=0.961  new F1=0.966
+    -> cu0_7du NET srsdu0: baseline F1=0.913  new F1=0.921
+    -> cu0_7du NET srsdu1: baseline F1=0.914  new F1=0.930
+    -> cu0_7du NET srsdu2: baseline F1=0.963  new F1=0.970
+    -> cu0_7du NET srsdu3: baseline F1=0.969  new F1=0.972
+    -> cu0_7du NET srsdu4: baseline F1=0.913  new F1=0.917
+    -> cu0_7du NET srsdu5: baseline F1=0.945  new F1=0.951
+    -> cu0_7du NET srsdu6: baseline F1=0.947  new F1=0.956
+    -> cu0_10du CPU srsdu0: baseline F1=0.989  new F1=0.993
+    -> cu0_10du CPU srsdu1: baseline F1=0.992  new F1=0.992
+    -> cu0_10du CPU srsdu2: baseline F1=0.989  new F1=0.994
+    -> cu0_10du CPU srsdu3: baseline F1=0.989  new F1=0.992
+    -> cu0_10du CPU srsdu4: baseline F1=0.992  new F1=0.992
+    -> cu0_10du CPU srsdu5: baseline F1=0.991  new F1=0.993
+    -> cu0_10du CPU srsdu6: baseline F1=0.992  new F1=0.992
+    -> cu0_10du CPU srsdu7: baseline F1=0.992  new F1=0.996
+    -> cu0_10du CPU srsdu8: baseline F1=0.996  new F1=0.996
+    -> cu0_10du CPU srsdu9: baseline F1=0.991  new F1=0.993
+    -> cu0_10du MEM srsdu0: baseline F1=0.991  new F1=0.993
+    -> cu0_10du MEM srsdu1: baseline F1=0.989  new F1=0.994
+    -> cu0_10du MEM srsdu2: baseline F1=0.994  new F1=0.996
+    -> cu0_10du MEM srsdu3: baseline F1=0.977  new F1=0.977
+    -> cu0_10du MEM srsdu4: baseline F1=0.984  new F1=0.984
+    -> cu0_10du MEM srsdu5: baseline F1=0.991  new F1=0.991
+    -> cu0_10du MEM srsdu6: baseline F1=0.993  new F1=0.993
+    -> cu0_10du MEM srsdu7: baseline F1=0.991  new F1=0.993
+    -> cu0_10du MEM srsdu8: baseline F1=0.992  new F1=0.994
+    -> cu0_10du MEM srsdu9: baseline F1=0.992  new F1=0.992
+    -> cu0_10du NET srsdu0: baseline F1=0.983  new F1=0.985
+    -> cu0_10du NET srsdu1: baseline F1=0.998  new F1=0.998
+    -> cu0_10du NET srsdu2: baseline F1=0.996  new F1=0.996
+    -> cu0_10du NET srsdu3: baseline F1=0.981  new F1=0.981
+    -> cu0_10du NET srsdu4: baseline F1=0.991  new F1=0.994
+    -> cu0_10du NET srsdu5: baseline F1=0.993  new F1=0.993
+    -> cu0_10du NET srsdu6: baseline F1=0.992  new F1=0.994
+    -> cu0_10du NET srsdu7: baseline F1=0.992  new F1=0.996
+    -> cu0_10du NET srsdu8: baseline F1=0.994  new F1=0.994
+    -> cu0_10du NET srsdu9: baseline F1=0.978  new F1=0.983
+
+### smallbig|cu1_du2  baseline=148.76
+    -> cu0_7du CPU srsdu0: baseline F1=0.736  new F1=0.855
+    -> cu0_7du CPU srsdu1: baseline F1=0.859  new F1=0.920
+    -> cu0_7du CPU srsdu2: baseline F1=0.683  new F1=0.829
+    -> cu0_7du CPU srsdu3: baseline F1=0.663  new F1=0.791
+    -> cu0_7du CPU srsdu4: baseline F1=0.717  new F1=0.848
+    -> cu0_7du CPU srsdu5: baseline F1=0.791  new F1=0.886
+    -> cu0_7du CPU srsdu6: baseline F1=0.678  new F1=0.812
+    -> cu0_7du MEM srsdu0: baseline F1=0.794  new F1=0.912
+    -> cu0_7du MEM srsdu1: baseline F1=0.701  new F1=0.819
+    -> cu0_7du MEM srsdu2: baseline F1=0.613  new F1=0.719
+    -> cu0_7du MEM srsdu3: baseline F1=0.812  new F1=0.909
+    -> cu0_7du MEM srsdu4: baseline F1=0.754  new F1=0.878
+    -> cu0_7du MEM srsdu5: baseline F1=0.716  new F1=0.842
+    -> cu0_7du MEM srsdu6: baseline F1=0.765  new F1=0.882
+    -> cu0_7du NET srsdu0: baseline F1=0.615  new F1=0.733
+    -> cu0_7du NET srsdu1: baseline F1=0.611  new F1=0.740
+    -> cu0_7du NET srsdu2: baseline F1=0.784  new F1=0.894
+    -> cu0_7du NET srsdu3: baseline F1=0.786  new F1=0.897
+    -> cu0_7du NET srsdu4: baseline F1=0.651  new F1=0.776
+    -> cu0_7du NET srsdu5: baseline F1=0.715  new F1=0.843
+    -> cu0_7du NET srsdu6: baseline F1=0.718  new F1=0.858
+    -> cu0_10du CPU srsdu0: baseline F1=0.993  new F1=0.993
+    -> cu0_10du CPU srsdu1: baseline F1=0.994  new F1=0.994
+    -> cu0_10du CPU srsdu2: baseline F1=0.994  new F1=0.994
+    -> cu0_10du CPU srsdu3: baseline F1=0.994  new F1=0.994
+    -> cu0_10du CPU srsdu4: baseline F1=0.992  new F1=0.992
+    -> cu0_10du CPU srsdu5: baseline F1=0.993  new F1=0.993
+    -> cu0_10du CPU srsdu6: baseline F1=0.992  new F1=0.992
+    -> cu0_10du CPU srsdu7: baseline F1=0.994  new F1=0.996
+    -> cu0_10du CPU srsdu8: baseline F1=0.996  new F1=0.996
+    -> cu0_10du CPU srsdu9: baseline F1=0.993  new F1=0.993
+    -> cu0_10du MEM srsdu0: baseline F1=0.991  new F1=0.993
+    -> cu0_10du MEM srsdu1: baseline F1=0.994  new F1=0.994
+    -> cu0_10du MEM srsdu2: baseline F1=0.996  new F1=0.996
+    -> cu0_10du MEM srsdu3: baseline F1=0.977  new F1=0.977
+    -> cu0_10du MEM srsdu4: baseline F1=0.984  new F1=0.984
+    -> cu0_10du MEM srsdu5: baseline F1=0.991  new F1=0.991
+    -> cu0_10du MEM srsdu6: baseline F1=0.993  new F1=0.993
+    -> cu0_10du MEM srsdu7: baseline F1=0.993  new F1=0.993
+    -> cu0_10du MEM srsdu8: baseline F1=0.994  new F1=0.994
+    -> cu0_10du MEM srsdu9: baseline F1=0.992  new F1=0.992
+    -> cu0_10du NET srsdu0: baseline F1=0.987  new F1=0.987
+    -> cu0_10du NET srsdu1: baseline F1=0.998  new F1=0.998
+    -> cu0_10du NET srsdu2: baseline F1=0.996  new F1=0.996
+    -> cu0_10du NET srsdu3: baseline F1=0.981  new F1=0.981
+    -> cu0_10du NET srsdu4: baseline F1=0.994  new F1=0.994
+    -> cu0_10du NET srsdu5: baseline F1=0.998  new F1=0.993
+    -> cu0_10du NET srsdu6: baseline F1=0.994  new F1=0.994
+    -> cu0_10du NET srsdu7: baseline F1=0.996  new F1=0.996
+    -> cu0_10du NET srsdu8: baseline F1=0.994  new F1=0.994
+    -> cu0_10du NET srsdu9: baseline F1=0.985  new F1=0.983
+
+### smallbig|cu2_du3du4du5  baseline=171.22
+    -> cu0_7du CPU srsdu0: baseline F1=0.983  new F1=0.892
+    -> cu0_7du CPU srsdu1: baseline F1=0.988  new F1=0.955
+    -> cu0_7du CPU srsdu2: baseline F1=0.980  new F1=0.938
+    -> cu0_7du CPU srsdu3: baseline F1=0.978  new F1=0.953
+    -> cu0_7du CPU srsdu4: baseline F1=0.995  new F1=0.967
+    -> cu0_7du CPU srsdu5: baseline F1=0.981  new F1=0.946
+    -> cu0_7du CPU srsdu6: baseline F1=0.983  new F1=0.944
+    -> cu0_7du MEM srsdu0: baseline F1=0.992  new F1=0.993
+    -> cu0_7du MEM srsdu1: baseline F1=0.988  new F1=0.992
+    -> cu0_7du MEM srsdu2: baseline F1=0.992  new F1=0.997
+    -> cu0_7du MEM srsdu3: baseline F1=0.992  new F1=0.993
+    -> cu0_7du MEM srsdu4: baseline F1=0.993  new F1=0.997
+    -> cu0_7du MEM srsdu5: baseline F1=0.992  new F1=0.995
+    -> cu0_7du MEM srsdu6: baseline F1=0.997  new F1=0.997
+    -> cu0_7du NET srsdu0: baseline F1=0.975  new F1=0.988
+    -> cu0_7du NET srsdu1: baseline F1=0.983  new F1=0.990
+    -> cu0_7du NET srsdu2: baseline F1=0.995  new F1=0.997
+    -> cu0_7du NET srsdu3: baseline F1=0.998  new F1=0.998
+    -> cu0_7du NET srsdu4: baseline F1=0.985  new F1=0.995
+    -> cu0_7du NET srsdu5: baseline F1=0.990  new F1=0.992
+    -> cu0_7du NET srsdu6: baseline F1=0.990  new F1=0.997
+    -> cu0_10du CPU srsdu0: baseline F1=0.989  new F1=0.989
+    -> cu0_10du CPU srsdu1: baseline F1=0.992  new F1=0.992
+    -> cu0_10du CPU srsdu2: baseline F1=0.989  new F1=0.994
+    -> cu0_10du CPU srsdu3: baseline F1=0.989  new F1=0.992
+    -> cu0_10du CPU srsdu4: baseline F1=0.992  new F1=0.992
+    -> cu0_10du CPU srsdu5: baseline F1=0.989  new F1=0.993
+    -> cu0_10du CPU srsdu6: baseline F1=0.990  new F1=0.992
+    -> cu0_10du CPU srsdu7: baseline F1=0.996  new F1=0.996
+    -> cu0_10du CPU srsdu8: baseline F1=0.994  new F1=0.996
+    -> cu0_10du CPU srsdu9: baseline F1=0.991  new F1=0.993
+    -> cu0_10du MEM srsdu0: baseline F1=0.993  new F1=0.993
+    -> cu0_10du MEM srsdu1: baseline F1=0.992  new F1=0.994
+    -> cu0_10du MEM srsdu2: baseline F1=0.994  new F1=0.996
+    -> cu0_10du MEM srsdu3: baseline F1=0.977  new F1=0.977
+    -> cu0_10du MEM srsdu4: baseline F1=0.987  new F1=0.984
+    -> cu0_10du MEM srsdu5: baseline F1=0.987  new F1=0.991
+    -> cu0_10du MEM srsdu6: baseline F1=0.993  new F1=0.993
+    -> cu0_10du MEM srsdu7: baseline F1=0.993  new F1=0.993
+    -> cu0_10du MEM srsdu8: baseline F1=0.992  new F1=0.994
+    -> cu0_10du MEM srsdu9: baseline F1=0.992  new F1=0.992
+    -> cu0_10du NET srsdu0: baseline F1=0.985  new F1=0.985
+    -> cu0_10du NET srsdu1: baseline F1=0.998  new F1=0.998
+    -> cu0_10du NET srsdu2: baseline F1=0.996  new F1=0.996
+    -> cu0_10du NET srsdu3: baseline F1=0.981  new F1=0.981
+    -> cu0_10du NET srsdu4: baseline F1=0.994  new F1=0.994
+    -> cu0_10du NET srsdu5: baseline F1=0.993  new F1=0.993
+    -> cu0_10du NET srsdu6: baseline F1=0.992  new F1=0.992
+    -> cu0_10du NET srsdu7: baseline F1=0.994  new F1=0.994
+    -> cu0_10du NET srsdu8: baseline F1=0.994  new F1=0.994
+    -> cu0_10du NET srsdu9: baseline F1=0.980  new F1=0.983
+
+### smallbig|cu3_du6du7du8du9  baseline=173.19
+    -> cu0_7du CPU srsdu0: baseline F1=0.995  new F1=0.995
+    -> cu0_7du CPU srsdu1: baseline F1=0.995  new F1=0.995
+    -> cu0_7du CPU srsdu2: baseline F1=0.993  new F1=0.993
+    -> cu0_7du CPU srsdu3: baseline F1=0.990  new F1=0.995
+    -> cu0_7du CPU srsdu4: baseline F1=0.995  new F1=0.997
+    -> cu0_7du CPU srsdu5: baseline F1=0.993  new F1=0.993
+    -> cu0_7du CPU srsdu6: baseline F1=0.993  new F1=0.993
+    -> cu0_7du MEM srsdu0: baseline F1=0.993  new F1=0.993
+    -> cu0_7du MEM srsdu1: baseline F1=0.990  new F1=0.992
+    -> cu0_7du MEM srsdu2: baseline F1=0.993  new F1=0.998
+    -> cu0_7du MEM srsdu3: baseline F1=0.993  new F1=0.995
+    -> cu0_7du MEM srsdu4: baseline F1=0.997  new F1=0.997
+    -> cu0_7du MEM srsdu5: baseline F1=0.995  new F1=0.997
+    -> cu0_7du MEM srsdu6: baseline F1=0.997  new F1=0.997
+    -> cu0_7du NET srsdu0: baseline F1=0.983  new F1=0.990
+    -> cu0_7du NET srsdu1: baseline F1=0.988  new F1=0.990
+    -> cu0_7du NET srsdu2: baseline F1=0.997  new F1=0.997
+    -> cu0_7du NET srsdu3: baseline F1=0.998  new F1=0.998
+    -> cu0_7du NET srsdu4: baseline F1=0.988  new F1=0.993
+    -> cu0_7du NET srsdu5: baseline F1=0.990  new F1=0.992
+    -> cu0_7du NET srsdu6: baseline F1=0.993  new F1=0.997
+    -> cu0_10du CPU srsdu0: baseline F1=0.989  new F1=0.993
+    -> cu0_10du CPU srsdu1: baseline F1=0.994  new F1=0.992
+    -> cu0_10du CPU srsdu2: baseline F1=0.992  new F1=0.994
+    -> cu0_10du CPU srsdu3: baseline F1=0.992  new F1=0.994
+    -> cu0_10du CPU srsdu4: baseline F1=0.992  new F1=0.992
+    -> cu0_10du CPU srsdu5: baseline F1=0.991  new F1=0.993
+    -> cu0_10du CPU srsdu6: baseline F1=0.992  new F1=0.992
+    -> cu0_10du CPU srsdu7: baseline F1=0.996  new F1=0.996
+    -> cu0_10du CPU srsdu8: baseline F1=0.996  new F1=0.996
+    -> cu0_10du CPU srsdu9: baseline F1=0.993  new F1=0.993
+    -> cu0_10du MEM srsdu0: baseline F1=0.991  new F1=0.993
+    -> cu0_10du MEM srsdu1: baseline F1=0.989  new F1=0.994
+    -> cu0_10du MEM srsdu2: baseline F1=0.994  new F1=0.996
+    -> cu0_10du MEM srsdu3: baseline F1=0.977  new F1=0.977
+    -> cu0_10du MEM srsdu4: baseline F1=0.987  new F1=0.984
+    -> cu0_10du MEM srsdu5: baseline F1=0.987  new F1=0.991
+    -> cu0_10du MEM srsdu6: baseline F1=0.993  new F1=0.993
+    -> cu0_10du MEM srsdu7: baseline F1=0.991  new F1=0.993
+    -> cu0_10du MEM srsdu8: baseline F1=0.992  new F1=0.994
+    -> cu0_10du MEM srsdu9: baseline F1=0.992  new F1=0.992
+    -> cu0_10du NET srsdu0: baseline F1=0.983  new F1=0.985
+    -> cu0_10du NET srsdu1: baseline F1=0.998  new F1=0.998
+    -> cu0_10du NET srsdu2: baseline F1=0.996  new F1=0.996
+    -> cu0_10du NET srsdu3: baseline F1=0.980  new F1=0.981
+    -> cu0_10du NET srsdu4: baseline F1=0.991  new F1=0.994
+    -> cu0_10du NET srsdu5: baseline F1=0.993  new F1=0.993
+    -> cu0_10du NET srsdu6: baseline F1=0.988  new F1=0.992
+    -> cu0_10du NET srsdu7: baseline F1=0.992  new F1=0.994
+    -> cu0_10du NET srsdu8: baseline F1=0.994  new F1=0.994
+    -> cu0_10du NET srsdu9: baseline F1=0.980  new F1=0.983
+
+====================================================================================================
+BIG->SMALL DU at p99.5
+====================================================================================================
+
+### bigsmall|cu1_du2  baseline=172.07
+    -> cu0_du0du1 CPU srsdu0: baseline F1=0.989  new F1=0.989
+    -> cu0_du0du1 CPU srsdu1: baseline F1=0.981  new F1=0.983
+    -> cu0_du0du1 MEM srsdu0: baseline F1=0.989  new F1=0.989
+    -> cu0_du0du1 MEM srsdu1: baseline F1=0.992  new F1=0.992
+    -> cu0_du0du1 NET srsdu0: baseline F1=0.991  new F1=0.991
+    -> cu0_du0du1 NET srsdu1: baseline F1=0.982  new F1=0.980
+    -> cu2_du3du4du5 CPU srsdu3: baseline F1=0.991  new F1=0.991
+    -> cu2_du3du4du5 CPU srsdu4: baseline F1=0.992  new F1=0.992
+    -> cu2_du3du4du5 CPU srsdu5: baseline F1=0.990  new F1=0.990
+    -> cu2_du3du4du5 MEM srsdu3: baseline F1=0.992  new F1=0.992
+    -> cu2_du3du4du5 MEM srsdu4: baseline F1=0.991  new F1=0.991
+    -> cu2_du3du4du5 MEM srsdu5: baseline F1=0.989  new F1=0.989
+    -> cu2_du3du4du5 NET srsdu3: baseline F1=0.990  new F1=0.990
+    -> cu2_du3du4du5 NET srsdu4: baseline F1=0.988  new F1=0.988
+    -> cu2_du3du4du5 NET srsdu5: baseline F1=0.994  new F1=0.994
+
+### bigsmall|cu3_du6du7du8du9  baseline=135.43
+    -> cu0_du0du1 CPU srsdu0: baseline F1=0.991  new F1=0.991
+    -> cu0_du0du1 CPU srsdu1: baseline F1=0.981  new F1=0.981
+    -> cu0_du0du1 MEM srsdu0: baseline F1=0.989  new F1=0.989
+    -> cu0_du0du1 MEM srsdu1: baseline F1=0.992  new F1=0.992
+    -> cu0_du0du1 NET srsdu0: baseline F1=0.991  new F1=0.991
+    -> cu0_du0du1 NET srsdu1: baseline F1=0.986  new F1=0.986
+    -> cu2_du3du4du5 CPU srsdu3: baseline F1=0.989  new F1=0.989
+    -> cu2_du3du4du5 CPU srsdu4: baseline F1=0.992  new F1=0.992
+    -> cu2_du3du4du5 CPU srsdu5: baseline F1=0.990  new F1=0.990
+    -> cu2_du3du4du5 MEM srsdu3: baseline F1=0.992  new F1=0.992
+    -> cu2_du3du4du5 MEM srsdu4: baseline F1=0.993  new F1=0.993
+    -> cu2_du3du4du5 MEM srsdu5: baseline F1=0.989  new F1=0.989
+    -> cu2_du3du4du5 NET srsdu3: baseline F1=0.990  new F1=0.990
+    -> cu2_du3du4du5 NET srsdu4: baseline F1=0.987  new F1=0.987
+    -> cu2_du3du4du5 NET srsdu5: baseline F1=0.994  new F1=0.994
+
+### bigsmall|cu0_7du  baseline=153.50
+    -> cu0_du0du1 CPU srsdu0: baseline F1=0.991  new F1=0.978
+    -> cu0_du0du1 CPU srsdu1: baseline F1=0.980  new F1=0.952
+    -> cu0_du0du1 MEM srsdu0: baseline F1=0.989  new F1=0.989
+    -> cu0_du0du1 MEM srsdu1: baseline F1=0.992  new F1=0.992
+    -> cu0_du0du1 NET srsdu0: baseline F1=0.991  new F1=0.991
+    -> cu0_du0du1 NET srsdu1: baseline F1=0.988  new F1=0.994
+    -> cu2_du3du4du5 CPU srsdu3: baseline F1=0.987  new F1=0.985
+    -> cu2_du3du4du5 CPU srsdu4: baseline F1=0.992  new F1=0.992
+    -> cu2_du3du4du5 CPU srsdu5: baseline F1=0.990  new F1=0.990
+    -> cu2_du3du4du5 MEM srsdu3: baseline F1=0.992  new F1=0.992
+    -> cu2_du3du4du5 MEM srsdu4: baseline F1=0.993  new F1=0.993
+    -> cu2_du3du4du5 MEM srsdu5: baseline F1=0.989  new F1=0.989
+    -> cu2_du3du4du5 NET srsdu3: baseline F1=0.988  new F1=0.988
+    -> cu2_du3du4du5 NET srsdu4: baseline F1=0.987  new F1=0.987
+    -> cu2_du3du4du5 NET srsdu5: baseline F1=0.994  new F1=0.994
+
+### bigsmall|cu0_10du  baseline=150.36
+    -> cu0_du0du1 CPU srsdu0: baseline F1=0.991  new F1=0.991
+    -> cu0_du0du1 CPU srsdu1: baseline F1=0.971  new F1=0.971
+    -> cu0_du0du1 MEM srsdu0: baseline F1=0.989  new F1=0.989
+    -> cu0_du0du1 MEM srsdu1: baseline F1=0.992  new F1=0.992
+    -> cu0_du0du1 NET srsdu0: baseline F1=0.991  new F1=0.991
+    -> cu0_du0du1 NET srsdu1: baseline F1=0.992  new F1=0.992
+    -> cu2_du3du4du5 CPU srsdu3: baseline F1=0.991  new F1=0.991
+    -> cu2_du3du4du5 CPU srsdu4: baseline F1=0.992  new F1=0.992
+    -> cu2_du3du4du5 CPU srsdu5: baseline F1=0.990  new F1=0.990
+    -> cu2_du3du4du5 MEM srsdu3: baseline F1=0.992  new F1=0.992
+    -> cu2_du3du4du5 MEM srsdu4: baseline F1=0.993  new F1=0.993
+    -> cu2_du3du4du5 MEM srsdu5: baseline F1=0.989  new F1=0.989
+    -> cu2_du3du4du5 NET srsdu3: baseline F1=0.990  new F1=0.990
+    -> cu2_du3du4du5 NET srsdu4: baseline F1=0.987  new F1=0.987
+    -> cu2_du3du4du5 NET srsdu5: baseline F1=0.994  new F1=0.994
+
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_du_crossreg_full.js
+DONE

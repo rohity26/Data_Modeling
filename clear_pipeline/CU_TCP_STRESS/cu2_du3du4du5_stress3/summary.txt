@@ -1,0 +1,11 @@
+Topology   : cu2_du3du4du5
+Stress type: 3 = NET
+Train CSV  : data_input/train_normal_tcp.csv
+Test CSV   : data_input/test_anomaly_th3.csv
+
+TEST ROW BREAKDOWN
+  Total rows         :  37,531
+  Truly normal       :  36,099  (all stress=0)
+  CU NET stress     :     358
+  DU NET stress     :   1,074
+  Total anomaly rows :   1,432

@@ -1,0 +1,344 @@
+
+======================================================================
+  [TCP DATA] Cross-topology NET stress detection
+  Train : ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu0_du0du1    (test_csv_tcp data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu1_du2             cu_s (69824, 7)  du_s (69824, 1, 30)  (μ=-0.419, σ=1.778 after v0)
+  topo[1] cu2_du3du4du5       cu_s (69824, 7)  du_s (69824, 3, 30)  (μ=-0.087, σ=1.816 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (69824, 7)  du_s (69824, 4, 30)  (μ=-0.046, σ=1.902 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu1_du2            total=69824  fit=55859  cal=13965
+  topo[1] cu2_du3du4du5      total=69824  fit=55859  cal=13965
+  topo[2] cu3_du6du7du8du9   total=69824  fit=55859  cal=13965
+
+[3] Loading model from checkpoint (model_TCP_46pct_backup/random_model_ckpt_test_cu0_du0du1.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu1_du2            cu_sqerr (13964, 7)  du_sqerr (13964, 1, 30)
+  topo[1] cu2_du3du4du5      cu_sqerr (13964, 7)  du_sqerr (13964, 3, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (13964, 7)  du_sqerr (13964, 4, 30)
+  Pooled cal rows: cu=41700  du(flat)=111200
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21, 3, 9, 28, 22, 23] from scoring (feat_norm set to inf)
+  Excluding CU feature indices [5] from scoring (feat_norm set to inf)
+  CU threshold (p98.0): 10.8754
+  DU threshold (p99.0): 21.1702
+
+[6] Transforming NEW TEST data (cu0_du0du1) with train-fitted scaler ...
+  cu_s_te (2363, 7)  du_s_te (2363, 2, 30)  (μ=-0.304, σ=1.811)
+  CU NET-stress rows : 286
+  DU_0 NET-stress rows: 264
+  DU_1 NET-stress rows: 249
+
+[7] Running inference on new test stream (SEGMENTED -- fresh model state per stitched file) ...
+  Segmented inference: 3 independent segments, each reset to fresh model state; 192 rows excluded as per-segment warm-up (vs 64 excluded under the old single-pass approach)
+  cu_sqerr (2360, 7)  du_sqerr (2360, 2, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/TCP_NET_tcp_net_segmented_my_model/recon_errors_cu0_du0du1_f7.npz
+
+[8] Evaluation results (pooled across all segments in this topology) ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   286  TP=    84  FP=   102  FN=   202  P=0.452  R=0.294  F1=0.356
+  DU_0          anom=   264  TP=   262  FP=   800  FN=     2  P=0.247  R=0.992  F1=0.395
+  DU_1          anom=   249  TP=   246  FP=   797  FN=     3  P=0.236  R=0.988  F1=0.381
+  ------------------------------------------------------------------------
+  ANY           anom=   799  TP=   794  FP=   528  FN=     5  P=0.601  R=0.994  F1=0.749
+
+[8-own] Evaluation results (each entity scored ONLY on its own dedicated test file) ...
+
+  Entity    total  anom    TP    FP    FN      P      R     F1
+  ------------------------------------------------------------------
+  CU        total=  790  anom= 286  TP=  84  FP=  64  FN= 202  P=0.568  R=0.294  F1=0.387
+  DU_0      total=  721  anom= 264  TP= 262  FP=   3  FN=   2  P=0.989  R=0.992  F1=0.991
+  DU_1      total=  657  anom= 249  TP= 246  FP=   3  FN=   3  P=0.988  R=0.988  F1=0.988
+
+[8b] Score distribution: CAL vs TEST
+          p50.0  p90.0  p99.0  p99.9
+  CU cal   1.179   4.703  25.759  193.003
+  CU te    2.828   9.411  72.449  276.342
+  DU cal   3.246   6.399  21.170  712.579
+  DU te   10.749  163.594  718.761  838.297
+  CU thr (cal=10.8754)  →  fraction test above thr: 0.081
+  DU thr (cal=21.1702)  →  fraction test above thr: 0.473
+
+[8c] Per-channel CU mean sq-error: CAL vs TEST (normal rows only)
+     channel    cal_mean  te_normal_mean   ratio
+         cpu      0.2438          0.2702    1.11x
+     mem_pct      8.5317          8.9582    1.05x
+   mem_bytes      0.0079          0.0282    3.56x
+      net_tx      0.0624          0.1734    2.78x
+      net_rx      0.0617          0.1788    2.90x
+    net_diff     11.4315          6.8632    0.60x
+   net_ratio      0.8598          0.4788    0.56x
+
+Done.
+
+======================================================================
+  [TCP DATA] Cross-topology NET stress detection
+  Train : ['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu1_du2    (test_csv_tcp data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (69824, 7)  du_s (69824, 2, 30)  (μ=-0.420, σ=2.199 after v0)
+  topo[1] cu2_du3du4du5       cu_s (69824, 7)  du_s (69824, 3, 30)  (μ=-0.085, σ=2.254 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (69824, 7)  du_s (69824, 4, 30)  (μ=-0.003, σ=2.345 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=69824  fit=55859  cal=13965
+  topo[1] cu2_du3du4du5      total=69824  fit=55859  cal=13965
+  topo[2] cu3_du6du7du8du9   total=69824  fit=55859  cal=13965
+
+[3] Loading model from checkpoint (model_TCP_46pct_backup/random_model_ckpt_test_cu1_du2.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (13964, 7)  du_sqerr (13964, 2, 30)
+  topo[1] cu2_du3du4du5      cu_sqerr (13964, 7)  du_sqerr (13964, 3, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (13964, 7)  du_sqerr (13964, 4, 30)
+  Pooled cal rows: cu=41700  du(flat)=125100
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21, 3, 9, 28, 22, 23] from scoring (feat_norm set to inf)
+  Excluding CU feature indices [5] from scoring (feat_norm set to inf)
+  CU threshold (p98.0): 10.8012
+  DU threshold (p99.0): 23.4141
+
+[6] Transforming NEW TEST data (cu1_du2) with train-fitted scaler ...
+  cu_s_te (1526, 7)  du_s_te (1526, 1, 30)  (μ=+10.260, σ=340.384)
+  CU NET-stress rows : 263
+  DU_0 NET-stress rows: 246
+
+[7] Running inference on new test stream (SEGMENTED -- fresh model state per stitched file) ...
+  Segmented inference: 2 independent segments, each reset to fresh model state; 128 rows excluded as per-segment warm-up (vs 64 excluded under the old single-pass approach)
+  cu_sqerr (1524, 7)  du_sqerr (1524, 1, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/TCP_NET_tcp_net_segmented_my_model/recon_errors_cu1_du2_f7.npz
+
+[8] Evaluation results (pooled across all segments in this topology) ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   263  TP=   167  FP=   377  FN=    96  P=0.307  R=0.635  F1=0.414
+  DU_0          anom=   246  TP=   244  FP=   736  FN=     2  P=0.249  R=0.992  F1=0.398
+  ------------------------------------------------------------------------
+  ANY           anom=   509  TP=   508  FP=   557  FN=     1  P=0.477  R=0.998  F1=0.645
+
+[8-own] Evaluation results (each entity scored ONLY on its own dedicated test file) ...
+
+  Entity    total  anom    TP    FP    FN      P      R     F1
+  ------------------------------------------------------------------
+  CU        total=  734  anom= 263  TP= 167  FP=  47  FN=  96  P=0.780  R=0.635  F1=0.700
+  DU_0      total=  662  anom= 246  TP= 244  FP=   2  FN=   2  P=0.992  R=0.992  F1=0.992
+
+[8b] Score distribution: CAL vs TEST
+          p50.0  p90.0  p99.0  p99.9
+  CU cal   1.158   4.685  34.438  190.489
+  CU te    7.657  76.096  12515046.984  106027372.972
+  DU cal   3.339   6.436  23.414  686.516
+  DU te   97.355  396.157  692.484  2064.735
+  CU thr (cal=10.8012)  →  fraction test above thr: 0.367
+  DU thr (cal=23.4141)  →  fraction test above thr: 0.686
+
+[8c] Per-channel CU mean sq-error: CAL vs TEST (normal rows only)
+     channel    cal_mean  te_normal_mean   ratio
+         cpu      0.3394          0.7998    2.36x
+     mem_pct     19.6307         23.3472    1.19x
+   mem_bytes      0.0070          0.3334   47.48x
+      net_tx      0.0594          0.4507    7.59x
+      net_rx      0.0592          0.5040    8.51x
+    net_diff      9.7537       1852.2555  189.90x
+   net_ratio      0.7199    1065869.7500  1480600.86x
+
+Done.
+
+======================================================================
+  [TCP DATA] Cross-topology NET stress detection
+  Train : ['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu2_du3du4du5    (test_csv_tcp data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (69824, 7)  du_s (69824, 2, 30)  (μ=-0.197, σ=1.727 after v0)
+  topo[1] cu1_du2             cu_s (69824, 7)  du_s (69824, 1, 30)  (μ=-0.272, σ=1.739 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (69824, 7)  du_s (69824, 4, 30)  (μ=+0.123, σ=1.895 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=69824  fit=55859  cal=13965
+  topo[1] cu1_du2            total=69824  fit=55859  cal=13965
+  topo[2] cu3_du6du7du8du9   total=69824  fit=55859  cal=13965
+
+[3] Loading model from checkpoint (model_TCP_46pct_backup/random_model_ckpt_test_cu2_du3du4du5.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (13964, 7)  du_sqerr (13964, 2, 30)
+  topo[1] cu1_du2            cu_sqerr (13964, 7)  du_sqerr (13964, 1, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (13964, 7)  du_sqerr (13964, 4, 30)
+  Pooled cal rows: cu=41700  du(flat)=97300
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21, 3, 9, 28, 22, 23] from scoring (feat_norm set to inf)
+  Excluding CU feature indices [5] from scoring (feat_norm set to inf)
+  CU threshold (p98.0): 10.9722
+  DU threshold (p99.0): 20.6664
+
+[6] Transforming NEW TEST data (cu2_du3du4du5) with train-fitted scaler ...
+  cu_s_te (3084, 7)  du_s_te (3084, 3, 30)  (μ=-0.003, σ=2.007)
+  CU NET-stress rows : 282
+  DU_0 NET-stress rows: 242
+  DU_1 NET-stress rows: 262
+  DU_2 NET-stress rows: 264
+
+[7] Running inference on new test stream (SEGMENTED -- fresh model state per stitched file) ...
+  Segmented inference: 4 independent segments, each reset to fresh model state; 256 rows excluded as per-segment warm-up (vs 64 excluded under the old single-pass approach)
+  cu_sqerr (3080, 7)  du_sqerr (3080, 3, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/TCP_NET_tcp_net_segmented_my_model/recon_errors_cu2_du3du4du5_f7.npz
+
+[8] Evaluation results (pooled across all segments in this topology) ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   282  TP=    86  FP=    93  FN=   196  P=0.480  R=0.305  F1=0.373
+  DU_0          anom=   242  TP=   240  FP=   813  FN=     2  P=0.228  R=0.992  F1=0.371
+  DU_1          anom=   262  TP=   260  FP=   786  FN=     2  P=0.249  R=0.992  F1=0.398
+  DU_2          anom=   264  TP=   263  FP=   788  FN=     1  P=0.250  R=0.996  F1=0.400
+  ------------------------------------------------------------------------
+  ANY           anom=  1050  TP=  1045  FP=   534  FN=     5  P=0.662  R=0.995  F1=0.795
+
+[8-own] Evaluation results (each entity scored ONLY on its own dedicated test file) ...
+
+  Entity    total  anom    TP    FP    FN      P      R     F1
+  ------------------------------------------------------------------
+  CU        total=  773  anom= 282  TP=  86  FP=  41  FN= 196  P=0.677  R=0.305  F1=0.421
+  DU_0      total=  652  anom= 242  TP= 240  FP=   5  FN=   2  P=0.980  R=0.992  F1=0.986
+  DU_1      total=  709  anom= 262  TP= 260  FP=   2  FN=   2  P=0.992  R=0.992  F1=0.992
+  DU_2      total=  690  anom= 264  TP= 263  FP=   3  FN=   1  P=0.989  R=0.996  F1=0.992
+
+[8b] Score distribution: CAL vs TEST
+          p50.0  p90.0  p99.0  p99.9
+  CU cal   1.130   4.729  30.493  195.757
+  CU te    1.878   7.553  65.516  194.145
+  DU cal   3.233   6.459  20.666  642.413
+  DU te    6.969  104.089  641.632  1150.822
+  CU thr (cal=10.9722)  →  fraction test above thr: 0.062
+  DU thr (cal=20.6664)  →  fraction test above thr: 0.363
+
+[8c] Per-channel CU mean sq-error: CAL vs TEST (normal rows only)
+     channel    cal_mean  te_normal_mean   ratio
+         cpu      0.3513          0.5181    1.47x
+     mem_pct      8.4470          7.7382    0.92x
+   mem_bytes      0.0041          0.0081    1.97x
+      net_tx      0.0660          0.1087    1.65x
+      net_rx      0.0657          0.1064    1.62x
+    net_diff      8.0521         13.4373    1.67x
+   net_ratio      0.7112          0.7399    1.04x
+
+Done.
+
+======================================================================
+  [TCP DATA] Cross-topology NET stress detection
+  Train : ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']  (normal only, pooled)
+  Test  : cu3_du6du7du8du9    (test_csv_tcp data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (69824, 7)  du_s (69824, 2, 30)  (μ=-0.233, σ=2.157 after v0)
+  topo[1] cu1_du2             cu_s (69824, 7)  du_s (69824, 1, 30)  (μ=-0.349, σ=2.171 after v0)
+  topo[2] cu2_du3du4du5       cu_s (69824, 7)  du_s (69824, 3, 30)  (μ=+0.086, σ=2.224 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=69824  fit=55859  cal=13965
+  topo[1] cu1_du2            total=69824  fit=55859  cal=13965
+  topo[2] cu2_du3du4du5      total=69824  fit=55859  cal=13965
+
+[3] Loading model from checkpoint (model_TCP_46pct_backup/random_model_ckpt_test_cu3_du6du7du8du9.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (13964, 7)  du_sqerr (13964, 2, 30)
+  topo[1] cu1_du2            cu_sqerr (13964, 7)  du_sqerr (13964, 1, 30)
+  topo[2] cu2_du3du4du5      cu_sqerr (13964, 7)  du_sqerr (13964, 3, 30)
+  Pooled cal rows: cu=41700  du(flat)=83400
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21, 3, 9, 28, 22, 23] from scoring (feat_norm set to inf)
+  Excluding CU feature indices [5] from scoring (feat_norm set to inf)
+  CU threshold (p98.0): 11.9484
+  DU threshold (p99.0): 21.7481
+
+[6] Transforming NEW TEST data (cu3_du6du7du8du9) with train-fitted scaler ...
+  cu_s_te (3873, 7)  du_s_te (3873, 4, 30)  (μ=+0.236, σ=2.231)
+  CU NET-stress rows : 293
+  DU_0 NET-stress rows: 247
+  DU_1 NET-stress rows: 235
+  DU_2 NET-stress rows: 257
+  DU_3 NET-stress rows: 276
+
+[7] Running inference on new test stream (SEGMENTED -- fresh model state per stitched file) ...
+  Segmented inference: 5 independent segments, each reset to fresh model state; 320 rows excluded as per-segment warm-up (vs 64 excluded under the old single-pass approach)
+  cu_sqerr (3868, 7)  du_sqerr (3868, 4, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/TCP_NET_tcp_net_segmented_my_model/recon_errors_cu3_du6du7du8du9_f7.npz
+
+[8] Evaluation results (pooled across all segments in this topology) ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   293  TP=   240  FP=   197  FN=    53  P=0.549  R=0.819  F1=0.658
+  DU_0          anom=   247  TP=   246  FP=   836  FN=     1  P=0.227  R=0.996  F1=0.370
+  DU_1          anom=   235  TP=   233  FP=   831  FN=     2  P=0.219  R=0.991  F1=0.359
+  DU_2          anom=   257  TP=   255  FP=   830  FN=     2  P=0.235  R=0.992  F1=0.380
+  DU_3          anom=   276  TP=   275  FP=   832  FN=     1  P=0.248  R=0.996  F1=0.398
+  ------------------------------------------------------------------------
+  ANY           anom=  1308  TP=  1302  FP=   601  FN=     6  P=0.684  R=0.995  F1=0.811
+
+[8-own] Evaluation results (each entity scored ONLY on its own dedicated test file) ...
+
+  Entity    total  anom    TP    FP    FN      P      R     F1
+  ------------------------------------------------------------------
+  CU        total=  816  anom= 293  TP= 240  FP=  24  FN=  53  P=0.909  R=0.819  F1=0.862
+  DU_0      total=  675  anom= 247  TP= 246  FP=   3  FN=   1  P=0.988  R=0.996  F1=0.992
+  DU_1      total=  634  anom= 235  TP= 233  FP=   4  FN=   2  P=0.983  R=0.991  F1=0.987
+  DU_2      total=  696  anom= 257  TP= 255  FP=   0  FN=   2  P=1.000  R=0.992  F1=0.996
+  DU_3      total=  727  anom= 276  TP= 275  FP=   5  FN=   1  P=0.982  R=0.996  F1=0.989
+
+[8b] Score distribution: CAL vs TEST
+          p50.0  p90.0  p99.0  p99.9
+  CU cal   1.206   4.840  28.860  190.594
+  CU te    4.251  13.555  77.878  192.058
+  DU cal   3.406   6.668  21.748  680.768
+  DU te    6.868  75.728  687.443  1197.191
+  CU thr (cal=11.9484)  →  fraction test above thr: 0.117
+  DU thr (cal=21.7481)  →  fraction test above thr: 0.298
+
+[8c] Per-channel CU mean sq-error: CAL vs TEST (normal rows only)
+     channel    cal_mean  te_normal_mean   ratio
+         cpu      0.2591          0.4287    1.65x
+     mem_pct     19.2312         18.3745    0.96x
+   mem_bytes      0.0085          0.1040   12.28x
+      net_tx      0.0697          0.1121    1.61x
+      net_rx      0.0692          0.1266    1.83x
+    net_diff     10.4119          6.3872    0.61x
+   net_ratio      0.7900          0.3111    0.39x
+
+Done.
+
+
+======================================================================
+  [TCP DATA] LEAVE-ONE-OUT SUMMARY — NET  (4 configurations)
+======================================================================
+  Test topology                CU F1     DU_0 F1     DU_1 F1      ANY F1     DU_2 F1     DU_3 F1
+  --------------------------------------------------------------------
+  cu0_du0du1                   0.356       0.395       0.381       0.749         N/A         N/A
+  cu1_du2                      0.414       0.398         N/A       0.645         N/A         N/A
+  cu2_du3du4du5                0.373       0.371       0.398       0.795       0.400         N/A
+  cu3_du6du7du8du9             0.658       0.370       0.359       0.811       0.380       0.398
+  --------------------------------------------------------------------
+
+  Results appended → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/loo_results_tcp_net_segmented.csv

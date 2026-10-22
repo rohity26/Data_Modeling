@@ -1,0 +1,35 @@
+
+### smallbig|cu0_du0du1 trained_topos=['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+  -> cu0_7du CPU: baseline F1=0.995  new F1=0.995
+  -> cu0_7du MEM: baseline F1=0.992  new F1=0.993
+  -> cu0_7du NET: baseline F1=0.960  new F1=0.945
+  -> cu0_10du CPU: baseline F1=0.985  new F1=0.985
+  -> cu0_10du MEM: baseline F1=0.990  new F1=0.990
+  -> cu0_10du NET: baseline F1=0.954  new F1=0.935
+
+### smallbig|cu1_du2 trained_topos=['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+  -> cu0_7du CPU: baseline F1=0.995  new F1=0.995
+  -> cu0_7du MEM: baseline F1=0.993  new F1=0.993
+  -> cu0_7du NET: baseline F1=0.990  new F1=0.992
+  -> cu0_10du CPU: baseline F1=0.975  new F1=0.973
+  -> cu0_10du MEM: baseline F1=0.970  new F1=0.960
+  -> cu0_10du NET: baseline F1=0.983  new F1=0.981
+
+### smallbig|cu2_du3du4du5 trained_topos=['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9']
+  -> cu0_7du CPU: baseline F1=0.997  new F1=0.997
+  -> cu0_7du MEM: baseline F1=0.993  new F1=0.995
+  -> cu0_7du NET: baseline F1=0.910  new F1=0.815
+  -> cu0_10du CPU: baseline F1=0.987  new F1=0.989
+  -> cu0_10du MEM: baseline F1=0.990  new F1=0.994
+  -> cu0_10du NET: baseline F1=0.942  new F1=0.882
+
+### smallbig|cu3_du6du7du8du9 trained_topos=['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']
+  -> cu0_7du CPU: baseline F1=0.993  new F1=0.997
+  -> cu0_7du MEM: baseline F1=0.990  new F1=0.995
+  -> cu0_7du NET: baseline F1=0.992  new F1=0.985
+  -> cu0_10du CPU: baseline F1=0.793  new F1=0.945
+  -> cu0_10du MEM: baseline F1=0.816  new F1=0.930
+  -> cu0_10du NET: baseline F1=0.876  new F1=0.963
+
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_p995_smallbig_heatmap.js
+DONE

@@ -1,0 +1,109 @@
+==========================================================================================
+PART A: own-registry LOO at p98.5
+==========================================================================================
+  original|cu0_du0du1: baseline=36.58  extrap=33.61
+    CPU: baseline F1=0.989  new F1=0.989
+    MEM: baseline F1=0.983  new F1=0.983
+    NET: baseline F1=0.882  new F1=0.917
+  original|cu1_du2: baseline=33.52  extrap=33.34
+    CPU: baseline F1=0.934  new F1=0.932
+    MEM: baseline F1=0.913  new F1=0.911
+    NET: baseline F1=0.910  new F1=0.910
+  original|cu2_du3du4du5: baseline=36.55  extrap=35.97
+    CPU: baseline F1=0.986  new F1=0.986
+    MEM: baseline F1=0.992  new F1=0.992
+    NET: baseline F1=0.783  new F1=0.786
+  original|cu3_du6du7du8du9: baseline=34.43  extrap=34.37
+    CPU: baseline F1=0.989  new F1=0.989
+    MEM: baseline F1=0.984  new F1=0.984
+    NET: baseline F1=0.908  new F1=0.908
+  new|cu1_du2: baseline=29.99  extrap=72.76
+    CPU: baseline F1=0.899  new F1=0.934
+    MEM: baseline F1=0.848  new F1=0.914
+    NET: baseline F1=0.914  new F1=0.896
+  new|cu3_du6du7du8du9: baseline=34.17  extrap=29.37
+    CPU: baseline F1=0.985  new F1=0.980
+    MEM: baseline F1=0.986  new F1=0.984
+    NET: baseline F1=0.970  new F1=0.978
+  new|cu0_7du: baseline=40.73  extrap=31.99
+    CPU: baseline F1=0.993  new F1=0.993
+    MEM: baseline F1=0.993  new F1=0.993
+    NET: baseline F1=0.951  new F1=0.983
+  new|cu0_10du: baseline=38.85  extrap=35.07
+    CPU: baseline F1=0.973  new F1=0.961
+    MEM: baseline F1=0.980  new F1=0.974
+    NET: baseline F1=0.965  new F1=0.967
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/p985_parta.json
+
+==========================================================================================
+PART B: cross-registry at p98.5
+==========================================================================================
+
+### smallbig|cu0_du0du1 (checkpoint trained_topos=['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9'])
+  -> cu0_7du CPU: baseline F1=0.969  new F1=0.966
+  -> cu0_7du MEM: baseline F1=0.988  new F1=0.988
+  -> cu0_7du NET: baseline F1=0.988  new F1=0.985
+  -> cu0_10du CPU: baseline F1=0.545  new F1=0.545
+  -> cu0_10du MEM: baseline F1=0.535  new F1=0.535
+  -> cu0_10du NET: baseline F1=0.539  new F1=0.539
+
+### smallbig|cu1_du2 (checkpoint trained_topos=['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9'])
+  -> cu0_7du CPU: baseline F1=0.765  new F1=0.763
+  -> cu0_7du MEM: baseline F1=0.850  new F1=0.850
+  -> cu0_7du NET: baseline F1=0.861  new F1=0.860
+  -> cu0_10du CPU: baseline F1=0.645  new F1=0.643
+  -> cu0_10du MEM: baseline F1=0.596  new F1=0.594
+  -> cu0_10du NET: baseline F1=0.647  new F1=0.647
+
+### smallbig|cu2_du3du4du5 (checkpoint trained_topos=['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9'])
+  -> cu0_7du CPU: baseline F1=0.913  new F1=0.913
+  -> cu0_7du MEM: baseline F1=0.952  new F1=0.952
+  -> cu0_7du NET: baseline F1=0.930  new F1=0.930
+  -> cu0_10du CPU: baseline F1=0.545  new F1=0.545
+  -> cu0_10du MEM: baseline F1=0.535  new F1=0.535
+  -> cu0_10du NET: baseline F1=0.539  new F1=0.539
+
+### smallbig|cu3_du6du7du8du9 (checkpoint trained_topos=['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5'])
+  -> cu0_7du CPU: baseline F1=0.531  new F1=0.531
+  -> cu0_7du MEM: baseline F1=0.534  new F1=0.535
+  -> cu0_7du NET: baseline F1=0.526  new F1=0.526
+  -> cu0_10du CPU: baseline F1=0.545  new F1=0.545
+  -> cu0_10du MEM: baseline F1=0.535  new F1=0.535
+  -> cu0_10du NET: baseline F1=0.539  new F1=0.539
+
+### bigsmall|cu1_du2 (checkpoint trained_topos=['cu3_du6du7du8du9', 'cu0_7du', 'cu0_10du'])
+  -> cu0_du0du1 CPU: baseline F1=0.963  new F1=0.977
+  -> cu0_du0du1 MEM: baseline F1=0.975  new F1=0.981
+  -> cu0_du0du1 NET: baseline F1=0.917  new F1=0.932
+  -> cu2_du3du4du5 CPU: baseline F1=0.986  new F1=0.988
+  -> cu2_du3du4du5 MEM: baseline F1=0.955  new F1=0.963
+  -> cu2_du3du4du5 NET: baseline F1=0.867  new F1=0.864
+
+### bigsmall|cu3_du6du7du8du9 (checkpoint trained_topos=['cu1_du2', 'cu0_7du', 'cu0_10du'])
+  -> cu0_du0du1 CPU: baseline F1=0.989  new F1=0.989
+  -> cu0_du0du1 MEM: baseline F1=0.985  new F1=0.985
+  -> cu0_du0du1 NET: baseline F1=0.855  new F1=0.791
+  -> cu2_du3du4du5 CPU: baseline F1=0.990  new F1=0.990
+  -> cu2_du3du4du5 MEM: baseline F1=0.990  new F1=0.990
+  -> cu2_du3du4du5 NET: baseline F1=0.828  new F1=0.828
+
+### bigsmall|cu0_7du (checkpoint trained_topos=['cu1_du2', 'cu3_du6du7du8du9', 'cu0_10du'])
+  -> cu0_du0du1 CPU: baseline F1=0.992  new F1=0.992
+  -> cu0_du0du1 MEM: baseline F1=0.985  new F1=0.985
+  -> cu0_du0du1 NET: baseline F1=0.852  new F1=0.874
+  -> cu2_du3du4du5 CPU: baseline F1=0.986  new F1=0.986
+  -> cu2_du3du4du5 MEM: baseline F1=0.986  new F1=0.986
+  -> cu2_du3du4du5 NET: baseline F1=0.817  new F1=0.827
+
+### bigsmall|cu0_10du (checkpoint trained_topos=['cu1_du2', 'cu3_du6du7du8du9', 'cu0_7du'])
+  -> cu0_du0du1 CPU: baseline F1=0.989  new F1=0.989
+  -> cu0_du0du1 MEM: baseline F1=0.983  new F1=0.983
+  -> cu0_du0du1 NET: baseline F1=0.936  new F1=0.939
+  -> cu2_du3du4du5 CPU: baseline F1=0.988  new F1=0.988
+  -> cu2_du3du4du5 MEM: baseline F1=0.986  new F1=0.986
+  -> cu2_du3du4du5 NET: baseline F1=0.842  new F1=0.850
+
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/p985_partb.json
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_p985_full.js
+
+DONE

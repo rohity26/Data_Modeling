@@ -1,0 +1,12 @@
+Training 6 pair models: [('cu1_du2', 'cu3_du6du7du8du9'), ('cu1_du2', 'cu0_7du'), ('cu1_du2', 'cu0_10du'), ('cu3_du6du7du8du9', 'cu0_7du'), ('cu3_du6du7du8du9', 'cu0_10du'), ('cu0_7du', 'cu0_10du')]
+
+======================================================================
+Training pair: cu1_du2 + cu3_du6du7du8du9
+  topo[0] cu1_du2             cu_s (143836, 7)  du_s (143836, 1, 30)  (μ=-0.355, σ=12.175 after v0)
+  topo[1] cu3_du6du7du8du9    cu_s (143836, 7)  du_s (143836, 4, 30)  (μ=+0.125, σ=4.562 after v0)
+  topo[0] cu1_du2            total=143836  fit=115069  cal=28767
+  topo[1] cu3_du6du7du8du9   total=143836  fit=115069  cal=28767
+  topo[0] cu1_du2            N_DU=1  windows=115006  (train=103505, val=11501)
+  topo[1] cu3_du6du7du8du9   N_DU=4  windows=115006  (train=103505, val=11501)
+  epoch   1  tr=25325.28005  val=23090.94375
+  epoch  10  tr=22396.05110  val=22312.16947

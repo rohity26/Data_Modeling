@@ -1,0 +1,53 @@
+====================================================================================================
+Checkpoint: v2_model_ckpt_test_cu1_du2.pt  trained on ['cu3_du6du7du8du9', 'cu0_7du', 'cu0_10du']
+Scoring on SMALL topologies it has never seen: ['cu1_du2', 'cu0_du0du1', 'cu2_du3du4du5']
+====================================================================================================
+  per-topology thr: cu3_du6du7du8du9     N_DU= 4  thr(p99.9)=218.8216
+  per-topology thr: cu0_7du              N_DU= 7  thr(p99.9)=273.0492
+  per-topology thr: cu0_10du             N_DU=10  thr(p99.9)=209.7920
+  fitted line: thr = 241.8901 + -48.7107 * (1/N_DU)
+  baseline pooled threshold (current method): 222.9122
+
+  -- target=cu1_du2 (N_DU=1) -- extrapolated threshold: 193.1794
+  cu1_du2 CPU: normal[median=10.6 p90=42.5]  stress[median=24814.3 p10=24328.1]
+    baseline(thr=222.91) P=0.984 R=0.992 F1=0.988   |   extrap(thr=193.18) P=0.976 R=0.992 F1=0.984
+  cu1_du2 MEM: normal[median=19.1 p90=74.3]  stress[median=3285.8 p10=2270.1]
+    baseline(thr=222.91) P=0.955 R=0.992 F1=0.973   |   extrap(thr=193.18) P=0.940 R=0.992 F1=0.965
+  cu1_du2 NET: normal[median=12.4 p90=224.2]  stress[median=363.6 p10=44.3]
+    baseline(thr=222.91) P=0.779 R=0.626 F1=0.694   |   extrap(thr=193.18) P=0.760 R=0.650 F1=0.701
+
+  -- target=cu0_du0du1 (N_DU=2) -- extrapolated threshold: 217.5347
+  cu0_du0du1 CPU: normal[median=6.2 p90=11.3]  stress[median=20777.3 p10=20123.2]
+    baseline(thr=222.91) P=1.000 R=0.987 F1=0.994   |   extrap(thr=217.53) P=1.000 R=0.987 F1=0.994
+  cu0_du0du1 MEM: normal[median=5.1 p90=12.6]  stress[median=2825.9 p10=2031.8]
+    baseline(thr=222.91) P=0.996 R=0.987 F1=0.991   |   extrap(thr=217.53) P=0.996 R=0.987 F1=0.991
+  cu0_du0du1 NET: normal[median=4.0 p90=26.0]  stress[median=378.3 p10=102.6]
+    baseline(thr=222.91) P=0.994 R=0.703 F1=0.824   |   extrap(thr=217.53) P=0.994 R=0.707 F1=0.826
+
+  -- target=cu2_du3du4du5 (N_DU=3) -- extrapolated threshold: 225.6532
+  cu2_du3du4du5 CPU: normal[median=2.1 p90=6.9]  stress[median=24586.6 p10=24162.7]
+    baseline(thr=222.91) P=1.000 R=0.988 F1=0.994   |   extrap(thr=225.65) P=1.000 R=0.988 F1=0.994
+  cu2_du3du4du5 MEM: normal[median=1.9 p90=12.4]  stress[median=2748.6 p10=2039.2]
+    baseline(thr=222.91) P=1.000 R=0.988 F1=0.994   |   extrap(thr=225.65) P=1.000 R=0.988 F1=0.994
+  cu2_du3du4du5 NET: normal[median=2.0 p90=61.2]  stress[median=486.3 p10=46.5]
+    baseline(thr=222.91) P=0.882 R=0.716 F1=0.790   |   extrap(thr=225.65) P=0.880 R=0.704 F1=0.782
+
+
+====================================================================================================
+SUMMARY: existing checkpoint (trained on 4/7/10-DU) scored on 2/3-DU targets
+====================================================================================================
+target           N_DU stress  P(base)  P(new)  R(base)  R(new)  F1(base)  F1(new)
+cu1_du2             1    CPU    0.984   0.976    0.992   0.992     0.988    0.984
+cu1_du2             1    MEM    0.955   0.940    0.992   0.992     0.973    0.965
+cu1_du2             1    NET    0.779   0.760    0.626   0.650     0.694    0.701
+cu0_du0du1          2    CPU    1.000   1.000    0.987   0.987     0.994    0.994
+cu0_du0du1          2    MEM    0.996   0.996    0.987   0.987     0.991    0.991
+cu0_du0du1          2    NET    0.994   0.994    0.703   0.707     0.824    0.826
+cu2_du3du4du5       3    CPU    1.000   1.000    0.988   0.988     0.994    0.994
+cu2_du3du4du5       3    MEM    1.000   1.000    0.988   0.988     0.994    0.994
+cu2_du3du4du5       3    NET    0.882   0.880    0.716   0.704     0.790    0.782
+
+Done. 9 rows.
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_bigsmall_p999_cu1_du2.js
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_bigsmall_p999_cu0_du0du1.js
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_bigsmall_p999_cu2_du3du4du5.js

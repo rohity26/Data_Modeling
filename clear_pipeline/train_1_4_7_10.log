@@ -1,0 +1,189 @@
+
+======================================================================
+  Cross-topology NET stress detection (multi-train + RobustScaler v0)
+  Train : ['cu3_du6du7du8du9', 'cu0_7du', 'cu0_10du']  (normal only, pooled)
+  Test  : cu1_du2    (unseen topology)
+  Preprocessing : RobustScaler v0  (raw thresholds, no cold-start probe)
+  CU features   : 5   DU features: 28
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu3_du6du7du8du9    cu_s (143836, 7)  du_s (143836, 4, 30)  (μ=-0.280, σ=5.837 after v0)
+  topo[1] cu0_7du             cu_s (179795, 7)  du_s (179795, 7, 30)  (μ=-0.166, σ=3.762 after v0)
+  topo[2] cu0_10du            cu_s (142031, 7)  du_s (142031, 10, 30)  (μ=+0.191, σ=7.557 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu3_du6du7du8du9   total=143836  fit=115069  cal=28767
+  topo[1] cu0_7du            total=179795  fit=143836  cal=35959
+  topo[2] cu0_10du           total=142031  fit=113625  cal=28406
+
+[3] Training CalibratedTopoAR on 3 topologies (cu_dim=7, du_dim=30, embed=32) ...
+  topo[0] cu3_du6du7du8du9   N_DU=4  windows=115006  (train=103505, val=11501)
+  topo[1] cu0_7du            N_DU=7  windows=143773  (train=129396, val=14377)
+  topo[2] cu0_10du           N_DU=10  windows=113562  (train=102206, val=11356)
+  epoch   1  tr=18165.12843  val=16898.51515
+  epoch  10  tr=16740.49774  val=16701.06364
+  epoch  20  tr=16696.69088  val=16682.10948
+  epoch  30  tr=16667.65584  val=16633.01501
+  epoch  40  tr=16650.39383  val=16607.90896
+  Early stop at epoch 47  (best_val=16600.51871)
+  Model saved → model_1_4_7_10/v2_model_ckpt_test_cu1_du2.pt
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu3_du6du7du8du9   cu_sqerr (28766, 7)  du_sqerr (28766, 4, 30)
+  topo[1] cu0_7du            cu_sqerr (35958, 7)  du_sqerr (35958, 7, 30)
+  topo[2] cu0_10du           cu_sqerr (28405, 7)  du_sqerr (28405, 10, 30)
+  Pooled cal rows: cu=92937  du(flat)=649476
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  CU threshold (p99.9): 222.9122
+  DU threshold (p99.9): 222.9460
+
+[TRAIN_ONLY] No test.npz for cu1_du2 yet — stopping after training + calibration. Checkpoint saved to model_1_4_7_10/v2_model_ckpt_test_cu1_du2.pt. Re-run this script once a matching stress test set exists to get full evaluation metrics.
+
+======================================================================
+  Cross-topology NET stress detection (multi-train + RobustScaler v0)
+  Train : ['cu1_du2', 'cu0_7du', 'cu0_10du']  (normal only, pooled)
+  Test  : cu3_du6du7du8du9    (unseen topology)
+  Preprocessing : RobustScaler v0  (raw thresholds, no cold-start probe)
+  CU features   : 5   DU features: 28
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu1_du2             cu_s (143836, 7)  du_s (143836, 1, 30)  (μ=-0.446, σ=13.286 after v0)
+  topo[1] cu0_7du             cu_s (179795, 7)  du_s (179795, 7, 30)  (μ=-0.121, σ=3.087 after v0)
+  topo[2] cu0_10du            cu_s (142031, 7)  du_s (142031, 10, 30)  (μ=+0.169, σ=6.203 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu1_du2            total=143836  fit=115069  cal=28767
+  topo[1] cu0_7du            total=179795  fit=143836  cal=35959
+  topo[2] cu0_10du           total=142031  fit=113625  cal=28406
+
+[3] Training CalibratedTopoAR on 3 topologies (cu_dim=7, du_dim=30, embed=32) ...
+  topo[0] cu1_du2            N_DU=1  windows=115006  (train=103505, val=11501)
+  topo[1] cu0_7du            N_DU=7  windows=143773  (train=129396, val=14377)
+  topo[2] cu0_10du           N_DU=10  windows=113562  (train=102206, val=11356)
+  epoch   1  tr=17545.40939  val=16464.79341
+  epoch  10  tr=16203.43653  val=16219.17698
+  epoch  20  tr=16029.31047  val=16016.38991
+  epoch  30  tr=15868.09861  val=15845.23410
+  epoch  40  tr=15672.64069  val=15655.83218
+  Early stop at epoch 48  (best_val=15576.33818)
+  Model saved → model_1_4_7_10/v2_model_ckpt_test_cu3_du6du7du8du9.pt
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu1_du2            cu_sqerr (28766, 7)  du_sqerr (28766, 1, 30)
+  topo[1] cu0_7du            cu_sqerr (35958, 7)  du_sqerr (35958, 7, 30)
+  topo[2] cu0_10du           cu_sqerr (28405, 7)  du_sqerr (28405, 10, 30)
+  Pooled cal rows: cu=92937  du(flat)=563370
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  CU threshold (p99.9): 222.7874
+  DU threshold (p99.9): 226.0645
+
+[TRAIN_ONLY] No test.npz for cu3_du6du7du8du9 yet — stopping after training + calibration. Checkpoint saved to model_1_4_7_10/v2_model_ckpt_test_cu3_du6du7du8du9.pt. Re-run this script once a matching stress test set exists to get full evaluation metrics.
+
+======================================================================
+  Cross-topology NET stress detection (multi-train + RobustScaler v0)
+  Train : ['cu1_du2', 'cu3_du6du7du8du9', 'cu0_10du']  (normal only, pooled)
+  Test  : cu0_7du    (unseen topology)
+  Preprocessing : RobustScaler v0  (raw thresholds, no cold-start probe)
+  CU features   : 5   DU features: 28
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu1_du2             cu_s (143836, 7)  du_s (143836, 1, 30)  (μ=-0.360, σ=10.488 after v0)
+  topo[1] cu3_du6du7du8du9    cu_s (143836, 7)  du_s (143836, 4, 30)  (μ=-0.125, σ=3.792 after v0)
+  topo[2] cu0_10du            cu_s (142031, 7)  du_s (142031, 10, 30)  (μ=+0.214, σ=4.913 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu1_du2            total=143836  fit=115069  cal=28767
+  topo[1] cu3_du6du7du8du9   total=143836  fit=115069  cal=28767
+  topo[2] cu0_10du           total=142031  fit=113625  cal=28406
+
+[3] Training CalibratedTopoAR on 3 topologies (cu_dim=7, du_dim=30, embed=32) ...
+  topo[0] cu1_du2            N_DU=1  windows=115006  (train=103505, val=11501)
+  topo[1] cu3_du6du7du8du9   N_DU=4  windows=115006  (train=103505, val=11501)
+  topo[2] cu0_10du           N_DU=10  windows=113562  (train=102206, val=11356)
+  epoch   1  tr=21908.63495  val=20336.38174
+  epoch  10  tr=20161.31628  val=20057.69418
+  epoch  20  tr=19986.10417  val=19934.14206
+  epoch  30  tr=19912.37616  val=19954.48639
+  epoch  40  tr=19720.84085  val=19660.04352
+  epoch  50  tr=19734.29424  val=19518.95868
+  epoch  60  tr=19448.00088  val=19304.42314
+  epoch  70  tr=19195.23001  val=19120.06369
+  epoch  80  tr=19411.56916  val=20373.89394
+  Early stop at epoch 83  (best_val=19038.89323)
+  Model saved → model_1_4_7_10/v2_model_ckpt_test_cu0_7du.pt
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu1_du2            cu_sqerr (28766, 7)  du_sqerr (28766, 1, 30)
+  topo[1] cu3_du6du7du8du9   cu_sqerr (28766, 7)  du_sqerr (28766, 4, 30)
+  topo[2] cu0_10du           cu_sqerr (28405, 7)  du_sqerr (28405, 10, 30)
+  Pooled cal rows: cu=85745  du(flat)=426920
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  CU threshold (p99.9): 199.1851
+  DU threshold (p99.9): 196.6585
+
+[TRAIN_ONLY] No test.npz for cu0_7du yet — stopping after training + calibration. Checkpoint saved to model_1_4_7_10/v2_model_ckpt_test_cu0_7du.pt. Re-run this script once a matching stress test set exists to get full evaluation metrics.
+
+======================================================================
+  Cross-topology NET stress detection (multi-train + RobustScaler v0)
+  Train : ['cu1_du2', 'cu3_du6du7du8du9', 'cu0_7du']  (normal only, pooled)
+  Test  : cu0_10du    (unseen topology)
+  Preprocessing : RobustScaler v0  (raw thresholds, no cold-start probe)
+  CU features   : 5   DU features: 28
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu1_du2             cu_s (143836, 7)  du_s (143836, 1, 30)  (μ=-0.441, σ=17.769 after v0)
+  topo[1] cu3_du6du7du8du9    cu_s (143836, 7)  du_s (143836, 4, 30)  (μ=-0.041, σ=6.397 after v0)
+  topo[2] cu0_7du             cu_s (179795, 7)  du_s (179795, 7, 30)  (μ=+0.037, σ=4.127 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu1_du2            total=143836  fit=115069  cal=28767
+  topo[1] cu3_du6du7du8du9   total=143836  fit=115069  cal=28767
+  topo[2] cu0_7du            total=179795  fit=143836  cal=35959
+
+[3] Training CalibratedTopoAR on 3 topologies (cu_dim=7, du_dim=30, embed=32) ...
+  topo[0] cu1_du2            N_DU=1  windows=115006  (train=103505, val=11501)
+  topo[1] cu3_du6du7du8du9   N_DU=4  windows=115006  (train=103505, val=11501)
+  topo[2] cu0_7du            N_DU=7  windows=143773  (train=129396, val=14377)
+  epoch   1  tr=18638.68453  val=17418.05586
+  epoch  10  tr=17066.76781  val=17105.13018
+  epoch  20  tr=16925.12973  val=16837.66922
+  epoch  30  tr=16792.59150  val=16714.56206
+  Early stop at epoch 33  (best_val=16692.32712)
+  Model saved → model_1_4_7_10/v2_model_ckpt_test_cu0_10du.pt
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu1_du2            cu_sqerr (28766, 7)  du_sqerr (28766, 1, 30)
+  topo[1] cu3_du6du7du8du9   cu_sqerr (28766, 7)  du_sqerr (28766, 4, 30)
+  topo[2] cu0_7du            cu_sqerr (35958, 7)  du_sqerr (35958, 7, 30)
+  Pooled cal rows: cu=93298  du(flat)=394768
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  CU threshold (p99.9): 206.3089
+  DU threshold (p99.9): 214.9491
+
+[TRAIN_ONLY] No test.npz for cu0_10du yet — stopping after training + calibration. Checkpoint saved to model_1_4_7_10/v2_model_ckpt_test_cu0_10du.pt. Re-run this script once a matching stress test set exists to get full evaluation metrics.
+
+
+======================================================================
+  LEAVE-ONE-OUT SUMMARY  (4 configurations)
+======================================================================
+  Test topology         
+  --------------------------------------------------------------------
+  cu1_du2               
+  cu3_du6du7du8du9      
+  cu0_7du               
+  cu0_10du              
+  --------------------------------------------------------------------
+
+  Results appended → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/loo_results_4_7_10.csv

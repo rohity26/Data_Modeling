@@ -1,0 +1,678 @@
+
+======================================================================
+  [UDP NATIVE] Cross-topology CPU stress detection
+  Train : ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu0_du0du1    (native UDP test_csv data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu1_du2             cu_s (179494, 7)  du_s (179494, 1, 30)  (μ=-0.585, σ=9.536 after v0)
+  topo[1] cu2_du3du4du5       cu_s (179494, 7)  du_s (179494, 3, 30)  (μ=-0.260, σ=19.283 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (179494, 7)  du_s (179494, 4, 30)  (μ=-0.221, σ=7.495 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu1_du2            total=179494  fit=143595  cal=35899
+  topo[1] cu2_du3du4du5      total=179494  fit=143595  cal=35899
+  topo[2] cu3_du6du7du8du9   total=179494  fit=143595  cal=35899
+
+[3] Loading model from checkpoint (model_UDP/random_model_ckpt_test_cu0_du0du1.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu1_du2            cu_sqerr (35898, 7)  du_sqerr (35898, 1, 30)
+  topo[1] cu2_du3du4du5      cu_sqerr (35898, 7)  du_sqerr (35898, 3, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (35898, 7)  du_sqerr (35898, 4, 30)
+  Pooled cal rows: cu=107502  du(flat)=286672
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21] from scoring (feat_norm set to inf)
+  CU threshold (p99.9): 236.1746
+  DU threshold (p99.9): 224.5985
+
+[6] Transforming NATIVE TEST data (cu0_du0du1) with train-fitted scaler ...
+  cu_s_te (37160, 7)  du_s_te (37160, 2, 30)  (μ=-11.058, σ=16.332)
+  CU CPU-stress rows : 354
+  DU_0 CPU-stress rows: 354
+  DU_1 CPU-stress rows: 353
+
+[7] Running inference on new test stream ...
+  cu_sqerr (37159, 7)  du_sqerr (37159, 2, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/UDP_CPU_udp_native_my_model/recon_errors_cu0_du0du1_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   354  TP=   354  FP= 36741  FN=     0  P=0.010  R=1.000  F1=0.019
+  DU_0          anom=   354  TP=   354  FP= 30867  FN=     0  P=0.011  R=1.000  F1=0.022
+  DU_1          anom=   353  TP=   353  FP= 29413  FN=     0  P=0.012  R=1.000  F1=0.023
+  ------------------------------------------------------------------------
+  ANY           anom=  1061  TP=  1061  FP= 36034  FN=     0  P=0.029  R=1.000  F1=0.056
+
+Done.
+
+======================================================================
+  [UDP NATIVE] Cross-topology CPU stress detection
+  Train : ['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu1_du2    (native UDP test_csv data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (179494, 7)  du_s (179494, 2, 30)  (μ=-0.536, σ=9.232 after v0)
+  topo[1] cu2_du3du4du5       cu_s (179494, 7)  du_s (179494, 3, 30)  (μ=-0.286, σ=19.230 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (179494, 7)  du_s (179494, 4, 30)  (μ=-0.198, σ=7.568 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=179494  fit=143595  cal=35899
+  topo[1] cu2_du3du4du5      total=179494  fit=143595  cal=35899
+  topo[2] cu3_du6du7du8du9   total=179494  fit=143595  cal=35899
+
+[3] Loading model from checkpoint (model_UDP/random_model_ckpt_test_cu1_du2.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (35898, 7)  du_sqerr (35898, 2, 30)
+  topo[1] cu2_du3du4du5      cu_sqerr (35898, 7)  du_sqerr (35898, 3, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (35898, 7)  du_sqerr (35898, 4, 30)
+  Pooled cal rows: cu=107502  du(flat)=322506
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21] from scoring (feat_norm set to inf)
+  CU threshold (p99.9): 236.2109
+  DU threshold (p99.9): 229.4546
+
+[6] Transforming NATIVE TEST data (cu1_du2) with train-fitted scaler ...
+  cu_s_te (36807, 7)  du_s_te (36807, 1, 30)  (μ=-16.303, σ=28.240)
+  CU CPU-stress rows : 354
+  DU_0 CPU-stress rows: 354
+
+[7] Running inference on new test stream ...
+  cu_sqerr (36806, 7)  du_sqerr (36806, 1, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/UDP_CPU_udp_native_my_model/recon_errors_cu1_du2_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   354  TP=   354  FP= 36388  FN=     0  P=0.010  R=1.000  F1=0.019
+  DU_0          anom=   354  TP=   354  FP= 27972  FN=     0  P=0.012  R=1.000  F1=0.025
+  ------------------------------------------------------------------------
+  ANY           anom=   708  TP=   708  FP= 36034  FN=     0  P=0.019  R=1.000  F1=0.038
+
+Done.
+
+======================================================================
+  [UDP NATIVE] Cross-topology CPU stress detection
+  Train : ['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu2_du3du4du5    (native UDP test_csv data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (179494, 7)  du_s (179494, 2, 30)  (μ=-0.336, σ=8.371 after v0)
+  topo[1] cu1_du2             cu_s (179494, 7)  du_s (179494, 1, 30)  (μ=-0.461, σ=8.679 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (179494, 7)  du_s (179494, 4, 30)  (μ=-0.096, σ=6.840 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=179494  fit=143595  cal=35899
+  topo[1] cu1_du2            total=179494  fit=143595  cal=35899
+  topo[2] cu3_du6du7du8du9   total=179494  fit=143595  cal=35899
+
+[3] Loading model from checkpoint (model_UDP/random_model_ckpt_test_cu2_du3du4du5.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (35898, 7)  du_sqerr (35898, 2, 30)
+  topo[1] cu1_du2            cu_sqerr (35898, 7)  du_sqerr (35898, 1, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (35898, 7)  du_sqerr (35898, 4, 30)
+  Pooled cal rows: cu=107502  du(flat)=250838
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21] from scoring (feat_norm set to inf)
+  CU threshold (p99.9): 224.4211
+  DU threshold (p99.9): 210.6421
+
+[6] Transforming NATIVE TEST data (cu2_du3du4du5) with train-fitted scaler ...
+  cu_s_te (37514, 7)  du_s_te (37514, 3, 30)  (μ=-10.330, σ=17.353)
+  CU CPU-stress rows : 354
+  DU_0 CPU-stress rows: 353
+  DU_1 CPU-stress rows: 354
+  DU_2 CPU-stress rows: 354
+
+[7] Running inference on new test stream ...
+  cu_sqerr (37513, 7)  du_sqerr (37513, 3, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/UDP_CPU_udp_native_my_model/recon_errors_cu2_du3du4du5_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   354  TP=   354  FP= 37095  FN=     0  P=0.009  R=1.000  F1=0.019
+  DU_0          anom=   353  TP=   352  FP=  9373  FN=     1  P=0.036  R=0.997  F1=0.070
+  DU_1          anom=   354  TP=   354  FP= 25973  FN=     0  P=0.013  R=1.000  F1=0.027
+  DU_2          anom=   354  TP=   354  FP= 24560  FN=     0  P=0.014  R=1.000  F1=0.028
+  ------------------------------------------------------------------------
+  ANY           anom=  1415  TP=  1415  FP= 36034  FN=     0  P=0.038  R=1.000  F1=0.073
+
+Done.
+
+======================================================================
+  [UDP NATIVE] Cross-topology CPU stress detection
+  Train : ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']  (normal only, pooled)
+  Test  : cu3_du6du7du8du9    (native UDP test_csv data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (179494, 7)  du_s (179494, 2, 30)  (μ=-0.341, σ=8.388 after v0)
+  topo[1] cu1_du2             cu_s (179494, 7)  du_s (179494, 1, 30)  (μ=-0.515, σ=8.685 after v0)
+  topo[2] cu2_du3du4du5       cu_s (179494, 7)  du_s (179494, 3, 30)  (μ=-0.098, σ=17.416 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=179494  fit=143595  cal=35899
+  topo[1] cu1_du2            total=179494  fit=143595  cal=35899
+  topo[2] cu2_du3du4du5      total=179494  fit=143595  cal=35899
+
+[3] Loading model from checkpoint (model_UDP/random_model_ckpt_test_cu3_du6du7du8du9.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (35898, 7)  du_sqerr (35898, 2, 30)
+  topo[1] cu1_du2            cu_sqerr (35898, 7)  du_sqerr (35898, 1, 30)
+  topo[2] cu2_du3du4du5      cu_sqerr (35898, 7)  du_sqerr (35898, 3, 30)
+  Pooled cal rows: cu=107502  du(flat)=215004
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21] from scoring (feat_norm set to inf)
+  CU threshold (p99.9): 232.6212
+  DU threshold (p99.9): 218.5876
+
+[6] Transforming NATIVE TEST data (cu3_du6du7du8du9) with train-fitted scaler ...
+  cu_s_te (37867, 7)  du_s_te (37867, 4, 30)  (μ=-15.247, σ=25.026)
+  CU CPU-stress rows : 353
+  DU_0 CPU-stress rows: 354
+  DU_1 CPU-stress rows: 354
+  DU_2 CPU-stress rows: 354
+  DU_3 CPU-stress rows: 353
+
+[7] Running inference on new test stream ...
+  cu_sqerr (37866, 7)  du_sqerr (37866, 4, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/UDP_CPU_udp_native_my_model/recon_errors_cu3_du6du7du8du9_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   353  TP=   353  FP= 37449  FN=     0  P=0.009  R=1.000  F1=0.019
+  DU_0          anom=   354  TP=   354  FP= 24118  FN=     0  P=0.014  R=1.000  F1=0.029
+  DU_1          anom=   354  TP=   354  FP= 23053  FN=     0  P=0.015  R=1.000  F1=0.030
+  DU_2          anom=   354  TP=   354  FP= 13076  FN=     0  P=0.026  R=1.000  F1=0.051
+  DU_3          anom=   353  TP=   353  FP=  8344  FN=     0  P=0.041  R=1.000  F1=0.078
+  ------------------------------------------------------------------------
+  ANY           anom=  1768  TP=  1768  FP= 36034  FN=     0  P=0.047  R=1.000  F1=0.089
+
+Done.
+
+
+======================================================================
+  [UDP NATIVE] LEAVE-ONE-OUT SUMMARY — CPU  (4 configurations)
+======================================================================
+  Test topology                CU F1     DU_0 F1     DU_1 F1      ANY F1     DU_2 F1     DU_3 F1
+  --------------------------------------------------------------------
+  cu0_du0du1                   0.019       0.022       0.023       0.056         N/A         N/A
+  cu1_du2                      0.019       0.025         N/A       0.038         N/A         N/A
+  cu2_du3du4du5                0.019       0.070       0.027       0.073       0.028         N/A
+  cu3_du6du7du8du9             0.019       0.029       0.030       0.089       0.051       0.078
+  --------------------------------------------------------------------
+
+  Results appended → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/loo_results_udp_native.csv
+
+======================================================================
+  [UDP NATIVE] Cross-topology MEM stress detection
+  Train : ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu0_du0du1    (native UDP test_csv data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu1_du2             cu_s (179494, 7)  du_s (179494, 1, 30)  (μ=-0.585, σ=9.536 after v0)
+  topo[1] cu2_du3du4du5       cu_s (179494, 7)  du_s (179494, 3, 30)  (μ=-0.260, σ=19.283 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (179494, 7)  du_s (179494, 4, 30)  (μ=-0.221, σ=7.495 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu1_du2            total=179494  fit=143595  cal=35899
+  topo[1] cu2_du3du4du5      total=179494  fit=143595  cal=35899
+  topo[2] cu3_du6du7du8du9   total=179494  fit=143595  cal=35899
+
+[3] Loading model from checkpoint (model_UDP/random_model_ckpt_test_cu0_du0du1.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu1_du2            cu_sqerr (35898, 7)  du_sqerr (35898, 1, 30)
+  topo[1] cu2_du3du4du5      cu_sqerr (35898, 7)  du_sqerr (35898, 3, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (35898, 7)  du_sqerr (35898, 4, 30)
+  Pooled cal rows: cu=107502  du(flat)=286672
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21] from scoring (feat_norm set to inf)
+  CU threshold (p99.9): 236.1746
+  DU threshold (p99.9): 224.5985
+
+[6] Transforming NATIVE TEST data (cu0_du0du1) with train-fitted scaler ...
+  cu_s_te (37160, 7)  du_s_te (37160, 2, 30)  (μ=-11.127, σ=16.011)
+  CU MEM-stress rows : 353
+  DU_0 MEM-stress rows: 354
+  DU_1 MEM-stress rows: 354
+
+[7] Running inference on new test stream ...
+  cu_sqerr (37159, 7)  du_sqerr (37159, 2, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/UDP_MEM_udp_native_my_model/recon_errors_cu0_du0du1_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   353  TP=   353  FP= 36742  FN=     0  P=0.010  R=1.000  F1=0.019
+  DU_0          anom=   354  TP=   354  FP= 30868  FN=     0  P=0.011  R=1.000  F1=0.022
+  DU_1          anom=   354  TP=   354  FP= 29413  FN=     0  P=0.012  R=1.000  F1=0.024
+  ------------------------------------------------------------------------
+  ANY           anom=  1061  TP=  1061  FP= 36034  FN=     0  P=0.029  R=1.000  F1=0.056
+
+Done.
+
+======================================================================
+  [UDP NATIVE] Cross-topology MEM stress detection
+  Train : ['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu1_du2    (native UDP test_csv data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (179494, 7)  du_s (179494, 2, 30)  (μ=-0.536, σ=9.232 after v0)
+  topo[1] cu2_du3du4du5       cu_s (179494, 7)  du_s (179494, 3, 30)  (μ=-0.286, σ=19.230 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (179494, 7)  du_s (179494, 4, 30)  (μ=-0.198, σ=7.568 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=179494  fit=143595  cal=35899
+  topo[1] cu2_du3du4du5      total=179494  fit=143595  cal=35899
+  topo[2] cu3_du6du7du8du9   total=179494  fit=143595  cal=35899
+
+[3] Loading model from checkpoint (model_UDP/random_model_ckpt_test_cu1_du2.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (35898, 7)  du_sqerr (35898, 2, 30)
+  topo[1] cu2_du3du4du5      cu_sqerr (35898, 7)  du_sqerr (35898, 3, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (35898, 7)  du_sqerr (35898, 4, 30)
+  Pooled cal rows: cu=107502  du(flat)=322506
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21] from scoring (feat_norm set to inf)
+  CU threshold (p99.9): 236.2109
+  DU threshold (p99.9): 229.4546
+
+[6] Transforming NATIVE TEST data (cu1_du2) with train-fitted scaler ...
+  cu_s_te (36806, 7)  du_s_te (36806, 1, 30)  (μ=-16.490, σ=25.118)
+  CU MEM-stress rows : 354
+  DU_0 MEM-stress rows: 353
+
+[7] Running inference on new test stream ...
+  cu_sqerr (36805, 7)  du_sqerr (36805, 1, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/UDP_MEM_udp_native_my_model/recon_errors_cu1_du2_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   354  TP=   354  FP= 36387  FN=     0  P=0.010  R=1.000  F1=0.019
+  DU_0          anom=   353  TP=   353  FP= 27972  FN=     0  P=0.012  R=1.000  F1=0.025
+  ------------------------------------------------------------------------
+  ANY           anom=   707  TP=   707  FP= 36034  FN=     0  P=0.019  R=1.000  F1=0.038
+
+Done.
+
+======================================================================
+  [UDP NATIVE] Cross-topology MEM stress detection
+  Train : ['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu2_du3du4du5    (native UDP test_csv data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (179494, 7)  du_s (179494, 2, 30)  (μ=-0.336, σ=8.371 after v0)
+  topo[1] cu1_du2             cu_s (179494, 7)  du_s (179494, 1, 30)  (μ=-0.461, σ=8.679 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (179494, 7)  du_s (179494, 4, 30)  (μ=-0.096, σ=6.840 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=179494  fit=143595  cal=35899
+  topo[1] cu1_du2            total=179494  fit=143595  cal=35899
+  topo[2] cu3_du6du7du8du9   total=179494  fit=143595  cal=35899
+
+[3] Loading model from checkpoint (model_UDP/random_model_ckpt_test_cu2_du3du4du5.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (35898, 7)  du_sqerr (35898, 2, 30)
+  topo[1] cu1_du2            cu_sqerr (35898, 7)  du_sqerr (35898, 1, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (35898, 7)  du_sqerr (35898, 4, 30)
+  Pooled cal rows: cu=107502  du(flat)=250838
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21] from scoring (feat_norm set to inf)
+  CU threshold (p99.9): 224.4211
+  DU threshold (p99.9): 210.6421
+
+[6] Transforming NATIVE TEST data (cu2_du3du4du5) with train-fitted scaler ...
+  cu_s_te (37513, 7)  du_s_te (37513, 3, 30)  (μ=-10.482, σ=15.943)
+  CU MEM-stress rows : 353
+  DU_0 MEM-stress rows: 354
+  DU_1 MEM-stress rows: 353
+  DU_2 MEM-stress rows: 354
+
+[7] Running inference on new test stream ...
+  cu_sqerr (37512, 7)  du_sqerr (37512, 3, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/UDP_MEM_udp_native_my_model/recon_errors_cu2_du3du4du5_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   353  TP=   353  FP= 37095  FN=     0  P=0.009  R=1.000  F1=0.019
+  DU_0          anom=   354  TP=   353  FP=  9405  FN=     1  P=0.036  R=0.997  F1=0.070
+  DU_1          anom=   353  TP=   353  FP= 25973  FN=     0  P=0.013  R=1.000  F1=0.026
+  DU_2          anom=   354  TP=   354  FP= 24560  FN=     0  P=0.014  R=1.000  F1=0.028
+  ------------------------------------------------------------------------
+  ANY           anom=  1414  TP=  1414  FP= 36034  FN=     0  P=0.038  R=1.000  F1=0.073
+
+Done.
+
+======================================================================
+  [UDP NATIVE] Cross-topology MEM stress detection
+  Train : ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']  (normal only, pooled)
+  Test  : cu3_du6du7du8du9    (native UDP test_csv data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (179494, 7)  du_s (179494, 2, 30)  (μ=-0.341, σ=8.388 after v0)
+  topo[1] cu1_du2             cu_s (179494, 7)  du_s (179494, 1, 30)  (μ=-0.515, σ=8.685 after v0)
+  topo[2] cu2_du3du4du5       cu_s (179494, 7)  du_s (179494, 3, 30)  (μ=-0.098, σ=17.416 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=179494  fit=143595  cal=35899
+  topo[1] cu1_du2            total=179494  fit=143595  cal=35899
+  topo[2] cu2_du3du4du5      total=179494  fit=143595  cal=35899
+
+[3] Loading model from checkpoint (model_UDP/random_model_ckpt_test_cu3_du6du7du8du9.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (35898, 7)  du_sqerr (35898, 2, 30)
+  topo[1] cu1_du2            cu_sqerr (35898, 7)  du_sqerr (35898, 1, 30)
+  topo[2] cu2_du3du4du5      cu_sqerr (35898, 7)  du_sqerr (35898, 3, 30)
+  Pooled cal rows: cu=107502  du(flat)=215004
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21] from scoring (feat_norm set to inf)
+  CU threshold (p99.9): 232.6212
+  DU threshold (p99.9): 218.5876
+
+[6] Transforming NATIVE TEST data (cu3_du6du7du8du9) with train-fitted scaler ...
+  cu_s_te (37869, 7)  du_s_te (37869, 4, 30)  (μ=-15.388, σ=23.925)
+  CU MEM-stress rows : 354
+  DU_0 MEM-stress rows: 354
+  DU_1 MEM-stress rows: 354
+  DU_2 MEM-stress rows: 354
+  DU_3 MEM-stress rows: 354
+
+[7] Running inference on new test stream ...
+  cu_sqerr (37868, 7)  du_sqerr (37868, 4, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/UDP_MEM_udp_native_my_model/recon_errors_cu3_du6du7du8du9_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   354  TP=   354  FP= 37450  FN=     0  P=0.009  R=1.000  F1=0.019
+  DU_0          anom=   354  TP=   353  FP= 24138  FN=     1  P=0.014  R=0.997  F1=0.028
+  DU_1          anom=   354  TP=   353  FP= 23030  FN=     1  P=0.015  R=0.997  F1=0.030
+  DU_2          anom=   354  TP=   354  FP= 13289  FN=     0  P=0.026  R=1.000  F1=0.051
+  DU_3          anom=   354  TP=   354  FP=  8349  FN=     0  P=0.041  R=1.000  F1=0.078
+  ------------------------------------------------------------------------
+  ANY           anom=  1770  TP=  1770  FP= 36034  FN=     0  P=0.047  R=1.000  F1=0.089
+
+Done.
+
+
+======================================================================
+  [UDP NATIVE] LEAVE-ONE-OUT SUMMARY — MEM  (4 configurations)
+======================================================================
+  Test topology                CU F1     DU_0 F1     DU_1 F1      ANY F1     DU_2 F1     DU_3 F1
+  --------------------------------------------------------------------
+  cu0_du0du1                   0.019       0.022       0.024       0.056         N/A         N/A
+  cu1_du2                      0.019       0.025         N/A       0.038         N/A         N/A
+  cu2_du3du4du5                0.019       0.070       0.026       0.073       0.028         N/A
+  cu3_du6du7du8du9             0.019       0.028       0.030       0.089       0.051       0.078
+  --------------------------------------------------------------------
+
+  Results appended → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/loo_results_udp_native.csv
+
+======================================================================
+  [UDP NATIVE] Cross-topology NET stress detection
+  Train : ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu0_du0du1    (native UDP test_csv data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu1_du2             cu_s (179494, 7)  du_s (179494, 1, 30)  (μ=-0.585, σ=9.536 after v0)
+  topo[1] cu2_du3du4du5       cu_s (179494, 7)  du_s (179494, 3, 30)  (μ=-0.260, σ=19.283 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (179494, 7)  du_s (179494, 4, 30)  (μ=-0.221, σ=7.495 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu1_du2            total=179494  fit=143595  cal=35899
+  topo[1] cu2_du3du4du5      total=179494  fit=143595  cal=35899
+  topo[2] cu3_du6du7du8du9   total=179494  fit=143595  cal=35899
+
+[3] Loading model from checkpoint (model_UDP/random_model_ckpt_test_cu0_du0du1.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu1_du2            cu_sqerr (35898, 7)  du_sqerr (35898, 1, 30)
+  topo[1] cu2_du3du4du5      cu_sqerr (35898, 7)  du_sqerr (35898, 3, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (35898, 7)  du_sqerr (35898, 4, 30)
+  Pooled cal rows: cu=107502  du(flat)=286672
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21] from scoring (feat_norm set to inf)
+  CU threshold (p99.9): 236.1746
+  DU threshold (p99.9): 224.5985
+
+[6] Transforming NATIVE TEST data (cu0_du0du1) with train-fitted scaler ...
+  cu_s_te (37172, 7)  du_s_te (37172, 2, 30)  (μ=-11.205, σ=16.002)
+  CU NET-stress rows : 358
+  DU_0 NET-stress rows: 358
+  DU_1 NET-stress rows: 357
+
+[7] Running inference on new test stream ...
+  cu_sqerr (37171, 7)  du_sqerr (37171, 2, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/UDP_NET_udp_native_my_model/recon_errors_cu0_du0du1_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   358  TP=   358  FP= 36749  FN=     0  P=0.010  R=1.000  F1=0.019
+  DU_0          anom=   358  TP=   358  FP= 30873  FN=     0  P=0.011  R=1.000  F1=0.023
+  DU_1          anom=   357  TP=   357  FP= 29419  FN=     0  P=0.012  R=1.000  F1=0.024
+  ------------------------------------------------------------------------
+  ANY           anom=  1073  TP=  1073  FP= 36034  FN=     0  P=0.029  R=1.000  F1=0.056
+
+Done.
+
+======================================================================
+  [UDP NATIVE] Cross-topology NET stress detection
+  Train : ['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu1_du2    (native UDP test_csv data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (179494, 7)  du_s (179494, 2, 30)  (μ=-0.536, σ=9.232 after v0)
+  topo[1] cu2_du3du4du5       cu_s (179494, 7)  du_s (179494, 3, 30)  (μ=-0.286, σ=19.230 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (179494, 7)  du_s (179494, 4, 30)  (μ=-0.198, σ=7.568 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=179494  fit=143595  cal=35899
+  topo[1] cu2_du3du4du5      total=179494  fit=143595  cal=35899
+  topo[2] cu3_du6du7du8du9   total=179494  fit=143595  cal=35899
+
+[3] Loading model from checkpoint (model_UDP/random_model_ckpt_test_cu1_du2.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (35898, 7)  du_sqerr (35898, 2, 30)
+  topo[1] cu2_du3du4du5      cu_sqerr (35898, 7)  du_sqerr (35898, 3, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (35898, 7)  du_sqerr (35898, 4, 30)
+  Pooled cal rows: cu=107502  du(flat)=322506
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21] from scoring (feat_norm set to inf)
+  CU threshold (p99.9): 236.2109
+  DU threshold (p99.9): 229.4546
+
+[6] Transforming NATIVE TEST data (cu1_du2) with train-fitted scaler ...
+  cu_s_te (36815, 7)  du_s_te (36815, 1, 30)  (μ=-16.612, σ=24.991)
+  CU NET-stress rows : 358
+  DU_0 NET-stress rows: 358
+
+[7] Running inference on new test stream ...
+  cu_sqerr (36814, 7)  du_sqerr (36814, 1, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/UDP_NET_udp_native_my_model/recon_errors_cu1_du2_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   358  TP=   358  FP= 36392  FN=     0  P=0.010  R=1.000  F1=0.019
+  DU_0          anom=   358  TP=   358  FP= 27974  FN=     0  P=0.013  R=1.000  F1=0.025
+  ------------------------------------------------------------------------
+  ANY           anom=   716  TP=   716  FP= 36034  FN=     0  P=0.019  R=1.000  F1=0.038
+
+Done.
+
+======================================================================
+  [UDP NATIVE] Cross-topology NET stress detection
+  Train : ['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9']  (normal only, pooled)
+  Test  : cu2_du3du4du5    (native UDP test_csv data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (179494, 7)  du_s (179494, 2, 30)  (μ=-0.336, σ=8.371 after v0)
+  topo[1] cu1_du2             cu_s (179494, 7)  du_s (179494, 1, 30)  (μ=-0.461, σ=8.679 after v0)
+  topo[2] cu3_du6du7du8du9    cu_s (179494, 7)  du_s (179494, 4, 30)  (μ=-0.096, σ=6.840 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=179494  fit=143595  cal=35899
+  topo[1] cu1_du2            total=179494  fit=143595  cal=35899
+  topo[2] cu3_du6du7du8du9   total=179494  fit=143595  cal=35899
+
+[3] Loading model from checkpoint (model_UDP/random_model_ckpt_test_cu2_du3du4du5.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (35898, 7)  du_sqerr (35898, 2, 30)
+  topo[1] cu1_du2            cu_sqerr (35898, 7)  du_sqerr (35898, 1, 30)
+  topo[2] cu3_du6du7du8du9   cu_sqerr (35898, 7)  du_sqerr (35898, 4, 30)
+  Pooled cal rows: cu=107502  du(flat)=250838
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21] from scoring (feat_norm set to inf)
+  CU threshold (p99.9): 224.4211
+  DU threshold (p99.9): 210.6421
+
+[6] Transforming NATIVE TEST data (cu2_du3du4du5) with train-fitted scaler ...
+  cu_s_te (37531, 7)  du_s_te (37531, 3, 30)  (μ=-10.577, σ=15.754)
+  CU NET-stress rows : 358
+  DU_0 NET-stress rows: 358
+  DU_1 NET-stress rows: 358
+  DU_2 NET-stress rows: 358
+
+[7] Running inference on new test stream ...
+  cu_sqerr (37530, 7)  du_sqerr (37530, 3, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/UDP_NET_udp_native_my_model/recon_errors_cu2_du3du4du5_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   358  TP=   358  FP= 37108  FN=     0  P=0.010  R=1.000  F1=0.019
+  DU_0          anom=   358  TP=   179  FP=  9396  FN=   179  P=0.019  R=0.500  F1=0.036
+  DU_1          anom=   358  TP=   358  FP= 25981  FN=     0  P=0.014  R=1.000  F1=0.027
+  DU_2          anom=   358  TP=   358  FP= 24566  FN=     0  P=0.014  R=1.000  F1=0.028
+  ------------------------------------------------------------------------
+  ANY           anom=  1432  TP=  1432  FP= 36034  FN=     0  P=0.038  R=1.000  F1=0.074
+
+Done.
+
+======================================================================
+  [UDP NATIVE] Cross-topology NET stress detection
+  Train : ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']  (normal only, pooled)
+  Test  : cu3_du6du7du8du9    (native UDP test_csv data, unseen topology)
+  Device        : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (179494, 7)  du_s (179494, 2, 30)  (μ=-0.341, σ=8.388 after v0)
+  topo[1] cu1_du2             cu_s (179494, 7)  du_s (179494, 1, 30)  (μ=-0.515, σ=8.685 after v0)
+  topo[2] cu2_du3du4du5       cu_s (179494, 7)  du_s (179494, 3, 30)  (μ=-0.098, σ=17.416 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu0_du0du1         total=179494  fit=143595  cal=35899
+  topo[1] cu1_du2            total=179494  fit=143595  cal=35899
+  topo[2] cu2_du3du4du5      total=179494  fit=143595  cal=35899
+
+[3] Loading model from checkpoint (model_UDP/random_model_ckpt_test_cu3_du6du7du8du9.pt) ...
+
+[4] Inference on held-out CAL streams (per topology, pooled for calibration) ...
+  topo[0] cu0_du0du1         cu_sqerr (35898, 7)  du_sqerr (35898, 2, 30)
+  topo[1] cu1_du2            cu_sqerr (35898, 7)  du_sqerr (35898, 1, 30)
+  topo[2] cu2_du3du4du5      cu_sqerr (35898, 7)  du_sqerr (35898, 3, 30)
+  Pooled cal rows: cu=107502  du(flat)=215004
+
+[5] Calibrating thresholds on POOLED cal stream (no test labels) ...
+  Excluding DU feature indices [12, 21] from scoring (feat_norm set to inf)
+  CU threshold (p99.9): 232.6212
+  DU threshold (p99.9): 218.5876
+
+[6] Transforming NATIVE TEST data (cu3_du6du7du8du9) with train-fitted scaler ...
+  cu_s_te (37889, 7)  du_s_te (37889, 4, 30)  (μ=-15.491, σ=23.800)
+  CU NET-stress rows : 358
+  DU_0 NET-stress rows: 357
+  DU_1 NET-stress rows: 359
+  DU_2 NET-stress rows: 358
+  DU_3 NET-stress rows: 358
+
+[7] Running inference on new test stream ...
+  cu_sqerr (37888, 7)  du_sqerr (37888, 4, 30)
+  Errors saved → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/exp_runs/UDP_NET_udp_native_my_model/recon_errors_cu3_du6du7du8du9_f7.npz
+
+[8] Evaluation results ...
+
+  Entity          anom      TP      FP      FN      P      R     F1
+  ------------------------------------------------------------------------
+  CU            anom=   358  TP=   358  FP= 37466  FN=     0  P=0.009  R=1.000  F1=0.019
+  DU_0          anom=   357  TP=   357  FP= 24134  FN=     0  P=0.015  R=1.000  F1=0.029
+  DU_1          anom=   359  TP=   359  FP= 23036  FN=     0  P=0.015  R=1.000  F1=0.030
+  DU_2          anom=   358  TP=   179  FP= 13258  FN=   179  P=0.013  R=0.500  F1=0.026
+  DU_3          anom=   358  TP=   179  FP=  8324  FN=   179  P=0.021  R=0.500  F1=0.040
+  ------------------------------------------------------------------------
+  ANY           anom=  1790  TP=  1790  FP= 36034  FN=     0  P=0.047  R=1.000  F1=0.090
+
+Done.
+
+
+======================================================================
+  [UDP NATIVE] LEAVE-ONE-OUT SUMMARY — NET  (4 configurations)
+======================================================================
+  Test topology                CU F1     DU_0 F1     DU_1 F1      ANY F1     DU_2 F1     DU_3 F1
+  --------------------------------------------------------------------
+  cu0_du0du1                   0.019       0.023       0.024       0.056         N/A         N/A
+  cu1_du2                      0.019       0.025         N/A       0.038         N/A         N/A
+  cu2_du3du4du5                0.019       0.036       0.027       0.074       0.028         N/A
+  cu3_du6du7du8du9             0.019       0.029       0.030       0.090       0.026       0.040
+  --------------------------------------------------------------------
+
+  Results appended → /home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline/loo_results_udp_native.csv

@@ -1,0 +1,11 @@
+Topology   : cu0_du0du1
+Stress type: 2 = MEM
+Train CSV  : data_input/train_normal_th3.csv
+Test CSV   : data_input/test_anomaly_th3.csv
+
+TEST ROW BREAKDOWN
+  Total rows         :  37,160
+  Truly normal       :  36,099  (all stress=0)
+  CU MEM stress     :     353
+  DU MEM stress     :     708
+  Total anomaly rows :   1,061

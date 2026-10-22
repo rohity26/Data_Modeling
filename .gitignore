@@ -1,0 +1,38 @@
+# Reference/vendored code, not part of this project (~11G)
+topaz/
+
+# Large datasets and generated data, anywhere in the repo
+*.npz
+*.npz.*
+*.csv
+*.xlsx
+*.pcap
+
+# Run artifacts / output dumps
+clear_pipeline/output/
+clear_pipeline/exp_runs/
+
+# Trained model checkpoints
+*.pt
+*.pth
+
+# Generated plots
+*.png
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp

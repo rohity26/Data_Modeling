@@ -1,0 +1,50 @@
+Ready topologies (checkpoint exists): ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']
+
+======================================================================
+  STRESS = CPU
+======================================================================
+cu0_du0du1: cu_thr=172.605 du_thr=208.572
+  CU0    (srscu0  ) n= 714 anom= 238 tp= 235 fp=   1 fn=   3 thr=172.60
+  DU0    (srsdu0  ) n= 807 anom= 270 tp= 267 fp=   0 fn=   3 thr=208.57
+  DU1    (srsdu1  ) n= 723 anom= 241 tp= 234 fp=   7 fn=   7 thr=208.57
+cu1_du2: cu_thr=198.106 du_thr=246.575
+  CU1    (srscu1  ) n= 736 anom= 250 tp= 248 fp=   0 fn=   2 thr=198.11
+  DU2    (srsdu2  ) n= 712 anom= 247 tp= 226 fp=   1 fn=  21 thr=246.57
+cu2_du3du4du5: cu_thr=177.363 du_thr=236.803
+  CU2    (srscu2  ) n= 723 anom= 245 tp= 242 fp=   0 fn=   3 thr=177.36
+  DU3    (srsdu3  ) n= 789 anom= 267 tp=  44 fp=   0 fn= 223 thr=236.80
+  DU4    (srsdu4  ) n= 743 anom= 248 tp= 155 fp=   0 fn=  93 thr=236.80
+  DU5    (srsdu5  ) n= 739 anom= 250 tp=  53 fp=   0 fn= 197 thr=236.80
+
+======================================================================
+  STRESS = MEM
+======================================================================
+cu0_du0du1: cu_thr=172.605 du_thr=208.572
+  CU0    (srscu0  ) n= 700 anom= 234 tp= 231 fp=   2 fn=   3 thr=172.60
+  DU0    (srsdu0  ) n= 687 anom= 230 tp= 228 fp=   1 fn=   2 thr=208.57
+  DU1    (srsdu1  ) n= 724 anom= 253 tp= 250 fp=   0 fn=   3 thr=208.57
+cu1_du2: cu_thr=198.106 du_thr=246.575
+  CU1    (srscu1  ) n= 702 anom= 237 tp= 235 fp=   0 fn=   2 thr=198.11
+  DU2    (srsdu2  ) n= 739 anom= 249 tp= 246 fp=   1 fn=   3 thr=246.57
+cu2_du3du4du5: cu_thr=177.363 du_thr=236.803
+  CU2    (srscu2  ) n= 728 anom= 247 tp= 245 fp=   0 fn=   2 thr=177.36
+  DU3    (srsdu3  ) n= 716 anom= 240 tp= 238 fp=   0 fn=   2 thr=236.80
+  DU4    (srsdu4  ) n= 688 anom= 231 tp= 227 fp=   0 fn=   4 thr=236.80
+  DU5    (srsdu5  ) n= 689 anom= 230 tp= 227 fp=   1 fn=   3 thr=236.80
+
+======================================================================
+  STRESS = NET
+======================================================================
+cu0_du0du1: cu_thr=172.605 du_thr=208.572
+  CU0    (srscu0  ) n= 710 anom= 239 tp=  45 fp=   0 fn= 194 thr=172.60
+  DU0    (srsdu0  ) n= 693 anom= 234 tp= 221 fp=   0 fn=  13 thr=208.57
+  DU1    (srsdu1  ) n= 738 anom= 248 tp= 240 fp=   0 fn=   8 thr=208.57
+cu1_du2: cu_thr=198.106 du_thr=246.575
+  CU1    (srscu1  ) n= 734 anom= 243 tp= 102 fp=  13 fn= 141 thr=198.11
+  DU2    (srsdu2  ) n= 766 anom= 261 tp= 260 fp=   0 fn=   1 thr=246.57
+cu2_du3du4du5: cu_thr=177.363 du_thr=236.803
+  CU2    (srscu2  ) n= 740 anom= 250 tp=  58 fp=   2 fn= 192 thr=177.36
+  DU3    (srsdu3  ) n= 752 anom= 251 tp= 246 fp=   0 fn=   5 thr=236.80
+  DU4    (srsdu4  ) n= 751 anom= 261 tp= 255 fp=   1 fn=   6 thr=236.80
+  DU5    (srsdu5  ) n= 752 anom= 250 tp= 249 fp=   0 fn=   1 thr=236.80
+saved

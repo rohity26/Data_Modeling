@@ -1,0 +1,5 @@
+Topology   : cu3_du6du7du8du9
+Train CSV  : data_input/train_normal_dl_udp_50h.csv
+Test CSV   : (none — train-only build)
+
+TRAIN ROW COUNT: 143,836

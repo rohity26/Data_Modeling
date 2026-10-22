@@ -1,0 +1,5 @@
+Topology   : cu0_7du
+Train CSV  : data_input/train_normal_1cu7du_50h.csv
+Test CSV   : (none — train-only build)
+
+TRAIN ROW COUNT: 179,795

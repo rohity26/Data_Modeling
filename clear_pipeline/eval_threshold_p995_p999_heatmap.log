@@ -1,0 +1,74 @@
+
+### original|cu0_du0du1 trained on ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+  thr(p99.5)=158.2217  thr(p99.9)=172.6045
+  CPU p99.5: F1=0.989
+  CPU p99.9: F1=0.992
+  MEM p99.5: F1=0.985
+  MEM p99.9: F1=0.989
+  NET p99.5: F1=0.367
+  NET p99.9: F1=0.317
+
+### original|cu1_du2 trained on ['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+  thr(p99.5)=146.4059  thr(p99.9)=198.1063
+  CPU p99.5: F1=0.996
+  CPU p99.9: F1=0.996
+  MEM p99.5: F1=0.996
+  MEM p99.9: F1=0.996
+  NET p99.5: F1=0.579
+  NET p99.9: F1=0.366
+
+### original|cu2_du3du4du5 trained on ['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9']
+  thr(p99.5)=154.2113  thr(p99.9)=177.3628
+  CPU p99.5: F1=0.990
+  CPU p99.9: F1=0.994
+  MEM p99.5: F1=0.994
+  MEM p99.9: F1=0.996
+  NET p99.5: F1=0.431
+  NET p99.9: F1=0.374
+
+### original|cu3_du6du7du8du9 trained on ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']
+  thr(p99.5)=147.7542  thr(p99.9)=173.5762
+  CPU p99.5: F1=0.992
+  CPU p99.9: F1=0.992
+  MEM p99.5: F1=0.991
+  MEM p99.9: F1=0.991
+  NET p99.5: F1=0.014
+  NET p99.9: F1=0.007
+
+### new|cu1_du2 trained on ['cu3_du6du7du8du9', 'cu0_7du', 'cu0_10du']
+  thr(p99.5)=157.4759  thr(p99.9)=222.9122
+  CPU p99.5: F1=0.978
+  CPU p99.9: F1=0.988
+  MEM p99.5: F1=0.957
+  MEM p99.9: F1=0.973
+  NET p99.5: F1=0.825
+  NET p99.9: F1=0.747
+
+### new|cu3_du6du7du8du9 trained on ['cu1_du2', 'cu0_7du', 'cu0_10du']
+  thr(p99.5)=148.2432  thr(p99.9)=222.7874
+  CPU p99.5: F1=0.992
+  CPU p99.9: F1=0.994
+  MEM p99.5: F1=0.989
+  MEM p99.9: F1=0.991
+  NET p99.5: F1=0.196
+  NET p99.9: F1=0.014
+
+### new|cu0_7du trained on ['cu1_du2', 'cu3_du6du7du8du9', 'cu0_10du']
+  thr(p99.5)=160.0947  thr(p99.9)=199.1851
+  CPU p99.5: F1=0.995
+  CPU p99.9: F1=0.997
+  MEM p99.5: F1=0.992
+  MEM p99.9: F1=0.993
+  NET p99.5: F1=0.020
+  NET p99.9: F1=0.000
+
+### new|cu0_10du trained on ['cu1_du2', 'cu3_du6du7du8du9', 'cu0_7du']
+  thr(p99.5)=152.8401  thr(p99.9)=206.3089
+  CPU p99.5: F1=0.989
+  CPU p99.9: F1=0.994
+  MEM p99.5: F1=0.992
+  MEM p99.9: F1=0.994
+  NET p99.5: F1=0.025
+  NET p99.9: F1=0.000
+
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_p995_p999_heatmap.js

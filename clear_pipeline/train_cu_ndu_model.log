@@ -1,0 +1,124 @@
+
+======================================================================
+  LOO fold: held out = cu0_du0du1
+  Train on: ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+  Device  : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu1_du2             cu_s (150437, 8)  du_s (150437, 1, 30)  (mu=-0.445, sigma=1.756)
+  topo[1] cu2_du3du4du5       cu_s (150437, 8)  du_s (150437, 3, 30)  (mu=-0.093, sigma=1.736)
+  topo[2] cu3_du6du7du8du9    cu_s (150437, 8)  du_s (150437, 4, 30)  (mu=-0.010, sigma=1.828)
+
+[2] Per-topology fit/cal split (cal_frac=0.2, cal unused here -- training only) ...
+  topo[0] cu1_du2            total=150437  fit=120350  cal(unused)=30087
+  topo[1] cu2_du3du4du5      total=150437  fit=120350  cal(unused)=30087
+  topo[2] cu3_du6du7du8du9   total=150437  fit=120350  cal(unused)=30087
+
+[3] Training CalibratedTopoAR ...
+  cu_dim=8 (expect 8, was 7 before adding N_DU)  du_dim=30
+  topo[0] cu1_du2            N_DU=1  windows=120287  (train=108258, val=12029)
+  topo[1] cu2_du3du4du5      N_DU=3  windows=120287  (train=108258, val=12029)
+  topo[2] cu3_du6du7du8du9   N_DU=4  windows=120287  (train=108258, val=12029)
+  epoch   1  tr=14033311.40032  val=13409519.00709
+  epoch  10  tr=12619489.48700  val=12658609.64539
+  epoch  20  tr=12402745.39165  val=12523312.12057
+  epoch  30  tr=12234341.53270  val=12303934.84397
+  epoch  40  tr=12102299.52009  val=12123820.48227
+  epoch  50  tr=12017226.37273  val=12013861.40426
+  epoch  60  tr=11965847.08983  val=12017176.29078
+  epoch  70  tr=11851104.63121  val=11871638.52482
+  epoch  80  tr=11821966.43184  val=11823215.75887
+  epoch  90  tr=11781670.81639  val=11826991.60284
+  epoch 100  tr=11686376.23168  val=11764818.52482
+  epoch 110  tr=11683850.53664  val=11672302.70922
+  Early stop at epoch 115  (best_val=11672302.70922)
+  Model saved -> model_TCP_NDU_backup/random_model_ckpt_test_cu0_du0du1.pt
+
+======================================================================
+  LOO fold: held out = cu1_du2
+  Train on: ['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+  Device  : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (150437, 8)  du_s (150437, 2, 30)  (mu=-0.446, sigma=2.152)
+  topo[1] cu2_du3du4du5       cu_s (150437, 8)  du_s (150437, 3, 30)  (mu=-0.082, sigma=2.118)
+  topo[2] cu3_du6du7du8du9    cu_s (150437, 8)  du_s (150437, 4, 30)  (mu=+0.056, sigma=2.219)
+
+[2] Per-topology fit/cal split (cal_frac=0.2, cal unused here -- training only) ...
+  topo[0] cu0_du0du1         total=150437  fit=120350  cal(unused)=30087
+  topo[1] cu2_du3du4du5      total=150437  fit=120350  cal(unused)=30087
+  topo[2] cu3_du6du7du8du9   total=150437  fit=120350  cal(unused)=30087
+
+[3] Training CalibratedTopoAR ...
+  cu_dim=8 (expect 8, was 7 before adding N_DU)  du_dim=30
+  topo[0] cu0_du0du1         N_DU=2  windows=120287  (train=108258, val=12029)
+  topo[1] cu2_du3du4du5      N_DU=3  windows=120287  (train=108258, val=12029)
+  topo[2] cu3_du6du7du8du9   N_DU=4  windows=120287  (train=108258, val=12029)
+  epoch   1  tr=13641855.66824  val=13032888.14184
+  epoch  10  tr=12649788.16076  val=12661668.83688
+  Early stop at epoch 11  (best_val=12506473.89362)
+  Model saved -> model_TCP_NDU_backup/random_model_ckpt_test_cu1_du2.pt
+
+======================================================================
+  LOO fold: held out = cu2_du3du4du5
+  Train on: ['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9']
+  Device  : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (150437, 8)  du_s (150437, 2, 30)  (mu=-0.194, sigma=1.728)
+  topo[1] cu1_du2             cu_s (150437, 8)  du_s (150437, 1, 30)  (mu=-0.275, sigma=1.693)
+  topo[2] cu3_du6du7du8du9    cu_s (150437, 8)  du_s (150437, 4, 30)  (mu=+0.181, sigma=1.803)
+
+[2] Per-topology fit/cal split (cal_frac=0.2, cal unused here -- training only) ...
+  topo[0] cu0_du0du1         total=150437  fit=120350  cal(unused)=30087
+  topo[1] cu1_du2            total=150437  fit=120350  cal(unused)=30087
+  topo[2] cu3_du6du7du8du9   total=150437  fit=120350  cal(unused)=30087
+
+[3] Training CalibratedTopoAR ...
+  cu_dim=8 (expect 8, was 7 before adding N_DU)  du_dim=30
+  topo[0] cu0_du0du1         N_DU=2  windows=120287  (train=108258, val=12029)
+  topo[1] cu1_du2            N_DU=1  windows=120287  (train=108258, val=12029)
+  topo[2] cu3_du6du7du8du9   N_DU=4  windows=120287  (train=108258, val=12029)
+  epoch   1  tr=13629502.01655  val=13031742.35461
+  epoch  10  tr=12284776.36958  val=12324208.41844
+  epoch  20  tr=12135205.19070  val=12174026.09220
+  epoch  30  tr=12026141.17021  val=12034793.73759
+  epoch  40  tr=11965176.27817  val=12069423.77305
+  epoch  50  tr=11866050.07171  val=12003678.42553
+  Early stop at epoch 54  (best_val=11861900.77305)
+  Model saved -> model_TCP_NDU_backup/random_model_ckpt_test_cu2_du3du4du5.pt
+
+======================================================================
+  LOO fold: held out = cu3_du6du7du8du9
+  Train on: ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']
+  Device  : cuda
+======================================================================
+
+[1] Loading 3 train topologies, fitting v0 scaler ...
+  topo[0] cu0_du0du1          cu_s (150437, 8)  du_s (150437, 2, 30)  (mu=-0.223, sigma=2.109)
+  topo[1] cu1_du2             cu_s (150437, 8)  du_s (150437, 1, 30)  (mu=-0.360, sigma=2.083)
+  topo[2] cu2_du3du4du5       cu_s (150437, 8)  du_s (150437, 3, 30)  (mu=+0.126, sigma=2.097)
+
+[2] Per-topology fit/cal split (cal_frac=0.2, cal unused here -- training only) ...
+  topo[0] cu0_du0du1         total=150437  fit=120350  cal(unused)=30087
+  topo[1] cu1_du2            total=150437  fit=120350  cal(unused)=30087
+  topo[2] cu2_du3du4du5      total=150437  fit=120350  cal(unused)=30087
+
+[3] Training CalibratedTopoAR ...
+  cu_dim=8 (expect 8, was 7 before adding N_DU)  du_dim=30
+  topo[0] cu0_du0du1         N_DU=2  windows=120287  (train=108258, val=12029)
+  topo[1] cu1_du2            N_DU=1  windows=120287  (train=108258, val=12029)
+  topo[2] cu2_du3du4du5      N_DU=3  windows=120287  (train=108258, val=12029)
+  epoch   1  tr=13628725.09220  val=13040036.12766
+  epoch  10  tr=12320207.65563  val=12359049.53191
+  epoch  20  tr=12129848.07407  val=12209481.65248
+  epoch  30  tr=11992599.71631  val=12027653.31206
+  epoch  40  tr=11928589.82506  val=11999011.92199
+  Early stop at epoch 42  (best_val=11919868.72340)
+  Model saved -> model_TCP_NDU_backup/random_model_ckpt_test_cu3_du6du7du8du9.pt
+
+
+All 4 LOO folds done. Checkpoints in model_TCP_NDU_backup/

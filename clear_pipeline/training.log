@@ -1,0 +1,23 @@
+/home/rohit/.local/lib/python3.10/site-packages/torch/utils/data/dataloader.py:1095: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+
+======================================================================
+  Cross-topology NET stress detection (multi-train + RobustScaler v0)
+  Train : ['cu1_du2', 'cu2_du3du4du5']  (normal only, pooled)
+  Test  : cu0_du0du1    (unseen topology)
+  Preprocessing : RobustScaler v0  (raw thresholds, no cold-start probe)
+  CU features   : 5   DU features: 25
+  Device        : cpu
+======================================================================
+
+[1] Loading 2 train topologies, fitting v0 scaler ...
+  topo[0] cu1_du2             cu_s (256130, 7)  du_s (256130, 1, 27)  (μ=-202349.609, σ=1133660.375 after v0)
+  topo[1] cu2_du3du4du5       cu_s (256130, 7)  du_s (256130, 3, 27)  (μ=-183089.047, σ=1129409.375 after v0)
+
+[2] Per-topology fit/cal split (cal_frac=0.2) ...
+  topo[0] cu1_du2            total=256130  fit=204904  cal=51226
+  topo[1] cu2_du3du4du5      total=256130  fit=204904  cal=51226
+
+[3] Training CalibratedTopoAR on 2 topologies (cu_dim=7, du_dim=27, embed=32) ...
+  topo[0] cu1_du2            N_DU=1  windows=204841  (train=184357, val=20484)
+  topo[1] cu2_du3du4du5      N_DU=3  windows=204841  (train=184357, val=20484)

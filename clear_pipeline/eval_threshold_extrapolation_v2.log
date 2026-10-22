@@ -1,0 +1,132 @@
+====================================================================================================
+THRESHOLD-VS-N_DU EXTRAPOLATION EXPERIMENT -- all 8 existing checkpoints, no retraining
+====================================================================================================
+
+####################################################################################################
+REGISTRY: original (1/2/3/4-DU)
+####################################################################################################
+
+### held-out=cu0_du0du1 (N_DU=2)  trained on ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+  per-topology thr: cu1_du2              N_DU= 1  thr(p99.0)=52.9599
+  per-topology thr: cu2_du3du4du5        N_DU= 3  thr(p99.0)=56.5196
+  per-topology thr: cu3_du6du7du8du9     N_DU= 4  thr(p99.0)=61.4242
+  fitted line: thr = 61.7205 + -9.0049 * (1/N_DU)
+  extrapolated threshold at held-out N_DU=2: 57.2180
+  baseline pooled threshold (current method): 63.5424
+  CPU: baseline(thr=63.54) P=0.992 R=0.987 F1=0.989   |   extrap(thr=57.22) P=0.992 R=0.987 F1=0.989
+  MEM: baseline(thr=63.54) P=0.983 R=0.987 F1=0.985   |   extrap(thr=57.22) P=0.983 R=0.987 F1=0.985
+  NET: baseline(thr=63.54) P=0.993 R=0.556 F1=0.713   |   extrap(thr=57.22) P=0.987 R=0.615 F1=0.758
+
+### held-out=cu1_du2 (N_DU=1)  trained on ['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+  per-topology thr: cu0_du0du1           N_DU= 2  thr(p99.0)=62.4529
+  per-topology thr: cu2_du3du4du5        N_DU= 3  thr(p99.0)=59.4977
+  per-topology thr: cu3_du6du7du8du9     N_DU= 4  thr(p99.0)=71.2248
+  fitted line: thr = 74.3376 + -27.5422 * (1/N_DU)
+  extrapolated threshold at held-out N_DU=1: 46.7954
+  baseline pooled threshold (current method): 66.4020
+  CPU: baseline(thr=66.40) P=0.965 R=0.992 F1=0.978   |   extrap(thr=46.80) P=0.925 R=0.992 F1=0.958
+  MEM: baseline(thr=66.40) P=0.925 R=0.992 F1=0.957   |   extrap(thr=46.80) P=0.900 R=0.992 F1=0.944
+  NET: baseline(thr=66.40) P=0.741 R=0.695 F1=0.718   |   extrap(thr=46.80) P=0.734 R=0.782 F1=0.757
+
+### held-out=cu2_du3du4du5 (N_DU=3)  trained on ['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9']
+  per-topology thr: cu0_du0du1           N_DU= 2  thr(p99.0)=55.8227
+  per-topology thr: cu1_du2              N_DU= 1  thr(p99.0)=51.2008
+  per-topology thr: cu3_du6du7du8du9     N_DU= 4  thr(p99.0)=55.4523
+  fitted line: thr = 57.7633 + -6.1794 * (1/N_DU)
+  extrapolated threshold at held-out N_DU=3: 55.7035
+  baseline pooled threshold (current method): 58.8343
+  CPU: baseline(thr=58.83) P=0.984 R=0.988 F1=0.986   |   extrap(thr=55.70) P=0.984 R=0.988 F1=0.986
+  MEM: baseline(thr=58.83) P=0.992 R=0.992 F1=0.992   |   extrap(thr=55.70) P=0.992 R=0.992 F1=0.992
+  NET: baseline(thr=58.83) P=0.879 R=0.608 F1=0.719   |   extrap(thr=55.70) P=0.882 R=0.628 F1=0.734
+
+### held-out=cu3_du6du7du8du9 (N_DU=4)  trained on ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']
+  per-topology thr: cu0_du0du1           N_DU= 2  thr(p99.0)=59.8459
+  per-topology thr: cu1_du2              N_DU= 1  thr(p99.0)=51.7465
+  per-topology thr: cu2_du3du4du5        N_DU= 3  thr(p99.0)=54.9415
+  fitted line: thr = 60.0486 + -7.4247 * (1/N_DU)
+  extrapolated threshold at held-out N_DU=4: 58.1924
+  baseline pooled threshold (current method): 58.2341
+  CPU: baseline(thr=58.23) P=0.992 R=0.989 F1=0.991   |   extrap(thr=58.19) P=0.992 R=0.989 F1=0.991
+  MEM: baseline(thr=58.23) P=0.982 R=0.989 F1=0.986   |   extrap(thr=58.19) P=0.982 R=0.989 F1=0.986
+  NET: baseline(thr=58.23) P=0.982 R=0.661 F1=0.790   |   extrap(thr=58.19) P=0.982 R=0.661 F1=0.790
+
+####################################################################################################
+REGISTRY: new (1/4/7/10-DU)
+####################################################################################################
+
+### held-out=cu1_du2 (N_DU=1)  trained on ['cu3_du6du7du8du9', 'cu0_7du', 'cu0_10du']
+  per-topology thr: cu3_du6du7du8du9     N_DU= 4  thr(p99.0)=57.7123
+  per-topology thr: cu0_7du              N_DU= 7  thr(p99.0)=49.3976
+  per-topology thr: cu0_10du             N_DU=10  thr(p99.0)=49.2310
+  fitted line: thr = 42.1592 + 60.5922 * (1/N_DU)
+  extrapolated threshold at held-out N_DU=1: 102.7514
+  baseline pooled threshold (current method): 49.0719
+  CPU: baseline(thr=49.07) P=0.858 R=0.992 F1=0.920   |   extrap(thr=102.75) P=0.922 R=0.992 F1=0.956
+  MEM: baseline(thr=49.07) P=0.819 R=0.992 F1=0.897   |   extrap(thr=102.75) P=0.883 R=0.992 F1=0.934
+  NET: baseline(thr=49.07) P=0.682 R=0.881 F1=0.768   |   extrap(thr=102.75) P=0.739 R=0.794 F1=0.766
+
+### held-out=cu3_du6du7du8du9 (N_DU=4)  trained on ['cu1_du2', 'cu0_7du', 'cu0_10du']
+  per-topology thr: cu1_du2              N_DU= 1  thr(p99.0)=49.1879
+  per-topology thr: cu0_7du              N_DU= 7  thr(p99.0)=49.1028
+  per-topology thr: cu0_10du             N_DU=10  thr(p99.0)=48.0206
+  fitted line: thr = 48.4570 + 0.7565 * (1/N_DU)
+  extrapolated threshold at held-out N_DU=4: 48.6462
+  baseline pooled threshold (current method): 53.8673
+  CPU: baseline(thr=53.87) P=0.992 R=0.989 F1=0.991   |   extrap(thr=48.65) P=0.992 R=0.989 F1=0.991
+  MEM: baseline(thr=53.87) P=0.982 R=0.989 F1=0.986   |   extrap(thr=48.65) P=0.982 R=0.989 F1=0.986
+  NET: baseline(thr=53.87) P=0.986 R=0.894 F1=0.938   |   extrap(thr=48.65) P=0.987 R=0.922 F1=0.954
+
+### held-out=cu0_7du (N_DU=7)  trained on ['cu1_du2', 'cu3_du6du7du8du9', 'cu0_10du']
+  per-topology thr: cu1_du2              N_DU= 1  thr(p99.0)=46.8785
+  per-topology thr: cu3_du6du7du8du9     N_DU= 4  thr(p99.0)=50.3970
+  per-topology thr: cu0_10du             N_DU=10  thr(p99.0)=48.6814
+  fitted line: thr = 49.9440 + -2.8704 * (1/N_DU)
+  extrapolated threshold at held-out N_DU=7: 49.5339
+  baseline pooled threshold (current method): 57.2558
+  CPU: baseline(thr=57.26) P=0.997 R=0.993 F1=0.995   |   extrap(thr=49.53) P=0.993 R=0.993 F1=0.993
+  MEM: baseline(thr=57.26) P=0.997 R=0.987 F1=0.992   |   extrap(thr=49.53) P=0.997 R=0.990 F1=0.993
+  NET: baseline(thr=57.26) P=1.000 R=0.983 F1=0.992   |   extrap(thr=49.53) P=1.000 R=0.983 F1=0.992
+
+### held-out=cu0_10du (N_DU=10)  trained on ['cu1_du2', 'cu3_du6du7du8du9', 'cu0_7du']
+  per-topology thr: cu1_du2              N_DU= 1  thr(p99.0)=48.0908
+  per-topology thr: cu3_du6du7du8du9     N_DU= 4  thr(p99.0)=44.5411
+  per-topology thr: cu0_7du              N_DU= 7  thr(p99.0)=48.9755
+  fitted line: thr = 46.6955 + 1.0918 * (1/N_DU)
+  extrapolated threshold at held-out N_DU=10: 46.8047
+  baseline pooled threshold (current method): 51.7845
+  CPU: baseline(thr=51.78) P=0.979 R=0.987 F1=0.983   |   extrap(thr=46.80) P=0.979 R=0.987 F1=0.983
+  MEM: baseline(thr=51.78) P=0.992 R=0.988 F1=0.990   |   extrap(thr=46.80) P=0.988 R=0.988 F1=0.988
+  NET: baseline(thr=51.78) P=0.983 R=0.983 F1=0.983   |   extrap(thr=46.80) P=0.983 R=0.983 F1=0.983
+
+
+====================================================================================================
+SUMMARY: baseline (pooled p99.0) vs. extrapolated (per-topology-fit) threshold
+====================================================================================================
+registry              held_out             N_DU stress  base_F1  extrap_F1   delta
+original (1/2/3/4-DU) cu0_du0du1              2    CPU    0.989      0.989  +0.000
+original (1/2/3/4-DU) cu0_du0du1              2    MEM    0.985      0.985  +0.000
+original (1/2/3/4-DU) cu0_du0du1              2    NET    0.713      0.758  +0.045
+original (1/2/3/4-DU) cu1_du2                 1    CPU    0.978      0.958  -0.021
+original (1/2/3/4-DU) cu1_du2                 1    MEM    0.957      0.944  -0.013
+original (1/2/3/4-DU) cu1_du2                 1    NET    0.718      0.757  +0.039
+original (1/2/3/4-DU) cu2_du3du4du5           3    CPU    0.986      0.986  +0.000
+original (1/2/3/4-DU) cu2_du3du4du5           3    MEM    0.992      0.992  +0.000
+original (1/2/3/4-DU) cu2_du3du4du5           3    NET    0.719      0.734  +0.015
+original (1/2/3/4-DU) cu3_du6du7du8du9        4    CPU    0.991      0.991  +0.000
+original (1/2/3/4-DU) cu3_du6du7du8du9        4    MEM    0.986      0.986  +0.000
+original (1/2/3/4-DU) cu3_du6du7du8du9        4    NET    0.790      0.790  +0.000
+new (1/4/7/10-DU)     cu1_du2                 1    CPU    0.920      0.956  +0.035
+new (1/4/7/10-DU)     cu1_du2                 1    MEM    0.897      0.934  +0.037
+new (1/4/7/10-DU)     cu1_du2                 1    NET    0.768      0.766  -0.003
+new (1/4/7/10-DU)     cu3_du6du7du8du9        4    CPU    0.991      0.991  +0.000
+new (1/4/7/10-DU)     cu3_du6du7du8du9        4    MEM    0.986      0.986  +0.000
+new (1/4/7/10-DU)     cu3_du6du7du8du9        4    NET    0.938      0.954  +0.016
+new (1/4/7/10-DU)     cu0_7du                 7    CPU    0.995      0.993  -0.002
+new (1/4/7/10-DU)     cu0_7du                 7    MEM    0.992      0.993  +0.002
+new (1/4/7/10-DU)     cu0_7du                 7    NET    0.992      0.992  +0.000
+new (1/4/7/10-DU)     cu0_10du               10    CPU    0.983      0.983  +0.000
+new (1/4/7/10-DU)     cu0_10du               10    MEM    0.990      0.988  -0.002
+new (1/4/7/10-DU)     cu0_10du               10    NET    0.983      0.983  +0.000
+
+Done. 24 rows total.
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_loo_extrap.js

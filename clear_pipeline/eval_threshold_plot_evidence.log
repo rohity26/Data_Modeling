@@ -1,0 +1,51 @@
+
+### original|cu0_du0du1 (N_DU=2) trained on ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+  baseline=63.5424  extrap=57.2180
+  CPU (n/a): base F1=0.989  extrap F1=0.989
+  MEM (n/a): base F1=0.985  extrap F1=0.985
+  NET (original_loss): base F1=0.713  extrap F1=0.758
+
+### original|cu1_du2 (N_DU=1) trained on ['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+  baseline=66.4020  extrap=46.7954
+  CPU (n/a): base F1=0.978  extrap F1=0.958
+  MEM (n/a): base F1=0.957  extrap F1=0.944
+  NET (2.5pct_loss): base F1=0.819  extrap F1=0.866
+
+### original|cu2_du3du4du5 (N_DU=3) trained on ['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9']
+  baseline=58.8343  extrap=55.7035
+  CPU (n/a): base F1=0.986  extrap F1=0.986
+  MEM (n/a): base F1=0.992  extrap F1=0.992
+  NET (original_loss): base F1=0.719  extrap F1=0.734
+
+### original|cu3_du6du7du8du9 (N_DU=4) trained on ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']
+  baseline=58.2341  extrap=58.1924
+  CPU (n/a): base F1=0.991  extrap F1=0.991
+  MEM (n/a): base F1=0.986  extrap F1=0.986
+  NET (2.5pct_loss): base F1=0.581  extrap F1=0.585
+
+### new|cu1_du2 (N_DU=1) trained on ['cu3_du6du7du8du9', 'cu0_7du', 'cu0_10du']
+  baseline=49.0719  extrap=102.7514
+  CPU (n/a): base F1=0.920  extrap F1=0.956
+  MEM (n/a): base F1=0.897  extrap F1=0.934
+  NET (2.5pct_loss): base F1=0.905  extrap F1=0.881
+
+### new|cu3_du6du7du8du9 (N_DU=4) trained on ['cu1_du2', 'cu0_7du', 'cu0_10du']
+  baseline=53.8673  extrap=48.6462
+  CPU (n/a): base F1=0.991  extrap F1=0.991
+  MEM (n/a): base F1=0.986  extrap F1=0.986
+  NET (2.5pct_loss): base F1=0.894  extrap F1=0.928
+
+### new|cu0_7du (N_DU=7) trained on ['cu1_du2', 'cu3_du6du7du8du9', 'cu0_10du']
+  baseline=57.2558  extrap=49.5339
+  CPU (n/a): base F1=0.995  extrap F1=0.993
+  MEM (n/a): base F1=0.992  extrap F1=0.993
+  NET (2.5pct_loss): base F1=0.809  extrap F1=0.895
+
+### new|cu0_10du (N_DU=10) trained on ['cu1_du2', 'cu3_du6du7du8du9', 'cu0_7du']
+  baseline=51.7845  extrap=46.8047
+  CPU (n/a): base F1=0.983  extrap F1=0.983
+  MEM (n/a): base F1=0.990  extrap F1=0.988
+  NET (2.5pct_loss): base F1=0.892  extrap F1=0.939
+
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/threshold_plot_evidence_full.json
+saved per-checkpoint JS files

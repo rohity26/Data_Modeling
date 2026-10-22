@@ -1,0 +1,118 @@
+====================================================================================================
+OWN-REGISTRY DU LOO at p99.5
+====================================================================================================
+
+### original|cu0_du0du1  baseline=170.75  extrap=164.38
+    CPU: baseline F1=0.984 (tp=504 fp=9 fn=7)  new F1=0.983 (tp=504 fp=10 fn=7)
+    MEM: baseline F1=0.991 (tp=478 fp=4 fn=5)  new F1=0.991 (tp=478 fp=4 fn=5)
+    NET: baseline F1=0.985 (tp=470 fp=2 fn=12)  new F1=0.984 (tp=471 fp=4 fn=11)
+
+### original|cu1_du2  baseline=148.76  extrap=134.38
+    CPU: baseline F1=0.968 (tp=245 fp=14 fn=2)  new F1=0.963 (tp=245 fp=17 fn=2)
+    MEM: baseline F1=0.992 (tp=246 fp=1 fn=3)  new F1=0.990 (tp=246 fp=2 fn=3)
+    NET: baseline F1=0.998 (tp=260 fp=0 fn=1)  new F1=0.994 (tp=260 fp=2 fn=1)
+
+### original|cu2_du3du4du5  baseline=171.22  extrap=171.82
+    CPU: baseline F1=0.985 (tp=750 fp=8 fn=15)  new F1=0.986 (tp=749 fp=6 fn=16)
+    MEM: baseline F1=0.991 (tp=692 fp=4 fn=9)  new F1=0.993 (tp=692 fp=1 fn=9)
+    NET: baseline F1=0.991 (tp=751 fp=3 fn=11)  new F1=0.992 (tp=751 fp=1 fn=11)
+
+### original|cu3_du6du7du8du9  baseline=173.19  extrap=177.80
+    CPU: baseline F1=0.992 (tp=978 fp=7 fn=9)  new F1=0.993 (tp=977 fp=3 fn=10)
+    MEM: baseline F1=0.991 (tp=985 fp=4 fn=14)  new F1=0.993 (tp=985 fp=0 fn=14)
+    NET: baseline F1=0.990 (tp=946 fp=3 fn=16)  new F1=0.992 (tp=946 fp=0 fn=16)
+
+### new|cu1_du2  baseline=172.07  extrap=256.76
+    CPU: baseline F1=0.988 (tp=244 fp=3 fn=3)  new F1=0.992 (tp=244 fp=1 fn=3)
+    MEM: baseline F1=0.988 (tp=245 fp=2 fn=4)  new F1=0.990 (tp=245 fp=1 fn=4)
+    NET: baseline F1=0.994 (tp=260 fp=2 fn=1)  new F1=0.998 (tp=260 fp=0 fn=1)
+
+### new|cu3_du6du7du8du9  baseline=135.43  extrap=143.11
+    CPU: baseline F1=0.989 (tp=976 fp=11 fn=11)  new F1=0.989 (tp=976 fp=11 fn=11)
+    MEM: baseline F1=0.991 (tp=988 fp=7 fn=11)  new F1=0.991 (tp=988 fp=7 fn=11)
+    NET: baseline F1=0.988 (tp=947 fp=8 fn=15)  new F1=0.988 (tp=947 fp=8 fn=15)
+
+### new|cu0_7du  baseline=153.50  extrap=164.80
+    CPU: baseline F1=0.897 (tp=2081 fp=460 fn=19)  new F1=0.938 (tp=2079 fp=252 fn=21)
+    MEM: baseline F1=0.891 (tp=2084 fp=492 fn=16)  new F1=0.938 (tp=2081 fp=258 fn=19)
+    NET: baseline F1=0.874 (tp=2067 fp=575 fn=19)  new F1=0.922 (tp=2065 fp=328 fn=21)
+
+### new|cu0_10du  baseline=150.36  extrap=162.60
+    CPU: baseline F1=0.989 (tp=2346 fp=24 fn=26)  new F1=0.989 (tp=2346 fp=24 fn=26)
+    MEM: baseline F1=0.988 (tp=2330 fp=31 fn=27)  new F1=0.987 (tp=2329 fp=31 fn=28)
+    NET: baseline F1=0.988 (tp=2406 fp=30 fn=30)  new F1=0.988 (tp=2406 fp=30 fn=30)
+
+====================================================================================================
+SMALL->BIG DU at p99.5
+====================================================================================================
+
+### smallbig|cu0_du0du1  baseline=170.75
+    -> cu0_7du CPU: baseline F1=0.945  new F1=0.952
+    -> cu0_7du MEM: baseline F1=0.936  new F1=0.945
+    -> cu0_7du NET: baseline F1=0.937  new F1=0.945
+    -> cu0_10du CPU: baseline F1=0.991  new F1=0.993
+    -> cu0_10du MEM: baseline F1=0.989  new F1=0.991
+    -> cu0_10du NET: baseline F1=0.990  new F1=0.991
+
+### smallbig|cu1_du2  baseline=148.76
+    -> cu0_7du CPU: baseline F1=0.727  new F1=0.847
+    -> cu0_7du MEM: baseline F1=0.731  new F1=0.846
+    -> cu0_7du NET: baseline F1=0.691  new F1=0.815
+    -> cu0_10du CPU: baseline F1=0.993  new F1=0.994
+    -> cu0_10du MEM: baseline F1=0.990  new F1=0.991
+    -> cu0_10du NET: baseline F1=0.992  new F1=0.992
+
+### smallbig|cu2_du3du4du5  baseline=171.22
+    -> cu0_7du CPU: baseline F1=0.984  new F1=0.942
+    -> cu0_7du MEM: baseline F1=0.992  new F1=0.995
+    -> cu0_7du NET: baseline F1=0.988  new F1=0.994
+    -> cu0_10du CPU: baseline F1=0.991  new F1=0.993
+    -> cu0_10du MEM: baseline F1=0.990  new F1=0.991
+    -> cu0_10du NET: baseline F1=0.991  new F1=0.991
+
+### smallbig|cu3_du6du7du8du9  baseline=173.19
+    -> cu0_7du CPU: baseline F1=0.994  new F1=0.995
+    -> cu0_7du MEM: baseline F1=0.994  new F1=0.995
+    -> cu0_7du NET: baseline F1=0.991  new F1=0.994
+    -> cu0_10du CPU: baseline F1=0.993  new F1=0.993
+    -> cu0_10du MEM: baseline F1=0.989  new F1=0.991
+    -> cu0_10du NET: baseline F1=0.990  new F1=0.991
+
+====================================================================================================
+BIG->SMALL DU at p99.5
+====================================================================================================
+
+### bigsmall|cu1_du2  baseline=172.07
+    -> cu0_du0du1 CPU: baseline F1=0.985  new F1=0.986
+    -> cu0_du0du1 MEM: baseline F1=0.991  new F1=0.991
+    -> cu0_du0du1 NET: baseline F1=0.986  new F1=0.985
+    -> cu2_du3du4du5 CPU: baseline F1=0.991  new F1=0.991
+    -> cu2_du3du4du5 MEM: baseline F1=0.991  new F1=0.991
+    -> cu2_du3du4du5 NET: baseline F1=0.991  new F1=0.991
+
+### bigsmall|cu3_du6du7du8du9  baseline=135.43
+    -> cu0_du0du1 CPU: baseline F1=0.986  new F1=0.986
+    -> cu0_du0du1 MEM: baseline F1=0.991  new F1=0.991
+    -> cu0_du0du1 NET: baseline F1=0.989  new F1=0.989
+    -> cu2_du3du4du5 CPU: baseline F1=0.990  new F1=0.990
+    -> cu2_du3du4du5 MEM: baseline F1=0.991  new F1=0.991
+    -> cu2_du3du4du5 NET: baseline F1=0.990  new F1=0.990
+
+### bigsmall|cu0_7du  baseline=153.50
+    -> cu0_du0du1 CPU: baseline F1=0.985  new F1=0.966
+    -> cu0_du0du1 MEM: baseline F1=0.991  new F1=0.991
+    -> cu0_du0du1 NET: baseline F1=0.990  new F1=0.993
+    -> cu2_du3du4du5 CPU: baseline F1=0.990  new F1=0.989
+    -> cu2_du3du4du5 MEM: baseline F1=0.991  new F1=0.991
+    -> cu2_du3du4du5 NET: baseline F1=0.989  new F1=0.989
+
+### bigsmall|cu0_10du  baseline=150.36
+    -> cu0_du0du1 CPU: baseline F1=0.981  new F1=0.981
+    -> cu0_du0du1 MEM: baseline F1=0.991  new F1=0.991
+    -> cu0_du0du1 NET: baseline F1=0.992  new F1=0.992
+    -> cu2_du3du4du5 CPU: baseline F1=0.991  new F1=0.991
+    -> cu2_du3du4du5 MEM: baseline F1=0.991  new F1=0.991
+    -> cu2_du3du4du5 NET: baseline F1=0.990  new F1=0.990
+
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_du_crossreg_full.js
+DONE

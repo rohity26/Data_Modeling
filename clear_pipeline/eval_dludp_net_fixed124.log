@@ -1,0 +1,24 @@
+Ready topologies (checkpoint exists): ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+
+======================================================================
+  STRESS = NET
+======================================================================
+cu0_du0du1: cu_thr=25.857 du_thr=170.752
+  CU0    (srscu0  ) n= 666 anom= 229 tp= 227 fp=   5 fn=   2 thr=25.86
+  DU0    (srsdu0  ) n= 688 anom= 235 tp= 227 fp=   1 fn=   8 thr=170.75
+  DU1    (srsdu1  ) n= 761 anom= 256 tp= 250 fp=   0 fn=   6 thr=170.75
+cu1_du2: cu_thr=23.126 du_thr=148.760
+  CU1    (srscu1  ) n= 712 anom= 236 tp= 233 fp=  23 fn=   3 thr=23.13
+  DU2    (srsdu2  ) n= 730 anom= 245 tp= 244 fp=   0 fn=   1 thr=148.76
+cu2_du3du4du5: cu_thr=26.246 du_thr=171.223
+  CU2    (srscu2  ) n= 709 anom= 235 tp= 232 fp=   2 fn=   3 thr=26.25
+  DU3    (srsdu3  ) n= 744 anom= 246 tp= 242 fp=   2 fn=   4 thr=171.22
+  DU4    (srsdu4  ) n= 697 anom= 237 tp= 235 fp=   2 fn=   2 thr=171.22
+  DU5    (srsdu5  ) n= 708 anom= 243 tp= 243 fp=   1 fn=   0 thr=171.22
+cu3_du6du7du8du9: cu_thr=24.482 du_thr=173.189
+  CU3    (srscu3  ) n= 743 anom= 241 tp= 238 fp=  13 fn=   3 thr=24.48
+  DU6    (srsdu6  ) n= 732 anom= 248 tp= 245 fp=   2 fn=   3 thr=173.19
+  DU7    (srsdu7  ) n= 785 anom= 258 tp= 251 fp=   2 fn=   7 thr=173.19
+  DU8    (srsdu8  ) n= 705 anom= 239 tp= 239 fp=   0 fn=   0 thr=173.19
+  DU9    (srsdu9  ) n= 689 anom= 232 tp= 230 fp=   0 fn=   2 thr=173.19
+saved

@@ -1,0 +1,128 @@
+====================================================================================================
+Testing 4 ORIGINAL (1/2/3/4-DU) checkpoints against external targets: ['cu0_10du', 'cu0_7du']
+====================================================================================================
+
+### original checkpoint 'test=cu0_du0du1'  trained on ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (held out cu0_du0du1 internally, now also probing external targets)
+  per-topology thr: cu1_du2              N_DU= 1  thr(p99.0)=52.9599
+  per-topology thr: cu2_du3du4du5        N_DU= 3  thr(p99.0)=56.5196
+  per-topology thr: cu3_du6du7du8du9     N_DU= 4  thr(p99.0)=61.4242
+  fitted line: thr = 61.7205 + -9.0049 * (1/N_DU)
+  baseline pooled threshold (current method): 63.5424
+  -- target=cu0_10du (N_DU=10) -- extrapolated threshold: 60.8200
+  cu0_10du   CPU: baseline(thr=63.54) P=0.504 R=0.996 F1=0.670   |   extrap(thr=60.82) P=0.450 R=0.996 F1=0.620
+  cu0_10du   MEM: baseline(thr=63.54) P=0.468 R=1.000 F1=0.638   |   extrap(thr=60.82) P=0.414 R=1.000 F1=0.586
+  cu0_10du   NET: baseline(thr=63.54) P=0.624 R=0.992 F1=0.766   |   extrap(thr=60.82) P=0.583 R=0.992 F1=0.734
+  -- target=cu0_7du (N_DU=7) -- extrapolated threshold: 60.4341
+  cu0_7du    CPU: baseline(thr=63.54) P=0.993 R=0.993 F1=0.993   |   extrap(thr=60.43) P=0.993 R=0.993 F1=0.993
+  cu0_7du    MEM: baseline(thr=63.54) P=0.993 R=0.990 F1=0.992   |   extrap(thr=60.43) P=0.993 R=0.990 F1=0.992
+  cu0_7du    NET: baseline(thr=63.54) P=0.993 R=0.970 F1=0.981   |   extrap(thr=60.43) P=0.993 R=0.997 F1=0.995
+
+### original checkpoint 'test=cu1_du2'  trained on ['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']  (held out cu1_du2 internally, now also probing external targets)
+  per-topology thr: cu0_du0du1           N_DU= 2  thr(p99.0)=62.4529
+  per-topology thr: cu2_du3du4du5        N_DU= 3  thr(p99.0)=59.4977
+  per-topology thr: cu3_du6du7du8du9     N_DU= 4  thr(p99.0)=71.2248
+  fitted line: thr = 74.3376 + -27.5422 * (1/N_DU)
+  baseline pooled threshold (current method): 66.4020
+  -- target=cu0_10du (N_DU=10) -- extrapolated threshold: 71.5834
+  cu0_10du   CPU: baseline(thr=66.40) P=0.824 R=0.987 F1=0.898   |   extrap(thr=71.58) P=0.842 R=0.987 F1=0.909
+  cu0_10du   MEM: baseline(thr=66.40) P=0.777 R=0.992 F1=0.872   |   extrap(thr=71.58) P=0.795 R=0.992 F1=0.883
+  cu0_10du   NET: baseline(thr=66.40) P=0.795 R=0.992 F1=0.882   |   extrap(thr=71.58) P=0.816 R=0.987 F1=0.894
+  -- target=cu0_7du (N_DU=7) -- extrapolated threshold: 70.4030
+  cu0_7du    CPU: baseline(thr=66.40) P=0.952 R=0.993 F1=0.972   |   extrap(thr=70.40) P=0.964 R=0.993 F1=0.979
+  cu0_7du    MEM: baseline(thr=66.40) P=0.990 R=0.990 F1=0.990   |   extrap(thr=70.40) P=0.990 R=0.990 F1=0.990
+  cu0_7du    NET: baseline(thr=66.40) P=0.993 R=0.997 F1=0.995   |   extrap(thr=70.40) P=0.993 R=0.997 F1=0.995
+
+### original checkpoint 'test=cu2_du3du4du5'  trained on ['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9']  (held out cu2_du3du4du5 internally, now also probing external targets)
+  per-topology thr: cu0_du0du1           N_DU= 2  thr(p99.0)=55.8227
+  per-topology thr: cu1_du2              N_DU= 1  thr(p99.0)=51.2008
+  per-topology thr: cu3_du6du7du8du9     N_DU= 4  thr(p99.0)=55.4523
+  fitted line: thr = 57.7633 + -6.1794 * (1/N_DU)
+  baseline pooled threshold (current method): 58.8343
+  -- target=cu0_10du (N_DU=10) -- extrapolated threshold: 57.1453
+  cu0_10du   CPU: baseline(thr=58.83) P=0.375 R=1.000 F1=0.545   |   extrap(thr=57.15) P=0.375 R=1.000 F1=0.545
+  cu0_10du   MEM: baseline(thr=58.83) P=0.365 R=1.000 F1=0.535   |   extrap(thr=57.15) P=0.365 R=1.000 F1=0.535
+  cu0_10du   NET: baseline(thr=58.83) P=0.397 R=1.000 F1=0.568   |   extrap(thr=57.15) P=0.378 R=1.000 F1=0.549
+  -- target=cu0_7du (N_DU=7) -- extrapolated threshold: 56.8805
+  cu0_7du    CPU: baseline(thr=58.83) P=0.968 R=0.993 F1=0.980   |   extrap(thr=56.88) P=0.964 R=0.993 F1=0.979
+  cu0_7du    MEM: baseline(thr=58.83) P=0.990 R=0.990 F1=0.990   |   extrap(thr=56.88) P=0.980 R=0.990 F1=0.985
+  cu0_7du    NET: baseline(thr=58.83) P=0.997 R=0.993 F1=0.995   |   extrap(thr=56.88) P=0.997 R=0.993 F1=0.995
+
+### original checkpoint 'test=cu3_du6du7du8du9'  trained on ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']  (held out cu3_du6du7du8du9 internally, now also probing external targets)
+  per-topology thr: cu0_du0du1           N_DU= 2  thr(p99.0)=59.8459
+  per-topology thr: cu1_du2              N_DU= 1  thr(p99.0)=51.7465
+  per-topology thr: cu2_du3du4du5        N_DU= 3  thr(p99.0)=54.9415
+  fitted line: thr = 60.0486 + -7.4247 * (1/N_DU)
+  baseline pooled threshold (current method): 58.2341
+  -- target=cu0_10du (N_DU=10) -- extrapolated threshold: 59.3061
+  cu0_10du   CPU: baseline(thr=58.23) P=0.375 R=1.000 F1=0.545   |   extrap(thr=59.31) P=0.375 R=1.000 F1=0.545
+  cu0_10du   MEM: baseline(thr=58.23) P=0.365 R=1.000 F1=0.535   |   extrap(thr=59.31) P=0.365 R=1.000 F1=0.535
+  cu0_10du   NET: baseline(thr=58.23) P=0.362 R=1.000 F1=0.531   |   extrap(thr=59.31) P=0.362 R=1.000 F1=0.531
+  -- target=cu0_7du (N_DU=7) -- extrapolated threshold: 58.9879
+  cu0_7du    CPU: baseline(thr=58.23) P=0.797 R=0.993 F1=0.884   |   extrap(thr=58.99) P=0.803 R=0.993 F1=0.888
+  cu0_7du    MEM: baseline(thr=58.23) P=0.900 R=0.990 F1=0.943   |   extrap(thr=58.99) P=0.911 R=0.990 F1=0.949
+  cu0_7du    NET: baseline(thr=58.23) P=0.814 R=0.997 F1=0.896   |   extrap(thr=58.99) P=0.816 R=0.997 F1=0.897
+
+
+====================================================================================================
+EXISTING THRESHOLD (pooled, current method)
+====================================================================================================
+checkpoint                target N_DU stress      thr      P      R     F1
+cu0_du0du1              cu0_10du   10    CPU    63.54  0.504  0.996  0.670
+cu0_du0du1              cu0_10du   10    MEM    63.54  0.468  1.000  0.638
+cu0_du0du1              cu0_10du   10    NET    63.54  0.624  0.992  0.766
+cu0_du0du1               cu0_7du    7    CPU    63.54  0.993  0.993  0.993
+cu0_du0du1               cu0_7du    7    MEM    63.54  0.993  0.990  0.992
+cu0_du0du1               cu0_7du    7    NET    63.54  0.993  0.970  0.981
+cu1_du2                 cu0_10du   10    CPU    66.40  0.824  0.987  0.898
+cu1_du2                 cu0_10du   10    MEM    66.40  0.777  0.992  0.872
+cu1_du2                 cu0_10du   10    NET    66.40  0.795  0.992  0.882
+cu1_du2                  cu0_7du    7    CPU    66.40  0.952  0.993  0.972
+cu1_du2                  cu0_7du    7    MEM    66.40  0.990  0.990  0.990
+cu1_du2                  cu0_7du    7    NET    66.40  0.993  0.997  0.995
+cu2_du3du4du5           cu0_10du   10    CPU    58.83  0.375  1.000  0.545
+cu2_du3du4du5           cu0_10du   10    MEM    58.83  0.365  1.000  0.535
+cu2_du3du4du5           cu0_10du   10    NET    58.83  0.397  1.000  0.568
+cu2_du3du4du5            cu0_7du    7    CPU    58.83  0.968  0.993  0.980
+cu2_du3du4du5            cu0_7du    7    MEM    58.83  0.990  0.990  0.990
+cu2_du3du4du5            cu0_7du    7    NET    58.83  0.997  0.993  0.995
+cu3_du6du7du8du9        cu0_10du   10    CPU    58.23  0.375  1.000  0.545
+cu3_du6du7du8du9        cu0_10du   10    MEM    58.23  0.365  1.000  0.535
+cu3_du6du7du8du9        cu0_10du   10    NET    58.23  0.362  1.000  0.531
+cu3_du6du7du8du9         cu0_7du    7    CPU    58.23  0.797  0.993  0.884
+cu3_du6du7du8du9         cu0_7du    7    MEM    58.23  0.900  0.990  0.943
+cu3_du6du7du8du9         cu0_7du    7    NET    58.23  0.814  0.997  0.896
+
+====================================================================================================
+NEW THRESHOLD (N_DU-extrapolated)
+====================================================================================================
+checkpoint                target N_DU stress      thr      P      R     F1
+cu0_du0du1              cu0_10du   10    CPU    60.82  0.450  0.996  0.620
+cu0_du0du1              cu0_10du   10    MEM    60.82  0.414  1.000  0.586
+cu0_du0du1              cu0_10du   10    NET    60.82  0.583  0.992  0.734
+cu0_du0du1               cu0_7du    7    CPU    60.43  0.993  0.993  0.993
+cu0_du0du1               cu0_7du    7    MEM    60.43  0.993  0.990  0.992
+cu0_du0du1               cu0_7du    7    NET    60.43  0.993  0.997  0.995
+cu1_du2                 cu0_10du   10    CPU    71.58  0.842  0.987  0.909
+cu1_du2                 cu0_10du   10    MEM    71.58  0.795  0.992  0.883
+cu1_du2                 cu0_10du   10    NET    71.58  0.816  0.987  0.894
+cu1_du2                  cu0_7du    7    CPU    70.40  0.964  0.993  0.979
+cu1_du2                  cu0_7du    7    MEM    70.40  0.990  0.990  0.990
+cu1_du2                  cu0_7du    7    NET    70.40  0.993  0.997  0.995
+cu2_du3du4du5           cu0_10du   10    CPU    57.15  0.375  1.000  0.545
+cu2_du3du4du5           cu0_10du   10    MEM    57.15  0.365  1.000  0.535
+cu2_du3du4du5           cu0_10du   10    NET    57.15  0.378  1.000  0.549
+cu2_du3du4du5            cu0_7du    7    CPU    56.88  0.964  0.993  0.979
+cu2_du3du4du5            cu0_7du    7    MEM    56.88  0.980  0.990  0.985
+cu2_du3du4du5            cu0_7du    7    NET    56.88  0.997  0.993  0.995
+cu3_du6du7du8du9        cu0_10du   10    CPU    59.31  0.375  1.000  0.545
+cu3_du6du7du8du9        cu0_10du   10    MEM    59.31  0.365  1.000  0.535
+cu3_du6du7du8du9        cu0_10du   10    NET    59.31  0.362  1.000  0.531
+cu3_du6du7du8du9         cu0_7du    7    CPU    58.99  0.803  0.993  0.888
+cu3_du6du7du8du9         cu0_7du    7    MEM    58.99  0.911  0.990  0.949
+cu3_du6du7du8du9         cu0_7du    7    NET    58.99  0.816  0.997  0.897
+
+Done. 24 rows.
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_orig4_ext_cu0_du0du1.js
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_orig4_ext_cu1_du2.js
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_orig4_ext_cu2_du3du4du5.js
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_orig4_ext_cu3_du6du7du8du9.js

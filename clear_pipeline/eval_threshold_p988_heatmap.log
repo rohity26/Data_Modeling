@@ -1,0 +1,50 @@
+
+### original|cu0_du0du1 trained on ['cu1_du2', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+  thr(p98.8)=49.0458
+  CPU p98.8: F1=0.989
+  MEM p98.8: F1=0.983
+  NET p98.8: F1=0.798
+
+### original|cu1_du2 trained on ['cu0_du0du1', 'cu2_du3du4du5', 'cu3_du6du7du8du9']
+  thr(p98.8)=47.4763
+  CPU p98.8: F1=0.958
+  MEM p98.8: F1=0.944
+  NET p98.8: F1=0.863
+
+### original|cu2_du3du4du5 trained on ['cu0_du0du1', 'cu1_du2', 'cu3_du6du7du8du9']
+  thr(p98.8)=47.4746
+  CPU p98.8: F1=0.986
+  MEM p98.8: F1=0.992
+  NET p98.8: F1=0.750
+
+### original|cu3_du6du7du8du9 trained on ['cu0_du0du1', 'cu1_du2', 'cu2_du3du4du5']
+  thr(p98.8)=45.2833
+  CPU p98.8: F1=0.991
+  MEM p98.8: F1=0.986
+  NET p98.8: F1=0.733
+
+### new|cu1_du2 trained on ['cu3_du6du7du8du9', 'cu0_7du', 'cu0_10du']
+  thr(p98.8)=39.7721
+  CPU p98.8: F1=0.913
+  MEM p98.8: F1=0.885
+  NET p98.8: F1=0.898
+
+### new|cu3_du6du7du8du9 trained on ['cu1_du2', 'cu0_7du', 'cu0_10du']
+  thr(p98.8)=43.0497
+  CPU p98.8: F1=0.991
+  MEM p98.8: F1=0.986
+  NET p98.8: F1=0.949
+
+### new|cu0_7du trained on ['cu1_du2', 'cu3_du6du7du8du9', 'cu0_10du']
+  thr(p98.8)=46.3846
+  CPU p98.8: F1=0.993
+  MEM p98.8: F1=0.993
+  NET p98.8: F1=0.917
+
+### new|cu0_10du trained on ['cu1_du2', 'cu3_du6du7du8du9', 'cu0_7du']
+  thr(p98.8)=47.1325
+  CPU p98.8: F1=0.983
+  MEM p98.8: F1=0.988
+  NET p98.8: F1=0.939
+
+saved -> /tmp/claude-1017/-home-cs26mtech02007-Rohit-data-modeling-2/34e95e6b-da16-4cd1-9ef3-a03b8c94f775/scratchpad/data_p988_heatmap.js
