@@ -1,11 +1,9 @@
-"""BACKUP of the FIRST (uncorrected) version of this script, preserved as a
-paired script+results backup alongside eval_svr_adaptive_alpha_full_results_OLD10pt.json.
-Superseded by eval_svr_adaptive_alpha_full.py, which narrows ALPHA_CANDIDATES
-to match the paper's real supplementary-data range (0-0.112) and trains on
-20 levels x 50 unaveraged repeats (1000 points) instead of these 10
-hand-picked (shift, alpha) pairs. See that script's docstring/comments for
-why the correction was made, and the chat record for the honest before/after
-comparison (this uncorrected version empirically wins on F1 almost everywhere
+"""1000-POINT (corrected) version: alpha grid narrowed to match the paper's
+actual supplementary-data range (0-0.112), trained on 20 shift levels x 50
+unaveraged repeats = 1000 points instead of 10 hand-picked pairs. See
+eval_svr_adaptive_alpha_full.py for the original 10-point version this one
+supersedes/corrects; the chat record has the honest before/after F1
+comparison (the 10-point version empirically wins on F1 almost everywhere,
 despite not matching the cited paper's own parameter range).
 
 SVR-based adaptive-alpha EWMA (Noor-ul-Amin & Kazmi 2024, Scientific Reports,
@@ -55,12 +53,19 @@ CLEAR = "/home/cs26mtech02007/Rohit_data_modeling-2/clear_pipeline"
 DATA_DIR = f"{CLEAR}/data_input"
 Z_VALUES = np.arange(2.5, 20.01, 0.5)
 BASE_ALPHA = 0.05  # used to fix eps, same as Sections 17/18
-# ORIGINAL (uncorrected) grid: hand-picked, not yet checked against the
-# paper's actual supplementary data range. Superseded -- see corrected
-# version in eval_svr_adaptive_alpha_full.py.
-ALPHA_CANDIDATES = np.arange(0.05, 0.65, 0.05)
-SHIFT_GRID = [0.0, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 5.0, 7.0, 10.0]  # 10 hand-picked values
-N_REPEATS_PER_LEVEL = 1
+# Corrected to match the actual paper: their own supplementary dataset
+# (github.com/muhammadwaqaskazmi/ARL-SDRL-Codes) shows real lambda values never
+# exceed ~0.112 (median 0.059, 99th pctl 0.110) -- NOT the 0.05-0.6 range used
+# in the first version of this script. Candidate grid narrowed accordingly.
+ALPHA_CANDIDATES = np.arange(0.01, 0.16, 0.01)
+# Their supplementary data also shows ~20 distinct shift levels, each backed by
+# ~250-345 Monte Carlo repeats (5000 rows / 20 levels), fed to the SVR
+# UNAVERAGED (their own stated reason for using SVR: "lessens the effect of
+# outliers" -- i.e. let the regression itself smooth the noise, don't
+# pre-average). Scaled down here to 20 levels x 50 repeats = 1000 points for
+# compute time, same unaveraged-per-trial structure.
+SHIFT_GRID = np.linspace(0.0, 10.0, 20).tolist()
+N_REPEATS_PER_LEVEL = 50
 BLOCK_LEN = 250  # matches typical real stress-block duration
 QUIET_LEN = 300
 ROLL_WINDOW = 64  # matches WINDOW_LEN elsewhere
@@ -175,9 +180,13 @@ def ewma_smooth_variable(x, alpha_arr):
 
 
 def simulate_and_train_svr(cu_scores_pool, rng):
-    """10 hand-picked shift levels, one (shift_sigma, best_alpha) pair each --
-    ORIGINAL (uncorrected) version, superseded by the 20x50-repeat unaveraged
-    version in eval_svr_adaptive_alpha_full.py."""
+    """20 shift levels x 50 repeated trials each = 1000 individual, UNAVERAGED
+    (shift_sigma, best_alpha) points fed straight to the SVR -- matching the
+    paper's own actual supplementary dataset structure (~20 levels, ~250-345
+    repeats each, fed raw) rather than pre-averaging down to one point per
+    level. Inner EWMA smoothing uses pandas .ewm(adjust=False) -- verified
+    identical output to ndt.ewma_smooth, just vectorized for speed since this
+    now runs 1000x instead of 10x."""
     mu_c, sigma_c = float(cu_scores_pool.mean()), float(cu_scores_pool.std())
     n_pool = len(cu_scores_pool)
     block_start, block_end = QUIET_LEN, QUIET_LEN + BLOCK_LEN
@@ -273,7 +282,7 @@ for ck in CKPTS:
             shift_est = (roll_mean - mu_c) / (sigma_c + 1e-9)
             shift_est_clip = np.clip(shift_est, 0.0, SHIFT_GRID[-1])
             alpha_t = svr.predict(shift_est_clip.reshape(-1, 1))
-            alpha_t = np.clip(alpha_t, 0.02, 0.6)
+            alpha_t = np.clip(alpha_t, 0.01, 0.15)
 
             smoothed_fixed = ndt.ewma_smooth(scores, alpha=BASE_ALPHA)
             m_fixed = metrics((smoothed_fixed > eps_fixed).astype(int), lbl_ev)
@@ -288,7 +297,7 @@ for ck in CKPTS:
 
     all_results[ck["key"]] = ck_results
 
-with open(f"{CLEAR}/eval_svr_adaptive_alpha_full_results_OLD10pt.json", "w") as f:
+with open(f"{CLEAR}/eval_svr_adaptive_alpha_full_1000pt_results.json", "w") as f:
     json.dump(all_results, f, indent=1)
-print("\nsaved -> eval_svr_adaptive_alpha_full_results_OLD10pt.json")
+print("\nsaved -> eval_svr_adaptive_alpha_full_1000pt_results.json")
 print("DONE")
